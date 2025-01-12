@@ -46,7 +46,7 @@
 		--error: var(--color-red-700);
 		--error-foreground: var(--color-base-50);
 		--border: var(--color-base-300);
-		--input: var(--color-base-300);
+		--input: var(--color-base-100);
 		--outline: var(--color-base-950);
 
 		--radius: 0.5rem;
@@ -88,7 +88,7 @@
 		--card-foreground: var(--color-base-100);
 		--popover: oklch(1% 0 0);
 		--popover-foreground: var(--color-base-100);
-		--primary: var(--color-primary-300);
+		--primary: var(--color-primary-400);
 		--primary-foreground: oklch(1% 0 0);
 		--secondary: var(--color-fuchsia-300);
 		--secondary-foreground: oklch(1% 0 0);

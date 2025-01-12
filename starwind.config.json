@@ -1,14 +1,18 @@
 {
-	"tailwind": {
-		"css": "src/styles/starwind.css",
-		"baseColor": "zinc",
-		"cssVariables": true
-	},
-	"componentDir": "src/components",
-	"components": [
-		{
-			"name": "accordion",
-			"version": "0.0.1"
-		}
-	]
+  "tailwind": {
+    "css": "src/styles/starwind.css",
+    "baseColor": "zinc",
+    "cssVariables": true
+  },
+  "componentDir": "src/components",
+  "components": [
+    {
+      "name": "accordion",
+      "version": "0.0.1"
+    },
+    {
+      "name": "switch",
+      "version": "0.0.1"
+    }
+  ]
 }

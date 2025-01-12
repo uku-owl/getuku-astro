@@ -8,6 +8,7 @@ import { Icon } from "astro-icon/components";
 
 // components
 import Button from "@components/Button/Button.astro";
+import Switch from "@components/starwind/switch";
 
 interface pricingItem {
 	name: string; // plan name
@@ -97,21 +98,8 @@ const pricingData: pricingItem[] = [
 				for="pricing-plan__toggle"
 				class="relative inline-flex cursor-pointer items-center select-none"
 			>
-				<input
-					type="checkbox"
-					name="pricing-plan__toggle"
-					id="pricing-plan__toggle"
-					class="pricing-plan__toggle sr-only"
-					aria-label="Toggle between monthly and yearly pricing"
-				/>
 				<span class="label flex items-center text-sm">Monthly</span>
-				<span
-					class="pricing-plan__slider border-base-300 bg-base-100 dark:border-base-600/60 dark:bg-base-800 mx-4 flex h-7 w-[56px] items-center rounded-full border p-1 duration-200"
-				>
-					<span
-						class="pricing-plan__dot bg-base-800 dark:bg-base-100 h-5 w-5 rounded-full duration-200"
-					></span>
-				</span>
+				<Switch variant="primary" id="pricing-plan__toggle" class="mx-4" />
 				<span class="label flex items-center text-sm">Yearly</span>
 			</label>
 		</div>
@@ -233,11 +221,7 @@ const pricingData: pricingItem[] = [
 <script>
 	function pricingPlanToggleSetup() {
 		// toggle between monthly and yearly pricing
-		const pricingToggle = document.querySelector(".pricing-plan__toggle") as HTMLInputElement;
-
-		const pricingToggleSlider = document.querySelector(".pricing-plan__slider") as HTMLInputElement;
-
-		const pricingToggleDot = document.querySelector(".pricing-plan__dot") as HTMLInputElement;
+		const pricingToggle = document.querySelector("#pricing-plan__toggle") as HTMLInputElement;
 
 		// each pricing plan has a monthly price and a yearly price
 		const pricingPlans = document.querySelectorAll(".pricing-plan") as NodeListOf<HTMLElement>;
@@ -248,22 +232,18 @@ const pricingData: pricingItem[] = [
 
 			const yearlyPrice = pricingPlan.querySelector(".pricing-plan__yearly-price") as HTMLElement;
 
-			if (pricingToggle && pricingToggleDot && pricingToggleSlider && monthlyPrice && yearlyPrice) {
-				pricingToggle.addEventListener("change", (event) => {
-					if (pricingToggle.checked) {
+			if (pricingToggle && monthlyPrice && yearlyPrice) {
+				pricingToggle.addEventListener("click", (event) => {
+					const isChecked = pricingToggle.getAttribute("aria-checked") === "true";
+
+					if (isChecked) {
 						// if checked, then yearly price
 						monthlyPrice.classList.add("hidden");
 						yearlyPrice.classList.remove("hidden");
-						pricingToggleDot.classList.add("translate-x-[26px]");
-						pricingToggleSlider.classList.add("border-primary-400");
-						pricingToggleSlider.classList.add("dark:border-primary-600");
 					} else {
 						// if unchecked, then monthly price
 						monthlyPrice.classList.remove("hidden");
 						yearlyPrice.classList.add("hidden");
-						pricingToggleDot.classList.remove("translate-x-[26px]");
-						pricingToggleSlider.classList.remove("border-primary-400");
-						pricingToggleSlider.classList.remove("dark:border-primary-600");
 					}
 				});
 			}
