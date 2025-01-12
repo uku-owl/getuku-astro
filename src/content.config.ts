@@ -62,66 +62,9 @@ const codeToggleCollection = defineCollection({
 		}),
 });
 
-const resumeCollection = defineCollection({
-	loader: glob({ pattern: "**/[^_]*.{json,jsonc}", base: "./src/data/resume" }),
-	schema: ({ image }) =>
-		z.object({
-			diplomas: z.array(
-				z.object({
-					title: z.string(),
-					school: z.string(),
-					year: z.number(),
-				}),
-			),
-			certifications: z.array(
-				z.object({
-					title: z.string(),
-					year: z.number(),
-				}),
-			),
-			experience: z.array(
-				z.object({
-					title: z.string(),
-					company: z.string(),
-					companyImage: image(),
-					dates: z.string(),
-					location: z.string(),
-					responsibilities: z.array(z.string()),
-				}),
-			),
-			hardSkills: z.array(
-				z.object({
-					skill: z.string(),
-					percentage: z.number().min(0).max(100),
-				}),
-			),
-			softSkills: z.array(
-				z.object({
-					skill: z.string(),
-					icon: z.string(),
-				}),
-			),
-			languages: z.array(
-				z.object({
-					language: z.string(),
-					level: z.number().min(1).max(10),
-				}),
-			),
-			tools: z.array(
-				z.object({
-					name: z.string(),
-					category: z.string(),
-					image: z.string(),
-					link: z.string().url(),
-				}),
-			),
-		}),
-});
-
 export const collections = {
 	blog: blogCollection,
 	authors: authorsCollection,
 	otherPages: pagesCollection,
 	codeToggles: codeToggleCollection,
-	resume: resumeCollection,
 };

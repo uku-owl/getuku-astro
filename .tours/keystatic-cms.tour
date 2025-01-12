@@ -15,7 +15,7 @@
     {
       "file": "src/components/KeystaticComponents/Collections.tsx",
       "description": "When writing blog posts, I have integrated an \"Admonition\" component. This allows you to it from the rich text editor! Feel free to add your own components and use my examples and the keystatic docs. Note that you will need to update the astro.config.mjs file to also auto import any other MDX components you create.",
-      "line": 100
+      "line": 104
     },
     {
       "file": "astro.config.mjs",
