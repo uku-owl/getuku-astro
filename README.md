@@ -1,6 +1,6 @@
-# Welcome to Voyager!
+# Welcome to Galaxy!
 
-This is the first theme using Tailwind CSS V4 (still in beta)! This is also the first theme to make use of my up-coming Starwind UI components and setup. It includes far more accessible and stable components than I was previously creating and I am excited to hear what you think of it.
+This is the first theme updated with Tailwind CSS V4 (still in beta)! This is also the first theme to make use of some of my up-coming Starwind UI components and setup. It includes far more accessible and stable components than I was previously creating and I am excited to hear what you think of it.
 
 ## Quickstart
 
