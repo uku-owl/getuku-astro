@@ -25,7 +25,7 @@ import { locales } from "@config/siteSettings.json";
 
 <section
 	id="nav"
-	class="navbar--initial fixed left-0 top-0 z-30 flex w-full flex-col border-b border-b-transparent bg-transparent transition-all duration-300"
+	class="navbar--initial fixed top-0 left-0 z-30 flex w-full flex-col border-b transition-all duration-300"
 >
 	<div class="mx-auto flex w-full">
 		<div class="site-container flex w-full items-center">
@@ -91,9 +91,12 @@ import { locales } from "@config/siteSettings.json";
 	</div>
 </section>
 
-<style lang="scss">
+<style>
+	@import "tailwindcss/theme" theme(reference);
+	@import "@/styles/tailwind-theme.css" theme(reference);
+
 	.navbar--scrolled {
-		@apply border-b-base-200 bg-base-100/70 backdrop-blur dark:border-b-base-600/60 dark:bg-base-800/30;
+		@apply border-foreground/10 bg-background/30 backdrop-blur;
 	}
 
 	.navbar--initial {

@@ -130,17 +130,17 @@ const navConfig: navItem[] = [
 	},
 	// uncomment below to add a dropdown example
 	// {
-	//   text: "Dropdown",
-	//   dropdown: [
-	//     {
-	//       text: "Elements",
-	//       link: "/elements/",
-	//     },
-	//     {
-	//       text: "Password Reset",
-	//       link: "/password-reset/",
-	//     },
-	//   ],
+	// 	text: "Dropdown",
+	// 	dropdown: [
+	// 		{
+	// 			text: "Elements",
+	// 			link: "/elements/",
+	// 		},
+	// 		{
+	// 			text: "Password Reset",
+	// 			link: "/password-reset/",
+	// 		},
+	// 	],
 	// },
 ];
 

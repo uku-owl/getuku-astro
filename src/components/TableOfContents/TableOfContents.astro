@@ -13,7 +13,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 ---
 
 <div
-	class="mt-1 rounded-md border border-base-300 p-3 text-sm leading-tight xl:p-4 dark:border-base-600/60"
+	class="border-base-300 dark:border-base-600/60 mt-1 rounded-md border p-3 text-sm leading-tight xl:p-4"
 >
 	<ul class="flex flex-col gap-2">
 		{
@@ -26,7 +26,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 				>
 					<a
 						href={`#${heading.slug}`}
-						class="toc-link transition hover:text-primary-600 dark:hover:text-primary-400"
+						class="toc-link hover:text-primary-600 dark:hover:text-primary-400 transition"
 					>
 						{heading.text}
 					</a>
@@ -60,7 +60,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 	}
 
 	function initTOC() {
-		wrappingElement = document.querySelector(".prose");
+		wrappingElement = document.querySelector(".markdown-content");
 		if (wrappingElement !== null) {
 			// Get all H2/H3 tags from the post
 			allHeaderTags = wrappingElement.querySelectorAll(":scope > h2, :scope > h3, :scope > h4");
@@ -92,7 +92,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 	document.addEventListener("astro:after-swap", initTOC);
 </script>
 
-<style lang="scss">
+<style>
+	@import "tailwindcss/theme" theme(reference);
+	@import "@/styles/tailwind-theme.css" theme(reference);
+
 	.toc-current {
 		@apply text-primary-600 dark:text-primary-400;
 	}

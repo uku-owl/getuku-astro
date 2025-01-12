@@ -39,8 +39,14 @@ import { locales } from "@config/siteSettings.json";
 
 	<dialog
 		aria-label="mobile navigation menu"
+		data-state="closed"
 		id="mobile-nav__content"
-		class="whitepace-nowrap fixed inset-x-0 top-0 z-20 m-0 h-[100dvh] max-h-screen w-screen max-w-[100vw] items-center overflow-auto overflow-y-auto overflow-x-hidden bg-base-100 px-4 pb-4 text-lg font-normal text-base-900 transition-opacity duration-300 dark:bg-base-900 dark:text-base-100"
+		class:list={[
+			"whitepace-nowrap bg-base-100 text-base-900 dark:bg-base-900 dark:text-base-100 fixed inset-x-0 top-0",
+			"z-20 m-0 h-[100dvh] max-h-screen w-screen max-w-[100vw] items-center",
+			"overflow-auto overflow-x-hidden overflow-y-auto px-4 pb-4 text-lg font-normal transition-opacity duration-200",
+			"fade-in-0 animate-in",
+		]}
 	>
 		<div class="dialog-frame -mr-1">
 			<div class="flex items-center justify-between">
@@ -70,7 +76,7 @@ import { locales } from "@config/siteSettings.json";
 								// mobile dropdown menu
 								<>
 									<MobileNavDropdown navItem={navItem} />
-									<hr class="mx-4 my-1 border-base-300 dark:border-base-600/60" />
+									<hr class="border-border mx-4 my-1" />
 								</>
 							) : "megaMenuColumns" in navItem ? (
 								// mobile mega menu dropdowns
@@ -78,13 +84,13 @@ import { locales } from "@config/siteSettings.json";
 									{navItem.megaMenuColumns.map((navItem) => (
 										<MobileNavDropdown navItem={navItem} />
 									))}
-									<hr class="mx-4 my-1 border-base-300 dark:border-base-600/60" />
+									<hr class="border-border mx-4 my-1" />
 								</>
 							) : (
 								// normal nav link
 								<>
 									<NavLink {navItem} />
-									<hr class="mx-4 my-1 border-base-300 dark:border-base-600/60" />
+									<hr class="border-border mx-4 my-1" />
 								</>
 							),
 						)
@@ -122,23 +128,24 @@ import { locales } from "@config/siteSettings.json";
 			const dialogFrame = this.querySelector(".dialog-frame")!;
 
 			// Close the modal if a user clicks on a link or outside of the modal
-			const onClick = (event: MouseEvent) => {
-				const isLink = "href" in (event.target || {});
-				if (
-					isLink ||
-					(document.body.contains(event.target as Node) &&
-						!dialogFrame.contains(event.target as Node))
-				) {
-					closeModal();
-				}
-			};
+			// const onClick = (event: MouseEvent) => {
+			// 	const isLink = "href" in (event.target || {});
+			// 	if (
+			// 		isLink ||
+			// 		(document.body.contains(event.target as Node) &&
+			// 			!dialogFrame.contains(event.target as Node))
+			// 	) {
+			// 		closeModal();
+			// 	}
+			// };
 
 			const openModal = (event?: MouseEvent) => {
 				dialog.showModal();
+				dialog.setAttribute("data-state", "open");
 				document.body.toggleAttribute("data-mobile-nav-open", true);
 				this.querySelector("input")?.focus();
 				event?.stopPropagation();
-				window.addEventListener("click", onClick);
+				// window.addEventListener("click", onClick);
 			};
 
 			const closeModal = () => dialog.close();
@@ -149,7 +156,8 @@ import { locales } from "@config/siteSettings.json";
 
 			dialog.addEventListener("close", () => {
 				document.body.toggleAttribute("data-mobile-nav-open", false);
-				window.removeEventListener("click", onClick);
+				dialog.setAttribute("data-state", "closed");
+				// window.removeEventListener("click", onClick);
 			});
 		}
 	}

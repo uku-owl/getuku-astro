@@ -48,22 +48,20 @@ codeToggleData.sort((a, b) => a.order - b.order);
 			</div>
 		</div>
 		<div
-			class="relative mt-6 overflow-clip rounded-2xl bg-gradient-to-b from-primary-400 to-base-300/70 to-40% p-1 after:absolute after:inset-[1px] after:rounded-[calc(1rem-1px)] after:bg-base-100/30 md:p-2 dark:from-primary-500 dark:to-base-300/50 dark:after:bg-base-800/50"
+			class="from-primary-400 to-base-300/70 after:bg-base-100/30 dark:from-primary-500 dark:to-base-300/50 dark:after:bg-base-800/50 relative mt-6 overflow-clip rounded-2xl bg-gradient-to-b to-40% p-1 after:absolute after:inset-[1px] after:rounded-[calc(1rem-1px)] md:p-2"
 			data-aos="fade-left"
 			data-aos-trigger="#code-toggle-trigger"
 			data-aos-delay=".3"
 		>
 			<div
-				class="code-toggle dark relative z-10 w-full overflow-clip rounded-xl border border-base-600/60 bg-[var(--astro-code-background)] md:rounded-lg"
+				class="code-toggle dark border-base-600/60 relative z-10 w-full overflow-clip rounded-xl border bg-[var(--astro-code-background)] md:rounded-lg"
 			>
-				<div
-					class="tabs flex justify-start gap-2 overflow-x-scroll border-b border-base-600/60 p-3"
-				>
+				<div class="tabs border-base-600/60 flex justify-start gap-2 overflow-x-auto border-b p-3">
 					{
 						codeToggleData.map((codeToggle, idx) => (
 							<button
 								id={`code-toggle-${idx}`}
-								class="code-toggle__tab flex items-center rounded-md border border-base-600/60 px-2 py-1 text-base-300 transition duration-300 hover:border-primary-400"
+								class="code-toggle__tab border-base-600/60 text-base-300 hover:border-primary-400 flex items-center rounded-md border px-2 py-1 transition duration-300"
 								data-tab={idx}
 								aria-expanded="false"
 								aria-haspopup="true"
@@ -87,7 +85,10 @@ codeToggleData.sort((a, b) => a.order - b.order);
 							codeToggleData.map((codeToggle, idx) => (
 								<div
 									id={`code-content-${idx}`}
-									class="code-toggle__content prose absolute inset-x-0 z-10 hidden h-full max-w-none opacity-0 transition-all duration-300"
+									class:list={[
+										"code-toggle__content absolute inset-x-0 z-10 hidden h-full max-w-none p-4",
+										"slide-in-from-bottom-1 fade-in-0 animate-in hidden transition-all duration-500 will-change-transform",
+									]}
 									data-tab={idx}
 									aria-labelledby={`code-toggle-${idx}`}
 								>
@@ -128,7 +129,8 @@ codeToggleData.sort((a, b) => a.order - b.order);
 						// hide currently active content
 						//@ts-ignore
 						const oldContent = contents[parseInt(t.getAttribute("data-tab"))];
-						oldContent.classList.remove("code-toggle__content--fade-in");
+						// oldContent.classList.remove("code-toggle__content--fade-in");
+						oldContent.classList.add("hidden");
 					}
 				});
 
@@ -138,7 +140,7 @@ codeToggleData.sort((a, b) => a.order - b.order);
 
 				// show new code content
 				newContent.classList.remove("hidden");
-				newContent.classList.add("code-toggle__content--fade-in");
+				// newContent.classList.add("code-toggle__content--fade-in");
 			});
 		});
 
@@ -146,7 +148,7 @@ codeToggleData.sort((a, b) => a.order - b.order);
 		tabs[0].classList.add("active");
 		tabs[0].setAttribute("aria-expanded", "true");
 		contents[0].classList.remove("hidden");
-		contents[0].classList.add("code-toggle__content--fade-in");
+		// contents[0].classList.add("code-toggle__content--fade-in");
 	}
 
 	// runs on initial page load
@@ -157,19 +159,9 @@ codeToggleData.sort((a, b) => a.order - b.order);
 </script>
 
 <!-- note: some styling had to be done in src/styles/prose.scss -->
-<style lang="scss">
-	.code-toggle__content--fade-in {
-		animation: codeContentFadeInAnimation ease-out 0.5s forwards;
-	}
-
-	@keyframes codeContentFadeInAnimation {
-		0% {
-			@apply top-1 opacity-0;
-		}
-		100% {
-			@apply top-0 opacity-100;
-		}
-	}
+<style>
+	@import "tailwindcss/theme" theme(reference);
+	@import "@/styles/tailwind-theme.css" theme(reference);
 
 	.code-toggle__tab.active {
 		@apply border-primary-400 text-base-100 before:opacity-100;
