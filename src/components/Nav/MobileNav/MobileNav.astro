@@ -101,7 +101,7 @@ import { locales } from "@config/siteSettings.json";
 				<!-- <hr class="mx-2 mb-2 border-base-300 dark:border-base-600/60" /> -->
 				<div class="-mr-1 flex items-start justify-between">
 					<ThemeToggle />
-					<LanguageSelect />
+					{locales.length > 1 && <LanguageSelect />}
 				</div>
 				<Button
 					variant="outline"
