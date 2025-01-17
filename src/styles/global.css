@@ -172,7 +172,7 @@
 
 	/* focus utility class (for when user is tabbing through items on page) */
 	.primary-focus {
-		@apply focus-visible:outline-primary-500 focus:outline-none focus-visible:rounded-xs;
+		@apply focus-visible:outline-primary-500 focus:outline-hidden focus-visible:rounded-xs;
 	}
 
 	/* main gradient. Used for tags and some headings */

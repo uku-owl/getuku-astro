@@ -2,7 +2,7 @@
 .button {
 	@apply flex items-center justify-center rounded-md px-4 py-1 font-semibold;
 	/* @apply active:opacity-90; */
-	@apply focus:ring-offset-base-200 dark:focus:ring-offset-base-800 focus:outline-none;
+	@apply focus:ring-offset-base-200 dark:focus:ring-offset-base-800 focus:outline-hidden;
 	@apply disabled:pointer-events-none;
 }
 
