@@ -141,6 +141,7 @@ import { locales } from "@config/siteSettings.json";
 
 			const openModal = (event?: MouseEvent) => {
 				dialog.showModal();
+				document.body.classList.add("overflow-hidden");
 				dialog.setAttribute("data-state", "open");
 				document.body.toggleAttribute("data-mobile-nav-open", true);
 				this.querySelector("input")?.focus();
@@ -148,7 +149,10 @@ import { locales } from "@config/siteSettings.json";
 				// window.addEventListener("click", onClick);
 			};
 
-			const closeModal = () => dialog.close();
+			const closeModal = () => {
+				document.body.classList.remove("overflow-hidden");
+				dialog.close();
+			};
 
 			openBtn.addEventListener("click", openModal);
 			openBtn.disabled = false;
