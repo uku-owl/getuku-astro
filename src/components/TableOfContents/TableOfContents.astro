@@ -26,7 +26,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 				>
 					<a
 						href={`#${heading.slug}`}
-						class="toc-link hover:text-primary-600 dark:hover:text-primary-400 transition"
+						class:list={[
+							"toc-link hover:text-primary-600 dark:hover:text-primary-400 transition",
+							"data-[active=true]:text-primary-600 data-[active=true]:dark:text-primary-400",
+						]}
 					>
 						{heading.text}
 					</a>
@@ -48,13 +51,13 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 		var allSectionLinks = document.querySelectorAll(".toc-link");
 		e.map((i) => {
 			if (i.isIntersecting === true) {
-				allSectionLinks.forEach((link) => link.classList.remove("toc-current"));
+				allSectionLinks.forEach((link) => link.removeAttribute("data-active"));
 
 				// require the href matching, and ".toc-link" class
 				// this is in case you have other header links elsewhere in the post
 				const targetLink = document.querySelector(`a[href="#${i.target.id}"].toc-link`);
 
-				if (targetLink) targetLink.classList.add("toc-current");
+				if (targetLink) targetLink.setAttribute("data-active", "true");
 			}
 		});
 	}
@@ -91,12 +94,3 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 	// runs on view transitions navigation. Not needed if item has "transition:persist"
 	document.addEventListener("astro:after-swap", initTOC);
 </script>
-
-<style>
-	@import "tailwindcss/theme" theme(reference);
-	@import "@/styles/tailwind-theme.css" theme(reference);
-
-	.toc-current {
-		@apply text-primary-600 dark:text-primary-400;
-	}
-</style>

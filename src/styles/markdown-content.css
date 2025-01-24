@@ -50,7 +50,7 @@
 
 /* anchor tags */
 .markdown-content a:not(:where(.not-content *)) {
-	@apply text-foreground decoration-primary-400 hover:decoration-primary-500 underline underline-offset-2 transition-colors;
+	@apply hover:text-primary-600 dark:hover:text-primary-400 text-foreground decoration-primary-500 dark:decoration-primary-400 underline transition-colors;
 }
 
 /* code */
