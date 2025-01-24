@@ -58,7 +58,7 @@
 		--astro-code-token-constant: #a5b4fc; /* recommend making this a slightly off color from your primary-300 color */
 		--astro-code-token-string: var(--color-primary-600);
 		--astro-code-token-comment: var(--color-base-400);
-		--astro-code-token-keyword: var(--color-base-200);
+		--astro-code-token-keyword: var(--color-base-300);
 		--astro-code-token-parameter: var(--color-sky-400);
 		--astro-code-token-function: var(--color-base-50);
 		--astro-code-token-string-expression: var(--color-primary-300);
@@ -114,6 +114,9 @@
 	/* starwind preflight merged with Cosmic Themes */
 	* {
 		@apply border-border;
+	}
+	*:focus-visible {
+		@apply outline-outline !transition-none;
 	}
 	html {
 		@apply bg-background text-foreground leading-[1.6rem] scheme-light dark:scheme-dark;
@@ -172,7 +175,7 @@
 
 	/* focus utility class (for when user is tabbing through items on page) */
 	.primary-focus {
-		@apply focus-visible:outline-primary-500 focus:outline-hidden focus-visible:rounded-xs;
+		@apply focus-visible:outline-primary-500 focus:outline-hidden focus-visible:rounded-xs focus-visible:outline-2;
 	}
 
 	/* main gradient. Used for tags and some headings */

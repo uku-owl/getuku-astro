@@ -28,5 +28,5 @@
 .button--ghost {
 	@apply no-underline transition-colors;
 	@apply hover:text-base-600 dark:hover:text-base-300;
-	@apply focus-visible:ring-primary-400 focus-visible:ring-2;
+	@apply focus-visible:ring-primary-500 focus-visible:ring-2;
 }
