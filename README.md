@@ -1,6 +1,6 @@
 # Welcome to Galaxy!
 
-This is the first theme updated with Tailwind CSS V4 (still in beta)! This is also the first theme to make use of some of my up-coming Starwind UI components and setup. It includes far more accessible and stable components than I was previously creating and I am excited to hear what you think of it.
+This theme uses Astro v5 and Tailwind CSS v4, and includes some of my up-coming Starwind UI components and setup. These are more accessible and stable components than I was previously creating and I am excited to hear what you think of them.
 
 ## Quickstart
 
@@ -77,9 +77,9 @@ The source files have the following setup. Note that not all files are included 
 │   │   ├── signup.astro
 │   │   └── rss.xml.ts
 │   ├── styles/
-│   │   ├── buttons.scss (button styles)
-│   │   ├── global.scss (global styles)
-│   │   └── prose.scss (prose styling for markdown pages)
+│   │   ├── buttons.css (button styles)
+│   │   ├── global.css (global styles)
+│   │   └── markdown-content.css (styling for markdown pages)
 │   └── content.config.ts
 ├── .gitignore
 ├── .prettierrc.mjs
@@ -87,7 +87,6 @@ The source files have the following setup. Note that not all files are included 
 ├── netlify.toml
 ├── package.json
 ├── README.md
-├── tailwind.config.cjs
 └── tsconfig.json
 ```
 
