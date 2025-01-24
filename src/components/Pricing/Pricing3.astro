@@ -137,7 +137,7 @@ const pricingData: pricingTable = {
 };
 ---
 
-<section id="pricing" class="my-24 overflow-hidden md:my-36">
+<section id="pricing-3" class="my-24 overflow-hidden md:my-36">
 	<div class="relative mx-auto max-w-7xl px-4">
 		<div class="flex justify-center">
 			<p class="colored-title inline">Pricing</p>
@@ -147,11 +147,11 @@ const pricingData: pricingTable = {
 		<!-- Toggle switch for monthly or yearly pricing -->
 		<div class="mt-6 flex justify-center">
 			<label
-				for="pricing-plan__toggle"
+				for="plan-3__toggle"
 				class="relative inline-flex cursor-pointer items-center select-none"
 			>
 				<span class="label flex items-center text-sm">Monthly</span>
-				<Switch variant="primary" id="pricing-plan__toggle" class="mx-4" />
+				<Switch variant="primary" id="plan-3__toggle" class="mx-4" />
 				<span class="label flex items-center text-sm">Yearly</span>
 			</label>
 		</div>
@@ -212,7 +212,7 @@ const pricingData: pricingTable = {
 										<div class="pt-3">
 											<p class="opacity-90 dark:opacity-80">{plan.description}</p>
 											<p class="mt-3 font-semibold">
-												<div class="pricing-plan__monthly-price">
+												<div class="pricing-monthly">
 													<span class="text-primary-600 dark:text-primary-400 text-5xl font-semibold">
 														${plan.price.monthly}
 													</span>
@@ -220,7 +220,7 @@ const pricingData: pricingTable = {
 													<br />
 													<p class="mt-1 text-sm font-normal opacity-70">(paid monthly)</p>
 												</div>
-												<div class="pricing-plan__yearly-price hidden">
+												<div class="pricing-yearly hidden">
 													<span class="text-primary-600 dark:text-primary-400 text-5xl font-semibold">
 														${plan.price.yearly}
 													</span>
@@ -360,40 +360,35 @@ const pricingData: pricingTable = {
 </section>
 
 <script>
-	function pricingPlanToggleSetup() {
-		// toggle between monthly and yearly pricing
-		const pricingToggle = document.querySelector("#pricing-plan__toggle") as HTMLInputElement;
+	function setupPricingToggle() {
+		const pricingSection = document.getElementById("pricing-3") as HTMLElement;
+		const toggle = pricingSection.querySelector("#plan-3__toggle") as HTMLInputElement;
+		const monthlyPrices = pricingSection?.querySelectorAll(".pricing-monthly");
+		const yearlyPrices = pricingSection?.querySelectorAll(".pricing-yearly");
 
-		// each pricing plan has a monthly price and a yearly price
-		const pricingPlans = document.querySelectorAll(".pricing-plan") as NodeListOf<HTMLElement>;
+		if (!toggle || !monthlyPrices || !yearlyPrices) return;
 
-		// each plan has monthly and yearly price
-		pricingPlans.forEach((pricingPlan) => {
-			const monthlyPrice = pricingPlan.querySelector(".pricing-plan__monthly-price") as HTMLElement;
+		// Create a new MutationObserver to watch for aria-checked changes
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.type === "attributes" && mutation.attributeName === "aria-checked") {
+					const isYearly = toggle.getAttribute("aria-checked") === "true";
+					monthlyPrices.forEach((price) => price.classList.toggle("hidden", isYearly));
+					yearlyPrices.forEach((price) => price.classList.toggle("hidden", !isYearly));
+				}
+			});
+		});
 
-			const yearlyPrice = pricingPlan.querySelector(".pricing-plan__yearly-price") as HTMLElement;
-
-			if (pricingToggle && monthlyPrice && yearlyPrice) {
-				pricingToggle.addEventListener("click", (event) => {
-					const isChecked = pricingToggle.getAttribute("aria-checked") === "true";
-
-					if (isChecked) {
-						// if checked, then yearly price
-						monthlyPrice.classList.add("hidden");
-						yearlyPrice.classList.remove("hidden");
-					} else {
-						// if unchecked, then monthly price
-						monthlyPrice.classList.remove("hidden");
-						yearlyPrice.classList.add("hidden");
-					}
-				});
-			}
+		// Start observing the toggle button for attribute changes
+		observer.observe(toggle, {
+			attributes: true,
+			attributeFilter: ["aria-checked"], // only watch for aria-checked changes
 		});
 	}
 
 	// runs on initial page load
-	pricingPlanToggleSetup();
+	setupPricingToggle();
 
 	// runs on view transitions navigation
-	document.addEventListener("astro:after-swap", pricingPlanToggleSetup);
+	document.addEventListener("astro:after-swap", setupPricingToggle);
 </script>
