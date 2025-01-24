@@ -4,6 +4,9 @@ import { Icon } from "astro-icon/components";
 // components
 import NavLink from "@components/Nav/NavLink.astro";
 
+// utils
+import { slugify } from "@js/textUtils";
+
 // data
 import { type navMegaDropdownColumn, type navDropdownItem } from "@config/types/configDataTypes";
 
@@ -31,10 +34,10 @@ if ("dropdown" in navItem) {
 	<button
 		class="nav__link--base primary-focus mobile-nav__dropdown-button w-full gap-1 px-4 py-1 lg:hidden lg:px-4"
 		type="button"
-		id={`${dropdownItem.text} mobile dropdown menu`}
+		id={`${slugify(dropdownItem.text)}-mobile-dropdown-menu`}
 		aria-expanded="false"
 		aria-haspopup="true"
-		aria-controls={`${dropdownItem.text} mobile dropdown menu content`}
+		aria-controls={`${slugify(dropdownItem.text)}-mobile-dropdown-menu-content`}
 	>
 		<div class="flex items-center justify-between gap-1">
 			{dropdownItem.text}
@@ -47,8 +50,8 @@ if ("dropdown" in navItem) {
 	</button>
 
 	<div
-		id={`${dropdownItem.text} mobile dropdown menu content`}
-		aria-labelledby={`${dropdownItem.text} mobile dropdown menu`}
+		id={`${slugify(dropdownItem.text)}-mobile-dropdown-menu-content`}
+		aria-labelledby={`${slugify(dropdownItem.text)}-mobile-dropdown-menu`}
 		class="mobile-nav__dropdown-content mt-1 hidden max-h-0 w-full min-w-[150px] overflow-hidden transition-all duration-300 ease-in-out"
 	>
 		<ul class="mb-2 ml-4 transition-[height]">

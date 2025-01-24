@@ -1,10 +1,14 @@
 # Welcome to Galaxy!
 
+This theme uses Astro v5 and Tailwind CSS v4, and includes some of my up-coming Starwind UI components and setup. These are more accessible and stable components than I was previously creating and I am excited to hear what you think of them.
+
+## Quickstart
+
 1. To get started, first install all necessary packages with `npm install` or `pnpm install`, then run an initial build to make sure the setup works `npm run build` or `pnpm build`.
-2. Copy the Pagefind build (for site search) to be available for the dev environment. This varies depending on your OS. I've created a few NPM commands to help.
+2. Copy the Pagefind build (for site search) to be available for the dev environment. This varies depending on your OS. I've created a few commands to help.
    - For Windows, run `npm run winsearch`
    - For OSX or Linux, run `npm run osxsearch`
-3. Next, you'll want to configure your site i18n setup (one language, or multiple). Simply run the command `npm run config-i18n` and follow the script instructions to get setup! For further information, see the [i18n documentation](https://cosmicthemes.com/i18n/).
+3. Next, you'll want to configure your site i18n setup (one language, or multiple). Simply run the command `npm run config-i18n` and follow the script instructions to get setup! For further information, see the [i18n documentation](https://cosmicthemes.com/docs/i18n/).
 4. Now you can setup the site to your liking!
    - [Style customization](https://cosmicthemes.com/docs/styles/)
    - [Content editing](https://cosmicthemes.com/docs/content/)
@@ -26,8 +30,6 @@ The source files have the following setup. Note that not all files are included 
 .
 ├── .tours/
 │   └── code-intro.tour
-├── .vscode/
-│   └── extensions.json
 ├── public/
 │   ├── favicons/
 │   │   └── favicon.ico
@@ -41,8 +43,7 @@ The source files have the following setup. Note that not all files are included 
 │   ├── components/
 │   │   ├── Hero/
 │   │   │   ├── Hero1.astro
-│   │   │   ├── Hero2.astro
-│   │   │   └── Hero3.astro
+│   │   │   └── Hero2.astro
 │   │   └── Footer/
 │   │       └── Footer.astro
 │   ├── config/
@@ -51,11 +52,9 @@ The source files have the following setup. Note that not all files are included 
 │   ├── content/
 │   │   ├── authors/
 │   │   ├── blog/
-│   │   ├── otherPages/
-│   │   └── config.ts
+│   │   └── otherPages/
 │   ├── icons/
-│   │   └── galaxy/
-│   │       └── grid-lg.svg
+│   │   └── tabler/
 │   ├── js/
 │   │   └── textUtils.ts
 │   ├── layouts/
@@ -77,18 +76,17 @@ The source files have the following setup. Note that not all files are included 
 │   │   ├── password-reset.astro
 │   │   ├── signup.astro
 │   │   └── rss.xml.ts
-│   └── styles/
-│       ├── buttons.scss (button styles)
-│       ├── global.scss (global styles)
-│       └── prose.scss (prose styling for markdown pages)
+│   ├── styles/
+│   │   ├── buttons.css (button styles)
+│   │   ├── global.css (global styles)
+│   │   └── markdown-content.css (styling for markdown pages)
+│   └── content.config.ts
 ├── .gitignore
 ├── .prettierrc.mjs
 ├── astro.config.mjs
 ├── netlify.toml
 ├── package.json
-├── package-lock.json
 ├── README.md
-├── tailwind.config.cjs
 └── tsconfig.json
 ```
 
@@ -109,7 +107,7 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory. I also frequently use `src/assets` for images when using Astro asssets for image optimization.
 
-## 🧞 Commands
+### Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -122,6 +120,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+### Want to learn more?
 
 Feel free to check [the documentation](https://docs.astro.build) or jump into the [Discord server](https://astro.build/chat).

@@ -10,10 +10,7 @@ const { class: className, ...rest } = Astro.props as Props;
 ---
 
 <button
-	class:list={[
-		className,
-		"theme-toggle primary-focus rounded-full p-1.5 text-base-900 transition-colors hover:text-base-600 dark:text-base-200/90 dark:hover:text-base-50",
-	]}
+	class:list={[className, "theme-toggle primary-focus nav__link--base rounded-full p-1.5"]}
 	aria-label="color theme toggle"
 >
 	<!-- placeholder -->

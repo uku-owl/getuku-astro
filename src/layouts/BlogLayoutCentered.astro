@@ -86,7 +86,7 @@ const authorsData = await getEntries(authors);
 					alt={`Cover for ${title}`}
 					width={2000}
 					quality="high"
-					class="max-h-[70vh] rounded-lg border border-base-300 object-cover dark:border-base-600/60"
+					class="border-base-300 dark:border-base-600/60 max-h-[70vh] rounded-lg border object-cover"
 					loading="eager"
 					format="webp"
 				/>
@@ -106,7 +106,7 @@ const authorsData = await getEntries(authors);
 							</div>
 						)
 					}
-					<section id="blog-post-content" class="prose mx-auto md:text-lg">
+					<section id="blog-post-content" class="markdown-content mx-auto md:text-lg">
 						<slot />
 					</section>
 

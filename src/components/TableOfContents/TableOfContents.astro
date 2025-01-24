@@ -13,7 +13,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 ---
 
 <div
-	class="mt-1 rounded-md border border-base-300 p-3 text-sm leading-tight xl:p-4 dark:border-base-600/60"
+	class="border-base-300 dark:border-base-600/60 mt-1 rounded-md border p-3 text-sm leading-tight xl:p-4"
 >
 	<ul class="flex flex-col gap-2">
 		{
@@ -26,7 +26,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 				>
 					<a
 						href={`#${heading.slug}`}
-						class="toc-link transition hover:text-primary-600 dark:hover:text-primary-400"
+						class:list={[
+							"toc-link hover:text-primary-600 dark:hover:text-primary-400 transition",
+							"data-[active=true]:text-primary-600 data-[active=true]:dark:text-primary-400",
+						]}
 					>
 						{heading.text}
 					</a>
@@ -48,19 +51,19 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 		var allSectionLinks = document.querySelectorAll(".toc-link");
 		e.map((i) => {
 			if (i.isIntersecting === true) {
-				allSectionLinks.forEach((link) => link.classList.remove("toc-current"));
+				allSectionLinks.forEach((link) => link.removeAttribute("data-active"));
 
 				// require the href matching, and ".toc-link" class
 				// this is in case you have other header links elsewhere in the post
 				const targetLink = document.querySelector(`a[href="#${i.target.id}"].toc-link`);
 
-				if (targetLink) targetLink.classList.add("toc-current");
+				if (targetLink) targetLink.setAttribute("data-active", "true");
 			}
 		});
 	}
 
 	function initTOC() {
-		wrappingElement = document.querySelector(".prose");
+		wrappingElement = document.querySelector(".markdown-content");
 		if (wrappingElement !== null) {
 			// Get all H2/H3 tags from the post
 			allHeaderTags = wrappingElement.querySelectorAll(":scope > h2, :scope > h3, :scope > h4");
@@ -91,9 +94,3 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 	// runs on view transitions navigation. Not needed if item has "transition:persist"
 	document.addEventListener("astro:after-swap", initTOC);
 </script>
-
-<style lang="scss">
-	.toc-current {
-		@apply text-primary-600 dark:text-primary-400;
-	}
-</style>

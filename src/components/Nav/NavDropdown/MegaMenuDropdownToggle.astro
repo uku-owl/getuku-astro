@@ -37,7 +37,7 @@ if (cols >= 5) {
 <!-- non-mobile mega menu -->
 <div class="mega-menu__dropdown group">
 	<button
-		class="nav__link--base primary-focus mega-menu__dropdown-button hidden w-full items-center gap-1 whitespace-nowrap px-4 py-1.5 md:flex"
+		class="nav__link--base primary-focus mega-menu__dropdown-button hidden w-full items-center gap-1 px-4 py-1.5 whitespace-nowrap md:flex"
 		type="button"
 		id={`${slugify(navItem.text)}-mega-menu`}
 		aria-expanded="false"
@@ -54,21 +54,24 @@ if (cols >= 5) {
 	<div
 		id={`${slugify(navItem.text)}-mega-menu-content`}
 		aria-labelledby={`${slugify(navItem.text)}-mega-menu`}
+		data-state="closed"
 		class:list={[
-			"mega-menu__dropdown-content invisible absolute top-full z-10 opacity-0 transition-all",
+			"mega-menu__dropdown-content absolute top-full z-10 transition-all",
+			"slide-in-from-top-2 fade-in-0 animate-in hidden will-change-transform",
+			"data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
 			insetClass,
 		]}
 	>
 		<ul
 			class:list={[
-				"mt-2 grid w-full min-w-[150px] max-w-full gap-3 rounded-md border border-solid border-base-400/60 bg-base-100 py-2 drop-shadow-md dark:border-base-600/60 dark:bg-base-800",
+				"border-base-400/60 bg-base-100 dark:border-base-600/60 dark:bg-base-800 mt-2 grid w-full max-w-full min-w-[150px] gap-3 rounded-md border border-solid py-2 drop-shadow-md",
 				gridClass,
 			]}
 		>
 			{
 				navItem.megaMenuColumns.map((col) => (
 					<div>
-						<p class="mx-4 mb-1 border-b border-base-400/60 py-1 text-lg font-medium dark:border-base-600/60">
+						<p class="border-base-400/60 dark:border-base-600/60 mx-4 mb-1 border-b py-1 text-lg font-medium">
 							{col.title}
 						</p>
 						{col.items.map((navItem) => (
@@ -82,63 +85,77 @@ if (cols >= 5) {
 </div>
 
 <script>
-	function megaMenuToggleSetup() {
-		const megaMenus = document.querySelectorAll(".mega-menu__dropdown");
-		megaMenus.forEach((megaMenu) => {
-			const megaMenuButton = megaMenu.querySelector(".mega-menu__dropdown-button");
-			const megaMenuChevron = megaMenu.querySelector(".mega-menu__dropdown-chevron");
-			const megaMenuContent = megaMenu.querySelector(".mega-menu__dropdown-content");
-			if (megaMenuButton && megaMenuContent && megaMenuChevron) {
-				megaMenuButton.addEventListener("click", (event) => {
-					if (!megaMenu.classList.contains("active")) {
-						// if mega menu is currently closed, so open it
-						megaMenu.classList.add("active");
-						megaMenuButton.setAttribute("aria-expanded", "true");
-						megaMenuContent.classList.add("mega-menu--fade-in");
-						megaMenuChevron.classList.add("rotate-180");
-					} else {
-						// mega menu is currently open, so close it
-						megaMenu.classList.remove("active");
-						megaMenuButton.setAttribute("aria-expanded", "false");
-						megaMenuContent.classList.remove("mega-menu--fade-in");
-						megaMenuChevron.classList.remove("rotate-180");
-					}
-					event.preventDefault();
-					return false;
-				});
+	class MegaMenuController {
+		private megaMenu: HTMLDivElement;
+		private dropdownButton: HTMLButtonElement | null;
+		private dropdownChevron: HTMLElement | null;
+		private dropdownContent: HTMLDivElement | null;
+		private animationDuration: number = 150;
 
-				// if mega menu is open there is a click outside, close the menu
-				document.addEventListener("click", (event) => {
-					if (!megaMenu.contains(event.target as Node) && megaMenu.classList.contains("active")) {
-						megaMenu.classList.remove("active");
-						megaMenuButton.setAttribute("aria-expanded", "false");
-						megaMenuContent.classList.remove("mega-menu--fade-in");
-						megaMenuChevron.classList.remove("rotate-180");
-					}
-				});
+		constructor(megaMenu: HTMLDivElement) {
+			this.megaMenu = megaMenu;
+			this.dropdownButton = megaMenu.querySelector(".mega-menu__dropdown-button");
+			this.dropdownChevron = megaMenu.querySelector(".mega-menu__dropdown-chevron");
+			this.dropdownContent = megaMenu.querySelector(".mega-menu__dropdown-content");
+
+			if (!this.dropdownButton || !this.dropdownContent || !this.dropdownChevron) {
+				return;
 			}
-		});
+
+			this.init();
+		}
+
+		private init() {
+			this.dropdownButton?.addEventListener("click", this.handleDropdownClick.bind(this));
+			document.addEventListener("click", this.handleOutsideClick.bind(this));
+		}
+
+		private handleDropdownClick(event: MouseEvent) {
+			if (!this.megaMenu.classList.contains("active")) {
+				this.openDropdown();
+			} else {
+				this.closeDropdown();
+			}
+			event.preventDefault();
+			return false;
+		}
+
+		private handleOutsideClick(event: MouseEvent) {
+			if (
+				!this.megaMenu?.contains(event.target as Node) &&
+				this.megaMenu?.classList.contains("active")
+			) {
+				this.closeDropdown();
+			}
+		}
+
+		private openDropdown() {
+			this.megaMenu.classList.add("active");
+			this.dropdownButton?.setAttribute("aria-expanded", "true");
+			this.dropdownContent?.setAttribute("data-state", "open");
+			this.dropdownContent?.classList.remove("hidden");
+			this.dropdownChevron?.classList.add("rotate-180");
+		}
+
+		private closeDropdown() {
+			this.megaMenu.classList.remove("active");
+			this.dropdownButton?.setAttribute("aria-expanded", "false");
+			this.dropdownContent?.setAttribute("data-state", "closed");
+			this.dropdownChevron?.classList.remove("rotate-180");
+			setTimeout(() => {
+				this.dropdownContent?.classList.add("hidden");
+			}, this.animationDuration - 10);
+		}
 	}
 
-	// runs on initial page load
-	megaMenuToggleSetup();
+	function dropdownToggleSetup() {
+		const megaMenus = document.querySelectorAll<HTMLDivElement>(".mega-menu__dropdown");
+		megaMenus.forEach((megaMenu) => new MegaMenuController(megaMenu));
+	}
+
+	// runs on page load
+	dropdownToggleSetup();
 
 	// runs on view transitions navigation
-	document.addEventListener("astro:after-swap", megaMenuToggleSetup);
+	document.addEventListener("astro:after-swap", dropdownToggleSetup);
 </script>
-
-<style lang="scss">
-	.mega-menu--fade-in {
-		animation: navDropdownFadeInAnimation ease-out 0.15s forwards;
-		@apply visible opacity-100;
-	}
-
-	@keyframes navDropdownFadeInAnimation {
-		0% {
-			@apply top-[90%];
-		}
-		100% {
-			@apply top-full;
-		}
-	}
-</style>

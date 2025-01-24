@@ -15,10 +15,10 @@ const t = useTranslations(currLocale);
 import heroImage from "@images/dashboard-main-min.png";
 ---
 
-<section id="hero3" class="relative flex w-full overflow-hidden pb-28 pt-32 md:pb-36">
+<section id="hero3" class="relative flex w-full overflow-hidden pt-32 pb-28 md:pb-36">
 	<!-- background glow -->
 	<div
-		class="absolute inset-0 top-[60%] -z-10 mx-auto h-[30%] w-[50%] max-w-3xl rounded-full bg-primary-500/50 blur-[100px] sm:top-[50%]"
+		class="bg-primary-500/50 absolute inset-0 top-[60%] -z-10 mx-auto h-[30%] w-[50%] max-w-3xl rounded-full blur-[100px] sm:top-[50%]"
 		aria-hidden="true"
 	>
 	</div>
@@ -27,7 +27,7 @@ import heroImage from "@images/dashboard-main-min.png";
 	<div class="absolute inset-0 -z-20 flex overflow-hidden">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			class="relative h-full w-full text-base-400/70 opacity-10 xl:scale-125 dark:text-base-500"
+			class="text-base-400/70 dark:text-base-500 relative h-full w-full opacity-10 xl:scale-125"
 			aria-hidden="true"
 		>
 			<defs>
@@ -45,12 +45,12 @@ import heroImage from "@images/dashboard-main-min.png";
 		<div class="mb-4 flex w-full items-center justify-center" data-aos="fade-up">
 			<a
 				href="/blog/tsconfig-paths-setup/"
-				class="flex items-center rounded-full border border-primary-300 bg-base-100 px-4 py-1 text-sm text-base-800 ring-2 ring-primary-500 ring-opacity-20 transition hover:border-primary-400 dark:border-primary-300/20 dark:bg-base-800 dark:text-base-200 dark:hover:border-primary-400/40"
+				class="border-primary-300 bg-base-100 text-base-800 ring-primary-500 ring-opacity-20 hover:border-primary-400 dark:border-primary-300/20 dark:bg-base-800 dark:text-base-200 dark:hover:border-primary-400/40 flex items-center rounded-full border px-4 py-1 text-sm ring-2 transition"
 			>
 				<span class="flex items-center gap-2">
 					<Icon
 						name="tabler/wand"
-						class="inline h-4 w-4 text-primary-600 dark:text-primary-300"
+						class="text-primary-600 dark:text-primary-300 inline h-4 w-4"
 						aria-hidden="true"
 					/>New updates!</span
 				></a
@@ -59,7 +59,7 @@ import heroImage from "@images/dashboard-main-min.png";
 
 		<!-- Hero text -->
 		<h1
-			class="bg-gradient-to-r from-base-900 to-base-600/90 bg-clip-text pb-4 text-5xl font-medium text-transparent md:text-6xl dark:from-base-100 dark:to-base-400/90"
+			class="from-base-900 to-base-600/90 dark:from-base-100 dark:to-base-400/90 bg-gradient-to-r bg-clip-text pb-4 text-5xl font-medium text-transparent md:text-6xl"
 			data-aos="fade-up"
 			data-aos-trigger="#hero3"
 		>

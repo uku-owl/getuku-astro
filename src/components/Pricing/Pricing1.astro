@@ -3,11 +3,18 @@
  * * pricing sections with toggle for monthly or yearly payments
  * This is designed for 3 pricing items, but can be modified to support more
  */
-
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 
 // components
 import Button from "@components/Button/Button.astro";
+import Switch from "@components/starwind/switch";
+
+// utils
+import { getLocaleFromUrl } from "@js/localeUtils";
+
+// get the current page locale to use in links to other pages
+const currLocale = getLocaleFromUrl(Astro.url);
 
 interface pricingItem {
 	name: string; // plan name
@@ -66,7 +73,7 @@ const pricingData: pricingItem[] = [
 ];
 ---
 
-<section id="pricing" class="my-24 overflow-hidden md:my-36">
+<section id="pricing-1" class="my-24 overflow-hidden md:my-36">
 	<div class="site-container relative">
 		<div class="flex justify-center">
 			<p class="colored-title inline">Pricing</p>
@@ -76,24 +83,11 @@ const pricingData: pricingItem[] = [
 		<!-- Toggle switch for monthly or yearly pricing -->
 		<div class="mt-6 flex justify-center">
 			<label
-				for="pricing-plan__toggle"
-				class="relative inline-flex cursor-pointer select-none items-center"
+				for="plan-1__toggle"
+				class="relative inline-flex cursor-pointer items-center select-none"
 			>
-				<input
-					type="checkbox"
-					name="pricing-plan__toggle"
-					id="pricing-plan__toggle"
-					class="pricing-plan__toggle sr-only"
-					aria-label="Toggle between monthly and yearly pricing"
-				/>
 				<span class="label flex items-center text-sm">Monthly</span>
-				<span
-					class="pricing-plan__slider mx-4 flex h-7 w-[56px] items-center rounded-full border border-base-300 bg-base-100 p-1 duration-200 dark:border-base-600/60 dark:bg-base-800"
-				>
-					<span
-						class="pricing-plan__dot h-5 w-5 rounded-full bg-base-800 duration-200 dark:bg-base-100"
-					></span>
-				</span>
+				<Switch variant="primary" id="plan-1__toggle" class="mx-4" />
 				<span class="label flex items-center text-sm">Yearly</span>
 			</label>
 		</div>
@@ -107,7 +101,7 @@ const pricingData: pricingItem[] = [
 						class="pricing-plan relative mx-auto h-full w-full max-w-sm overflow-hidden rounded-2xl"
 						class:list={[
 							{
-								"bg-gradient-to-br from-primary-400 to-base-300 to-40% dark:from-primary-500 dark:to-base-600/60":
+								"from-primary-400 to-base-300 dark:from-primary-500 dark:to-base-600/60 bg-gradient-to-br to-40%":
 									plan.featured === true,
 							},
 							{
@@ -116,11 +110,11 @@ const pricingData: pricingItem[] = [
 						]}
 					>
 						<div class="relative h-full p-px">
-							<div class="relative z-10 flex h-full flex-col overflow-hidden rounded-[calc(1rem-1px)] bg-base-200 dark:bg-base-800">
+							<div class="bg-base-200 dark:bg-base-800 relative z-10 flex h-full flex-col overflow-hidden rounded-[calc(1rem-1px)]">
 								{plan.featured === true && (
 									// inside card glow for featured
 									<div
-										class="absolute left-0 top-0 -z-10 mx-auto aspect-square w-full max-w-7xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-300/40 blur-3xl dark:bg-primary-600/20"
+										class="bg-primary-300/40 dark:bg-primary-600/20 absolute top-0 left-0 -z-10 mx-auto aspect-square w-full max-w-7xl -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
 										aria-hidden="true"
 									/>
 								)}
@@ -139,7 +133,7 @@ const pricingData: pricingItem[] = [
 										{plan.featured === true && (
 											// featured tag
 											<div class="flex w-full items-center justify-end">
-												<div class="flex gap-2 rounded-full bg-primary-600 px-3 py-1 text-sm text-base-100">
+												<div class="bg-primary-600 text-base-100 flex gap-2 rounded-full px-3 py-1 text-sm">
 													<p class="flex items-center">Most popular</p>
 												</div>
 											</div>
@@ -148,16 +142,16 @@ const pricingData: pricingItem[] = [
 									<div class="pt-3">
 										<p class="opacity-90 dark:opacity-80">{plan.description}</p>
 										<p class="mt-3 font-semibold">
-											<div class="pricing-plan__monthly-price">
-												<span class="text-5xl font-semibold text-primary-600 dark:text-primary-400">
+											<div class="pricing-monthly">
+												<span class="text-primary-600 dark:text-primary-400 text-5xl font-semibold">
 													${plan.price.monthly}
 												</span>
 												<span class="text-3xl">/mo</span>
 												<br />
 												<p class="mt-1 text-sm font-normal opacity-70">(paid monthly)</p>
 											</div>
-											<div class="pricing-plan__yearly-price hidden">
-												<span class="text-5xl font-semibold text-primary-600 dark:text-primary-400">
+											<div class="pricing-yearly hidden">
+												<span class="text-primary-600 dark:text-primary-400 text-5xl font-semibold">
 													${plan.price.yearly}
 												</span>
 												<span class="text-3xl">/mo</span>
@@ -178,7 +172,7 @@ const pricingData: pricingItem[] = [
 											>
 												<Icon
 													name="tabler/check"
-													class="h-5 w-5 text-primary-600 dark:text-primary-400"
+													class="text-primary-600 dark:text-primary-400 h-5 w-5"
 													aria-hidden="true"
 												/>
 												<span class="ml-2 inline">{feature}</span>
@@ -188,7 +182,7 @@ const pricingData: pricingItem[] = [
 									<div class="mt-auto">
 										<Button
 											variant={plan.featured === true ? "primary" : "outline"}
-											href="/signup/"
+											href={getRelativeLocaleUrl(currLocale, "/signup/")}
 										>
 											Get Started
 										</Button>
@@ -204,48 +198,35 @@ const pricingData: pricingItem[] = [
 </section>
 
 <script>
-	function pricingPlanToggleSetup() {
-		// toggle between monthly and yearly pricing
-		const pricingToggle = document.querySelector(".pricing-plan__toggle") as HTMLInputElement;
+	function setupPricingToggle() {
+		const pricingSection = document.getElementById("pricing-1") as HTMLElement;
+		const toggle = pricingSection.querySelector("#plan-1__toggle") as HTMLInputElement;
+		const monthlyPrices = pricingSection?.querySelectorAll(".pricing-monthly");
+		const yearlyPrices = pricingSection?.querySelectorAll(".pricing-yearly");
 
-		const pricingToggleSlider = document.querySelector(".pricing-plan__slider") as HTMLInputElement;
+		if (!toggle || !monthlyPrices || !yearlyPrices) return;
 
-		const pricingToggleDot = document.querySelector(".pricing-plan__dot") as HTMLInputElement;
+		// Create a new MutationObserver to watch for aria-checked changes
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.type === "attributes" && mutation.attributeName === "aria-checked") {
+					const isYearly = toggle.getAttribute("aria-checked") === "true";
+					monthlyPrices.forEach((price) => price.classList.toggle("hidden", isYearly));
+					yearlyPrices.forEach((price) => price.classList.toggle("hidden", !isYearly));
+				}
+			});
+		});
 
-		// each pricing plan has a monthly price and a yearly price
-		const pricingPlans = document.querySelectorAll(".pricing-plan") as NodeListOf<HTMLElement>;
-
-		// each plan has monthly and yearly price
-		pricingPlans.forEach((pricingPlan) => {
-			const monthlyPrice = pricingPlan.querySelector(".pricing-plan__monthly-price") as HTMLElement;
-
-			const yearlyPrice = pricingPlan.querySelector(".pricing-plan__yearly-price") as HTMLElement;
-
-			if (pricingToggle && pricingToggleDot && pricingToggleSlider && monthlyPrice && yearlyPrice) {
-				pricingToggle.addEventListener("change", (event) => {
-					if (pricingToggle.checked) {
-						// if checked, then yearly price
-						monthlyPrice.classList.add("hidden");
-						yearlyPrice.classList.remove("hidden");
-						pricingToggleDot.classList.add("translate-x-[26px]");
-						pricingToggleSlider.classList.add("border-primary-400");
-						pricingToggleSlider.classList.add("dark:border-primary-600");
-					} else {
-						// if unchecked, then monthly price
-						monthlyPrice.classList.remove("hidden");
-						yearlyPrice.classList.add("hidden");
-						pricingToggleDot.classList.remove("translate-x-[26px]");
-						pricingToggleSlider.classList.remove("border-primary-400");
-						pricingToggleSlider.classList.remove("dark:border-primary-600");
-					}
-				});
-			}
+		// Start observing the toggle button for attribute changes
+		observer.observe(toggle, {
+			attributes: true,
+			attributeFilter: ["aria-checked"], // only watch for aria-checked changes
 		});
 	}
 
 	// runs on initial page load
-	pricingPlanToggleSetup();
+	setupPricingToggle();
 
 	// runs on view transitions navigation
-	document.addEventListener("astro:after-swap", pricingPlanToggleSetup);
+	document.addEventListener("astro:after-swap", setupPricingToggle);
 </script>

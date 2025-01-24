@@ -4,6 +4,9 @@ import { getEntry, render } from "astro:content";
 // layout
 import BlogLayout from "@layouts/BlogLayoutCentered.astro";
 
+// components
+import ExternalLink from "@components/MarkdownComponents/ExternalLink.astro";
+
 // utils
 import { getAllPosts } from "@js/blogUtils";
 import { getLocaleFromUrl } from "@js/localeUtils";
@@ -17,5 +20,5 @@ const { Content } = await render(post);
 ---
 
 <BlogLayout post={post}>
-	<Content />
+	<Content components={{ a: ExternalLink }} />
 </BlogLayout>
