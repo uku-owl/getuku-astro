@@ -124,8 +124,6 @@
 		-moz-text-size-adjust: none;
 		-webkit-text-size-adjust: none;
 		text-size-adjust: none;
-		/* prevent layout shift */
-		/* scrollbar-gutter: stable; */
 	}
 	button {
 		@apply cursor-pointer;
