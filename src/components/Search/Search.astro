@@ -10,6 +10,8 @@
 import "@pagefind/default-ui/css/ui.css";
 import { Icon } from "astro-icon/components";
 
+import { Dialog, DialogContent, DialogTrigger, DialogClose } from "./search-dialog";
+
 interface Props {
 	class?: string; // any additional classes
 	rest?: any; // catch-all for any additional parameters, such as "aria-label"
@@ -18,103 +20,30 @@ interface Props {
 const { class: classList, ...rest } = Astro.props as Props;
 ---
 
-<site-search class="contents" {...rest}>
-	<button
-		data-open-modal
-		disabled
-		class:list={[
-			classList,
-			"nav__link--base primary-focus flex cursor-pointer items-center rounded-md border-0 bg-transparent p-1.5",
-		]}
-	>
-		<Icon name="tabler/search" class="size-6 md:size-5" aria-label="search bar" />
-	</button>
-
-	<dialog
-		aria-label="search dialog"
-		class:list={[
-			"border-base-300 bg-base-100 dark:border-base-700 dark:bg-base-900 m-0 h-full max-h-full w-full max-w-full border shadow-xl",
-			"md:mx-auto md:mt-16 md:mb-auto md:h-max md:max-h-[calc(100%-8rem)] md:min-h-[15rem] md:w-[90%] md:max-w-[40rem] md:rounded-lg md:border-2",
-		]}
-	>
-		<div class="dialog-frame flex flex-col p-4 md:p-6">
-			<button
-				data-close-modal
-				class="text-primary-600 dark:text-primary-400 absolute z-10 h-[3.25rem] cursor-pointer items-center self-end border-0 bg-transparent px-2 md:hidden"
-			>
-				Cancel
-			</button>
-			<div class="search-container">
-				<div id="search"></div>
+<Dialog>
+	<DialogTrigger class:list={["nav__link--base primary-focus p-1.5", classList]} {...rest}>
+		<Icon name="tabler/search" class:list={["size-6 md:size-5"]} aria-label="search bar" />
+	</DialogTrigger>
+	<div class="relative">
+		<DialogContent
+			class="min-h-[100vh] overflow-hidden sm:max-h-[calc(100vh-14rem)] sm:min-h-[16rem]"
+		>
+			<div class="dialog-frame relative flex grow flex-col overflow-y-auto p-6">
+				<DialogClose
+					class="text-foreground absolute z-10 h-[calc(64px*var(--pagefind-ui-scale))] items-center self-end border-0 bg-transparent px-2 sm:hidden"
+				>
+					Cancel
+				</DialogClose>
+				<div class="search-container">
+					<div id="search"></div>
+				</div>
 			</div>
-		</div>
-	</dialog>
-</site-search>
+		</DialogContent>
+	</div>
+</Dialog>
 
 <script>
-	class SiteSearch extends HTMLElement {
-		constructor() {
-			super();
-			const openBtn = this.querySelector<HTMLButtonElement>("button[data-open-modal]")!;
-			const closeBtn = this.querySelector<HTMLButtonElement>("button[data-close-modal]")!;
-			const dialog = this.querySelector("dialog")!;
-			const dialogFrame = this.querySelector(".dialog-frame")!;
-
-			// Close the modal if a user clicks on a link or outside of the modal
-			const onClick = (event: MouseEvent) => {
-				const isLink = "href" in (event.target || {});
-				if (
-					isLink ||
-					(document.body.contains(event.target as Node) &&
-						!dialogFrame.contains(event.target as Node))
-				) {
-					closeModal();
-				}
-			};
-
-			const openModal = (event?: MouseEvent) => {
-				dialog.showModal();
-				document.body.toggleAttribute("data-search-modal-open", true);
-				this.querySelector("input")?.focus();
-				event?.stopPropagation();
-				window.addEventListener("click", onClick);
-			};
-
-			const closeModal = () => dialog.close();
-
-			openBtn.addEventListener("click", openModal);
-			openBtn.disabled = false;
-			closeBtn.addEventListener("click", closeModal);
-
-			dialog.addEventListener("close", () => {
-				document.body.toggleAttribute("data-search-modal-open", false);
-				window.removeEventListener("click", onClick);
-			});
-
-			// Listen for `/`, `ctrl + k`, and `cmd + k` keyboard shortcuts.
-			window.addEventListener("keydown", (e) => {
-				const isInput =
-					document.activeElement instanceof HTMLElement &&
-					(["input", "select", "textarea"].includes(document.activeElement.tagName.toLowerCase()) ||
-						document.activeElement.isContentEditable);
-				if ((e.metaKey === true || e.ctrlKey === true) && e.key === "k") {
-					dialog.open ? closeModal() : openModal();
-					e.preventDefault();
-				} else if (e.key === "/" && !dialog.open && !isInput) {
-					openModal();
-					e.preventDefault();
-				}
-			});
-
-			window.addEventListener("DOMContentLoaded", () => {
-				initPagefind();
-			});
-		}
-	}
-
-	customElements.define("site-search", SiteSearch);
-
-	function initPagefind() {
+	const initPagefind = () => {
 		const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
 		onIdle(async () => {
 			const { PagefindUI } = await import("@pagefind/default-ui");
@@ -124,51 +53,40 @@ const { class: classList, ...rest } = Astro.props as Props;
 				showSubResults: true,
 			});
 		});
-	}
+	};
 
-	// runs on view transitions navigation
+	initPagefind();
+
 	document.addEventListener("astro:after-swap", initPagefind);
 </script>
-
-<style>
-	@import "tailwindcss/theme" theme(reference);
-	@import "@/styles/tailwind-theme.css" theme(reference);
-
-	dialog[open] {
-		@apply grid;
-	}
-
-	dialog::backdrop {
-		@apply bg-base-600/50 dark:bg-base-800/50 backdrop-blur-xs;
-	}
-</style>
 
 <style is:global>
 	@import "tailwindcss/theme" theme(reference);
 	@import "@/styles/tailwind-theme.css" theme(reference);
 
-	[data-search-modal-open] {
-		@apply overflow-hidden;
+	#search,
+	.dialog-frame {
+		--pagefind-ui-scale: 0.75;
 	}
 
 	#search {
 		.pagefind-ui__form::before {
-			@apply bg-base-900 dark:bg-base-100 opacity-100;
+			@apply bg-muted-foreground opacity-100;
 		}
 
 		.pagefind-ui__search-input {
-			@apply border-base-300 bg-base-200 text-base-900 dark:border-base-700 dark:bg-base-800 dark:text-base-100 w-[calc(100%-5rem)] border font-normal md:w-full;
-		}
+			@apply border-border text-foreground bg-input w-[calc(100%-5rem)] border font-normal sm:w-full;
 
-		input:focus {
-			@apply border-primary-600 ring-primary-600 dark:border-primary-400 dark:ring-primary-400;
+			&:focus-visible {
+				@apply outline-foreground border ring-0 outline-2;
+			}
 		}
 
 		.pagefind-ui__search-clear {
-			@apply focus:outline-primary-600 dark:focus:outline-primary-400 end-[5rem] w-12 overflow-hidden bg-transparent p-0 focus:outline md:end-0;
+			@apply focus-visible:outline-foreground end-[5rem] w-12 overflow-hidden bg-transparent p-0 focus:outline sm:end-0;
 
 			&::before {
-				@apply bg-primary-600 dark:bg-primary-400 block h-full w-full;
+				@apply bg-foreground block h-full w-full;
 				content: "";
 				-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m13.41 12 6.3-6.29a1 1 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1 1 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 .33 1.64 1 1 0 0 0 1.09-.22l6.29-6.3 6.29 6.3a1 1 0 0 0 1.64-.33 1 1 0 0 0-.22-1.09L13.41 12Z'/%3E%3C/svg%3E")
 					center / 50% no-repeat;
@@ -190,28 +108,32 @@ const { class: classList, ...rest } = Astro.props as Props;
 
 		.pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)),
 		.pagefind-ui__result-nested {
-			@apply bg-base-200 dark:bg-base-800 relative transition;
+			@apply bg-input relative transition;
 		}
 
 		.pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):hover,
 		.pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):focus-within,
 		.pagefind-ui__result-nested:hover,
 		.pagefind-ui__result-nested:focus-within {
-			@apply outline-primary-600 dark:outline-primary-400 outline-1;
+			@apply outline-foreground ring-0 outline-1 !transition-none;
 		}
 
 		.pagefind-ui__message {
-			@apply text-base-900 dark:text-base-100 font-medium;
+			@apply text-foreground font-medium;
 		}
 
 		.pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):focus-within,
 		.pagefind-ui__result-nested:focus-within {
-			@apply bg-primary-400 dark:bg-base-800/50;
+			@apply bg-input;
 		}
 
 		.pagefind-ui__result-thumb,
 		.pagefind-ui__result-inner {
-			@apply text-base-900 dark:text-base-100 mt-0;
+			@apply text-foreground mt-0;
+
+			p {
+				@apply leading-5;
+			}
 		}
 
 		.pagefind-ui__result-inner > :first-child {
@@ -230,7 +152,7 @@ const { class: classList, ...rest } = Astro.props as Props;
 		}
 
 		.pagefind-ui__result-link {
-			@apply text-base-900 dark:text-base-100 font-medium;
+			@apply text-foreground font-medium;
 			position: unset;
 		}
 
@@ -258,11 +180,11 @@ const { class: classList, ...rest } = Astro.props as Props;
 		}
 
 		.pagefind-ui__button {
-			@apply border-base-300 bg-base-200 text-base-900 hover:border-primary-600 dark:border-base-700 dark:bg-base-800 dark:text-base-100 dark:hover:border-primary-400 font-medium;
+			@apply border-border bg-input text-foreground hover:border-foreground font-medium;
 		}
 
 		mark {
-			@apply text-primary-600 dark:text-primary-400 bg-transparent font-medium;
+			@apply text-foreground decoration-primary-400 bg-transparent font-medium underline;
 		}
 	}
 </style>
