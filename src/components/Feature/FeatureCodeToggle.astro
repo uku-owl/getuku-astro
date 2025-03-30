@@ -14,7 +14,7 @@ const codeToggles = await getCollection("codeToggles", ({ data }) => {
 	return data.draft !== true;
 });
 
-interface codeToggleData {
+interface codeToggleDataProps {
 	language: string;
 	order: number;
 	icon?: string;
@@ -22,7 +22,7 @@ interface codeToggleData {
 }
 
 // for each element in codeToggles, render the code and return the data
-const codeToggleData: codeToggleData[] = await Promise.all(
+const codeToggleData: codeToggleDataProps[] = await Promise.all(
 	codeToggles.map(async (codeToggle) => {
 		const { language, order, icon } = codeToggle.data;
 		const { Content } = await render(codeToggle);
@@ -86,7 +86,7 @@ codeToggleData.sort((a, b) => a.order - b.order);
 								<div
 									id={`code-content-${idx}`}
 									class:list={[
-										"code-toggle__content absolute inset-x-0 z-10 hidden h-full max-w-none p-4",
+										"code-toggle__content absolute inset-x-0 z-10 h-full max-w-none p-4",
 										"slide-in-from-bottom-1 fade-in-0 animate-in hidden transition-all duration-500 will-change-transform",
 									]}
 									data-tab={idx}

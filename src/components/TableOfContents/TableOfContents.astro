@@ -48,7 +48,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 
 	// Function that runs when the Intersection Observer fires
 	function setCurrent(e: IntersectionObserverEntry[]) {
-		var allSectionLinks = document.querySelectorAll(".toc-link");
+		const allSectionLinks = document.querySelectorAll(".toc-link");
 		e.map((i) => {
 			if (i.isIntersecting === true) {
 				allSectionLinks.forEach((link) => link.removeAttribute("data-active"));
@@ -70,7 +70,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 		}
 
 		// Intersection Observer Options
-		let options: IntersectionObserverInit = {
+		const options: IntersectionObserverInit = {
 			root: null,
 			rootMargin: "0px 0px -50% 0px",
 			threshold: [1],
@@ -94,3 +94,9 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels + 
 	// runs on view transitions navigation. Not needed if item has "transition:persist"
 	document.addEventListener("astro:after-swap", initTOC);
 </script>
+
+<style>
+	.scroll-mt-20 {
+		scroll-margin-top: calc(var(--spacing) * 20);
+	}
+</style>
