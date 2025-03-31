@@ -57,14 +57,8 @@ export default defineConfig({
 
 	vite: {
 		plugins: [tailwindcss()],
-		// stop inlining short scripts to fix issues with ClientRouter: https://github.com/withastro/astro/issues/12804
-		build: {
-			assetsInlineLimit: 0,
-		},
 	},
 	experimental: {
-		svg: {
-			mode: "sprite",
-		},
+		svg: true,
 	},
 });
