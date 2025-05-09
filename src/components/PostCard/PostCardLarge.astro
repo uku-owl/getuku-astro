@@ -3,7 +3,8 @@ import { getLocaleFromUrl } from "@js/localeUtils";
 import { formatDate } from "@js/textUtils";
 import { Image } from "astro:assets";
 import { type CollectionEntry, getEntries } from "astro:content";
-import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { getLocalizedRoute } from "@/js/translationUtils";
 
 interface Props {
 	post: CollectionEntry<"blog">;
@@ -19,7 +20,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 ---
 
 <a
-	href={getRelativeLocaleUrl(currLocale, `/blog/${post.id}/`)}
+	href={getLocalizedRoute(currLocale, `/blog/${post.id}/`)}
 	class=`flex group grid md:grid-cols-3 md:gap-4 ${className}`
 	data-pagefind-ignore
 	{...rest}

@@ -5,7 +5,8 @@ import { formatDate, humanize, slugify } from "@js/textUtils";
 import { useTranslations } from "@js/translationUtils";
 import { Image } from "astro:assets";
 import { type CollectionEntry, getEntries } from "astro:content";
-import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { getLocalizedRoute } from "@/js/translationUtils";
 
 // main layout
 import BaseLayout from "./BaseLayout.astro";

@@ -3,7 +3,8 @@ import Button from "@components/Button/Button.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
 // main layout
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { getLocalizedRoute } from "@/js/translationUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 ---
@@ -16,11 +17,11 @@ const currLocale = getLocaleFromUrl(Astro.url);
 			<!-- Landing Pages -->
 			<div class="flex flex-col">
 				<h3 class="overview-heading">Landing Pages</h3>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/")}>Landing 1</a>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/examples/landing2")}
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/")}>Landing 1</a>
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/examples/landing2")}
 					>Landing 2</a
 				>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/examples/landing3")}
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/examples/landing3")}
 					>Landing 3</a
 				>
 			</div>
@@ -28,12 +29,11 @@ const currLocale = getLocaleFromUrl(Astro.url);
 			<!-- Blog pages -->
 			<div class="flex flex-col">
 				<h3 class="overview-heading">Blog</h3>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/blog")}>Blog Index</a>
-				<a
-					class="overview-link"
-					href={getRelativeLocaleUrl(currLocale, "/blog/tsconfig-paths-setup")}>Blog Post 1</a
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/blog")}>Blog Index</a>
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/blog/tsconfig-paths-setup")}
+					>Blog Post 1</a
 				>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/examples/blog2")}
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/examples/blog2")}
 					>Blog Post 2</a
 				>
 			</div>
@@ -41,22 +41,18 @@ const currLocale = getLocaleFromUrl(Astro.url);
 			<!-- Sections -->
 			<div class="flex flex-col">
 				<h3 class="overview-heading">Sections</h3>
-				<a
-					class="overview-link"
-					href={getRelativeLocaleUrl(currLocale, "/examples/feature-sections")}
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/examples/feature-sections")}
 					>All Feature Sections</a
 				>
-				<a
-					class="overview-link"
-					href={getRelativeLocaleUrl(currLocale, "examples/pricing-sections")}
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "examples/pricing-sections")}
 					>All Pricing and FAQ Sections</a
 				>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/examples/hero-sections")}
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/examples/hero-sections")}
 					>All Hero Sections</a
 				>
 				<a
 					class="overview-link"
-					href={getRelativeLocaleUrl(currLocale, "/examples/testimonial-logo-sections")}
+					href={getLocalizedRoute(currLocale, "/examples/testimonial-logo-sections")}
 					>All Testimonial and Logo Cloud Sections</a
 				>
 			</div>
@@ -64,10 +60,10 @@ const currLocale = getLocaleFromUrl(Astro.url);
 			<!-- Forms -->
 			<div class="flex flex-col">
 				<h3 class="overview-heading">Forms</h3>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/contact")}>Contact</a>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/login")}>Login</a>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/signup")}>Signup</a>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/password-reset")}
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/contact")}>Contact</a>
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/login")}>Login</a>
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/signup")}>Signup</a>
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/password-reset")}
 					>Password Reset</a
 				>
 			</div>
@@ -75,14 +71,14 @@ const currLocale = getLocaleFromUrl(Astro.url);
 			<!-- Other -->
 			<div class="flex flex-col">
 				<h3 class="overview-heading">Other Pages</h3>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/elements")}>MDX Pages</a>
-				<a class="overview-link" href={getRelativeLocaleUrl(currLocale, "/privacy-policy")}
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/elements")}>MDX Pages</a>
+				<a class="overview-link" href={getLocalizedRoute(currLocale, "/privacy-policy")}
 					>Privacy Policy</a
 				>
 				<a class="overview-link" href="/not-a-link/">404</a>
 				<a
 					class="overview-link"
-					href={getRelativeLocaleUrl(currLocale, "/rss.xml")}
+					href={getLocalizedRoute(currLocale, "/rss.xml")}
 					target="_blank"
 					rel="noopener noreferrer">RSS Feed</a
 				>
@@ -105,7 +101,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 			<div class="text-center">
 				<p class="text-sm lg:text-base">
 					We use cookies to improve your experience on this site. To learn more, see our <a
-						href={getRelativeLocaleUrl(currLocale, "/privacy-policy")}
+						href={getLocalizedRoute(currLocale, "/privacy-policy")}
 						class="text-primary-600 hover:text-primary-800 dark:text-primary-300 dark:hover:text-primary-400 underline transition"
 						>Privacy Policy</a
 					>.

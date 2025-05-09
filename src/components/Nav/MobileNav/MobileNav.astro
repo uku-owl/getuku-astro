@@ -7,8 +7,9 @@ import SiteLogo from "@components/SiteLogo/SiteLogo.astro";
 import ThemeToggle from "@components/ThemeToggle/ThemeToggle.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
 import { getTranslatedData } from "@js/translationUtils";
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
+
+import { getLocalizedRoute } from "@/js/translationUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const navData = getTranslatedData("navData", currLocale);
@@ -100,12 +101,12 @@ import { locales } from "@config/siteSettings.json";
 				</div>
 				<Button
 					variant="outline"
-					href={getRelativeLocaleUrl(currLocale, "/login")}
+					href={getLocalizedRoute(currLocale, "/login")}
 					class="mx-2 whitespace-nowrap"
 				>
 					Sign in
 				</Button>
-				<Button class="mx-2" variant="primary" href={getRelativeLocaleUrl(currLocale, "/signup")}
+				<Button class="mx-2" variant="primary" href={getLocalizedRoute(currLocale, "/signup")}
 					>Sign up</Button
 				>
 			</div>

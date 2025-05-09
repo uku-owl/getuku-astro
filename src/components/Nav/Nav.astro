@@ -9,7 +9,8 @@ import SiteLogo from "@components/SiteLogo/SiteLogo.astro";
 import ThemeToggle from "@components/ThemeToggle/ThemeToggle.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
 import { getTranslatedData } from "@js/translationUtils";
-import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { getLocalizedRoute } from "@/js/translationUtils";
 
 import MegaMenuDropdownToggle from "./NavDropdown/MegaMenuDropdownToggle.astro";
 
@@ -60,14 +61,14 @@ import { locales } from "@config/siteSettings.json";
 							<ThemeToggle class="hidden md:flex" />
 							<Button
 								variant="ghost"
-								href={getRelativeLocaleUrl(currLocale, "/login")}
+								href={getLocalizedRoute(currLocale, "/login")}
 								class="hidden whitespace-nowrap md:flex"
 							>
 								Sign In
 							</Button>
 							<Button
 								variant="primary"
-								href={getRelativeLocaleUrl(currLocale, "/signup")}
+								href={getLocalizedRoute(currLocale, "/signup")}
 								class="hidden whitespace-nowrap md:flex">Sign up</Button
 							>
 

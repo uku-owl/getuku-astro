@@ -3,7 +3,8 @@ import Button from "@components/Button/Button.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
 // main layout
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { getLocalizedRoute } from "@/js/translationUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 ---
@@ -38,7 +39,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 							the home page?
 						</p>
 						<div class="mx-auto">
-							<Button variant="primary" href={getRelativeLocaleUrl(currLocale, "/")} class="mx-auto"
+							<Button variant="primary" href={getLocalizedRoute(currLocale, "/")} class="mx-auto"
 								>Home</Button
 							>
 						</div>

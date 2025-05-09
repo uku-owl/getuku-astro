@@ -4,7 +4,8 @@ import FooterLink from "@components/Footer/FooterLink.astro";
 import SiteLogo from "@components/SiteLogo/SiteLogo.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
 import { getTranslatedData } from "@js/translationUtils";
-import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { getLocalizedRoute } from "@/js/translationUtils";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const siteData = getTranslatedData("siteData", currLocale);
@@ -37,10 +38,10 @@ const today = new Date();
 				<!-- Navigation -->
 				<div class="flex flex-col">
 					<h3 class="mt-6 mb-2 text-lg font-semibold">Navigation</h3>
-					<FooterLink href={getRelativeLocaleUrl(currLocale, "/blog")}>Blog</FooterLink>
-					<FooterLink href={getRelativeLocaleUrl(currLocale, "/overview")}>Overview</FooterLink>
-					<FooterLink href={getRelativeLocaleUrl(currLocale, "/about")}>About</FooterLink>
-					<FooterLink href={getRelativeLocaleUrl(currLocale, "/contact")}>Contact</FooterLink>
+					<FooterLink href={getLocalizedRoute(currLocale, "/blog")}>Blog</FooterLink>
+					<FooterLink href={getLocalizedRoute(currLocale, "/overview")}>Overview</FooterLink>
+					<FooterLink href={getLocalizedRoute(currLocale, "/about")}>About</FooterLink>
+					<FooterLink href={getLocalizedRoute(currLocale, "/contact")}>Contact</FooterLink>
 				</div>
 
 				<!-- Legal -->

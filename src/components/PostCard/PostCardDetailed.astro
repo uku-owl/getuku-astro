@@ -4,8 +4,9 @@ import { getLocaleFromUrl } from "@js/localeUtils";
 import { formatDate } from "@js/textUtils";
 import { Image } from "astro:assets";
 import { type CollectionEntry, getEntries, getEntry } from "astro:content";
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
+
+import { getLocalizedRoute } from "@/js/translationUtils";
 
 interface Props {
 	post: CollectionEntry<"blog">;
@@ -25,7 +26,7 @@ const authorsData = await getEntries(authors);
 	<div
 		class="border-base-300 dark:border-base-600/60 relative shrink-0 justify-center overflow-hidden rounded-md border sm:justify-normal"
 	>
-		<a href={getRelativeLocaleUrl(currLocale, `/blog/${post.id}/`)}>
+		<a href={getLocalizedRoute(currLocale, `/blog/${post.id}/`)}>
 			<Image
 				src={heroImage}
 				alt={`${title} blog post`}
@@ -72,7 +73,7 @@ const authorsData = await getEntries(authors);
 		</div>
 		<!-- title -->
 		<a
-			href={getRelativeLocaleUrl(currLocale, `/blog/${post.id}/`)}
+			href={getLocalizedRoute(currLocale, `/blog/${post.id}/`)}
 			class="hover:text-primary-700 dark:hover:text-primary-400"
 		>
 			<h2 class="mt-1 line-clamp-2 text-lg font-medium transition-colors md:text-xl">
