@@ -12,7 +12,6 @@
 
 import { config } from "@keystatic/core";
 
-// components
 import Collections from "@components/KeystaticComponents/Collections";
 
 export default config({

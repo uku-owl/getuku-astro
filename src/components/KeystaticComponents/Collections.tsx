@@ -9,10 +9,8 @@ import {
 	// singleton,
 } from "@keystatic/core";
 
-// components
 import ComponentBlocks from "@components/KeystaticComponents/ComponentBlocks";
 
-// utils
 import { locales } from "@config/siteSettings.json";
 
 /**

@@ -2,12 +2,10 @@ import rss from "@astrojs/rss";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getCollection, type CollectionEntry } from "astro:content";
 
-// utils
 import { defaultLocale } from "@config/siteSettings.json";
 import { getTranslatedData } from "@js/translationUtils";
 import { getAllPosts } from "@js/blogUtils";
 
-// data
 const siteData = getTranslatedData("siteData", defaultLocale);
 
 // you can switch the RSS locale here to something else if desired

@@ -1,10 +1,8 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 
-// utils
 import { removeLocaleFromSlug, filterCollectionByLanguage } from "@/js/localeUtils";
 import { slugify } from "@/js/textUtils";
 
-// data
 import { locales } from "@/config/siteSettings.json";
 
 // --------------------------------------------------------

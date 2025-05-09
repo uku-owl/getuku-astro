@@ -1,6 +1,5 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 
-// data
 import {
 	textTranslations,
 	dataTranslations,

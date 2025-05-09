@@ -2,13 +2,10 @@
 import { type InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 
-// layout
 import BlogLayout from "@layouts/BlogLayoutLeft.astro";
 
-// components
 import ExternalLink from "@components/MarkdownComponents/ExternalLink.astro";
 
-// utils
 import { getAllPosts } from "@js/blogUtils";
 import { defaultLocale } from "@config/siteSettings.json";
 

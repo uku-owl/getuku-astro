@@ -3,14 +3,11 @@
  * * Testimonials section columns (not swiper)
  */
 
-// components
 import TestimonialCard from "./TestimonialCard.astro";
 
-// utils
 import { getLocaleFromUrl } from "@js/localeUtils";
 import { getTranslatedData } from "@js/translationUtils";
 
-// data
 import { type TestimonialItem } from "@config/types/configDataTypes";
 const currLocale = getLocaleFromUrl(Astro.url);
 const testimonialData = getTranslatedData("testimonialData", currLocale);
