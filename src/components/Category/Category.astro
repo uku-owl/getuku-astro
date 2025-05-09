@@ -1,8 +1,7 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-
-import { slugify, categorify, humanize } from "@js/textUtils";
 import { getLocaleFromUrl } from "@js/localeUtils";
+import { categorify, humanize, slugify } from "@js/textUtils";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 interface Props {
 	category: string | undefined;

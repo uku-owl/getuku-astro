@@ -5,10 +5,10 @@
  * Adjust the speed of the marquee by changing the "marquee" animation duration in the tailwind.config.cjs file
  */
 
-import TestimonialCard from "./TestimonialCard.astro";
-
 import { getLocaleFromUrl } from "@js/localeUtils";
 import { getTranslatedData } from "@js/translationUtils";
+
+import TestimonialCard from "./TestimonialCard.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const testimonialData = getTranslatedData("testimonialData", currLocale);

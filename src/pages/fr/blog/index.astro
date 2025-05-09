@@ -1,12 +1,10 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-
 import CategoryCloud from "@components/CategoryCloud/CategoryCloud.astro";
-// import BlogIndexLayout from "@layouts/BlogIndexLayout1.astro";
-import BlogIndexLayout from "@layouts/BlogIndexLayout2.astro";
-
 import { getAllPosts } from "@js/blogUtils";
 import { getLocaleFromUrl } from "@js/localeUtils";
+import BaseLayout from "@layouts/BaseLayout.astro";
+// import BlogIndexLayout from "@layouts/BlogIndexLayout1.astro";
+import BlogIndexLayout from "@layouts/BlogIndexLayout2.astro";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const posts = await getAllPosts(currLocale);

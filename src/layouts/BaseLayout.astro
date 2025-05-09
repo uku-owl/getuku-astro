@@ -1,16 +1,13 @@
 ---
-import { type CollectionEntry } from "astro:content";
-
-import BaseHead from "@layouts/BaseHead.astro";
-import Nav from "@components/Nav/Nav.astro";
-import Footer from "@components/Footer/Footer.astro";
-import CookieConsent from "@components/CookieConsent/CookieConsent.astro";
-
 import "@/styles/global.css";
 
-import { getLocaleFromUrl } from "@js/localeUtils";
-
+import CookieConsent from "@components/CookieConsent/CookieConsent.astro";
+import Footer from "@components/Footer/Footer.astro";
+import Nav from "@components/Nav/Nav.astro";
 import siteSettings from "@config/siteSettings.json";
+import { getLocaleFromUrl } from "@js/localeUtils";
+import BaseHead from "@layouts/BaseHead.astro";
+import { type CollectionEntry } from "astro:content";
 
 // heroImage and authorData are defined on blog posts
 // authorData could also be defined on the about author page

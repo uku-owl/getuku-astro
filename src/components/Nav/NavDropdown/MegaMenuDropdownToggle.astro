@@ -1,10 +1,8 @@
 ---
-import { Icon } from "astro-icon/components";
-
-import { slugify } from "@js/textUtils";
-
 import NavLink from "@components/Nav/NavLink.astro";
 import { type navMegaDropdownItem } from "@config/types/configDataTypes";
+import { slugify } from "@js/textUtils";
+import { Icon } from "astro-icon/components";
 
 interface Props {
 	navItem: navMegaDropdownItem;

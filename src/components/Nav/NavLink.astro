@@ -1,10 +1,8 @@
 ---
-import { Icon } from "astro-icon/components";
-import { getRelativeLocaleUrl } from "astro:i18n";
-
-import { getLocaleFromUrl } from "@js/localeUtils";
-
 import { type navLinkItem } from "@config/types/configDataTypes";
+import { getLocaleFromUrl } from "@js/localeUtils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Icon } from "astro-icon/components";
 
 /**
  * Compares two paths ensuring they both have trailing slashes for consistency

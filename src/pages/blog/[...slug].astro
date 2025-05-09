@@ -1,13 +1,10 @@
 ---
+import ExternalLink from "@components/MarkdownComponents/ExternalLink.astro";
+import { defaultLocale } from "@config/siteSettings.json";
+import { getAllPosts } from "@js/blogUtils";
+import BlogLayout from "@layouts/BlogLayoutLeft.astro";
 import { type InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
-
-import BlogLayout from "@layouts/BlogLayoutLeft.astro";
-
-import ExternalLink from "@components/MarkdownComponents/ExternalLink.astro";
-
-import { getAllPosts } from "@js/blogUtils";
-import { defaultLocale } from "@config/siteSettings.json";
 
 export async function getStaticPaths() {
 	const posts = await getAllPosts(defaultLocale);
