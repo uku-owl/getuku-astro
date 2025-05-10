@@ -39,7 +39,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 					<div class="flex items-center justify-between">
 						<label for="login__password" class="text-sm opacity-90 dark:opacity-80">Password</label>
 						<a
-							href="/password-reset/"
+							href={getLocalizedRoute(currLocale, "/password-reset")}
 							class="primary-focus text-primary-600 hover:text-primary-500 dark:text-primary-400 text-sm transition"
 							>Forgot Password?</a
 						>
