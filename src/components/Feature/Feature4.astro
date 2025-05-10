@@ -4,13 +4,11 @@
  * Recommend using 2 or 3 cards in a row
  */
 
-// components
 import FeatureCard from "@components/FeatureCard/FeatureCardSideImage.astro";
-
+import image3 from "@images/dashboard-3-min.png";
 // images
 import image1 from "@images/dashboard-main-min.png";
 import image2 from "@images/dashboard-side-min.png";
-import image3 from "@images/dashboard-3-min.png";
 
 interface FeatureItem {
 	image: ImageMetadata; // an imported image
@@ -19,7 +17,6 @@ interface FeatureItem {
 	details: string; // text details third
 }
 
-// data
 const featureData: FeatureItem[] = [
 	{
 		image: image1,

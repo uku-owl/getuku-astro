@@ -1,10 +1,10 @@
 @import url("./fonts.css");
 
 @import "tailwindcss";
+@import "tw-animate-css";
 
 /* tailwind plugins */
 @plugin "@tailwindcss/forms";
-@plugin "tailwindcss-animate";
 
 /* dark mode */
 @variant dark (&:where(.dark, .dark *));
@@ -65,8 +65,9 @@
 		--astro-code-token-punctuation: var(--color-base-200);
 		--astro-code-token-link: var(--color-base-50);
 
-		--font-fallback: "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica",
-			"Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+		--font-fallback:
+			"-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial",
+			"sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 		font-family: "Inter", var(--font-fallback);
 		font-feature-settings:

@@ -1,13 +1,9 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-
-// components
 import Button from "@components/Button/Button.astro";
-
-// utils
 import { getLocaleFromUrl } from "@js/localeUtils";
 
-// data
+import { getLocalizedRoute } from "@/js/translationUtils";
+
 const currLocale = getLocaleFromUrl(Astro.url);
 ---
 
@@ -64,7 +60,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
 			<p class="text-center text-sm">
 				<span class="opacity-80">Need an account?{" "}</span>
 				<a
-					href={getRelativeLocaleUrl(currLocale, "/signup")}
+					href={getLocalizedRoute(currLocale, "/signup")}
 					class="primary-focus text-primary-600 hover:text-primary-500 dark:text-primary-400 transition"
 					>Sign Up</a
 				>

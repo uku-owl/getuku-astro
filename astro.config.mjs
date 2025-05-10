@@ -1,12 +1,12 @@
+import mdx from "@astrojs/mdx";
+import netlify from "@astrojs/netlify";
+import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
+import keystatic from "@keystatic/astro";
+import compress from "@playform/compress";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
-import mdx from "@astrojs/mdx";
 import AutoImport from "astro-auto-import";
-import react from "@astrojs/react";
-import keystatic from "@keystatic/astro";
-import netlify from "@astrojs/netlify";
-import compress from "@playform/compress";
 import icon from "astro-icon";
 
 // https://astro.build/config
@@ -57,8 +57,9 @@ export default defineConfig({
 
 	vite: {
 		plugins: [tailwindcss()],
-	},
-	experimental: {
-		svg: true,
+		// stop inlining short scripts to fix issues with ClientRouter
+		build: {
+			assetsInlineLimit: 0,
+		},
 	},
 });
