@@ -116,7 +116,12 @@ const authorsData = await getEntries(authors);
 
 					<!-- button to go back to all posts -->
 					<div class="mt-16 flex justify-center">
-						<Button variant="outline" href="/blog/" arrow="left" class="py-2">
+						<Button
+							variant="outline"
+							href={getLocalizedRoute(currLocale, "/blog/")}
+							arrow="left"
+							class="py-2"
+						>
 							{t("back_to_all_posts")}
 						</Button>
 					</div>

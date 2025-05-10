@@ -1,7 +1,7 @@
 ---
 import Button from "@components/Button/Button.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
-import { useTranslations } from "@js/translationUtils";
+import { getLocalizedRoute, useTranslations } from "@js/translationUtils";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
@@ -40,7 +40,7 @@ import heroImage from "@images/dashboard-main-min.png";
 		<!-- notification -->
 		<div class="mb-4 flex w-full items-center justify-center" data-aos="fade-up">
 			<a
-				href="/blog/tsconfig-paths-setup/"
+				href={getLocalizedRoute(currLocale, "/blog/tsconfig-paths-setup")}
 				class="border-primary-300 bg-base-100 text-base-800 ring-primary-500 ring-opacity-20 hover:border-primary-400 dark:border-primary-300/20 dark:bg-base-800 dark:text-base-200 dark:hover:border-primary-400/40 flex items-center rounded-full border px-4 py-1 text-sm ring-2 transition"
 			>
 				<span class="flex items-center gap-2">
@@ -86,7 +86,7 @@ import heroImage from "@images/dashboard-main-min.png";
 			</Button>
 			<Button
 				variant="outline"
-				href="/overview/"
+				href={getLocalizedRoute(currLocale, "/overview")}
 				arrow="right"
 				data-aos="fade-up"
 				data-aos-delay="1"
