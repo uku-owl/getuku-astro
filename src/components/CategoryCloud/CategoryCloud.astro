@@ -5,7 +5,9 @@ import { categorify, humanize } from "@js/textUtils";
 
 import { getLocalizedRoute } from "@/js/translationUtils";
 
-const posts = await getAllPosts();
+const currLocale = getLocaleFromUrl(Astro.url);
+
+const posts = await getAllPosts(currLocale);
 const allCategories = posts.map((post) => post.data.categories).flat();
 const filteredCategories = allCategories.filter(
 	(category): category is string => typeof category === "string",
@@ -18,8 +20,6 @@ interface Props {
 }
 
 const { showCount = false } = Astro.props as Props;
-
-const currLocale = getLocaleFromUrl(Astro.url);
 ---
 
 <div class="flex flex-wrap gap-3" data-pagefind-ignore>
