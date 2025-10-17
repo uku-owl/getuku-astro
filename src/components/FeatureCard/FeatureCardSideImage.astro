@@ -22,8 +22,8 @@ const { image, label, title, details, imageSide, ...rest } = Astro.props as Prop
 	<!-- text -->
 	<div
 		class=`${imageSide === "left" ? "md:order-last": ""} col-span-1`
-		data-aos="fade-up"
-		data-aos-trigger=""
+		data-mos="fade-up"
+		data-mos-anchor=""
 	>
 		<div class="flex">
 			<p class="colored-title">{label}</p>
@@ -38,7 +38,7 @@ const { image, label, title, details, imageSide, ...rest } = Astro.props as Prop
 			class=`relative h-full rounded-2xl bg-gradient-to-br from-primary-400 via-base-300/70 to-base-300/70
       dark:from-primary-500 dark:via-base-600/60 dark:to-base-600/60
       after:absolute after:rounded-[calc(1rem-1px)] after:bg-base-100/30 dark:after:bg-base-800/50 after:inset-[1px]`
-			data-aos=`fade-${imageSide === "left" ? "right" : "left"}`
+			data-mos=`fade-${imageSide === "left" ? "right" : "left"}`
 		>
 			<Image
 				class="relative z-10 w-full rounded-2xl border border-transparent object-cover p-1"

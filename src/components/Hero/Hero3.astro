@@ -38,7 +38,7 @@ import heroImage from "@images/dashboard-main-min.png";
 	<!-- hero items -->
 	<div class="site-container mx-auto max-w-4xl gap-8 pb-32 text-center sm:pb-44 md:pb-72">
 		<!-- notification -->
-		<div class="mb-4 flex w-full items-center justify-center" data-aos="fade-up">
+		<div class="mb-4 flex w-full items-center justify-center" data-mos="fade-up">
 			<a
 				href={getLocalizedRoute(currLocale, "/blog/tsconfig-paths-setup")}
 				class="border-primary-300 bg-base-100 text-base-800 ring-primary-500 ring-opacity-20 hover:border-primary-400 dark:border-primary-300/20 dark:bg-base-800 dark:text-base-200 dark:hover:border-primary-400/40 flex items-center rounded-full border px-4 py-1 text-sm ring-2 transition"
@@ -56,16 +56,16 @@ import heroImage from "@images/dashboard-main-min.png";
 		<!-- Hero text -->
 		<h1
 			class="from-base-900 to-base-600/90 dark:from-base-100 dark:to-base-400/90 bg-gradient-to-r bg-clip-text pb-4 text-5xl font-medium text-transparent md:text-6xl"
-			data-aos="fade-up"
-			data-aos-trigger="#hero3"
+			data-mos="fade-up"
+			data-mos-anchor="#hero3"
 		>
 			Welcome to Galaxy
 		</h1>
 		<p
 			class="description mx-auto mt-2 max-w-sm sm:max-w-md md:max-w-lg"
-			data-aos="fade-up"
-			data-aos-delay="0"
-			data-aos-trigger="#hero3"
+			data-mos="fade-up"
+			data-mos-delay="0"
+			data-mos-anchor="#hero3"
 		>
 			{t("hero_description")}
 			<!-- Get your SaaS landing page and blog running in a snap. Save time with
@@ -78,9 +78,9 @@ import heroImage from "@images/dashboard-main-min.png";
 			<Button
 				variant="primary"
 				href="https://cosmicthemes.com/themes/galaxy/"
-				data-aos="fade-up"
-				data-aos-delay="0.8"
-				data-aos-trigger="#hero3"
+				data-mos="fade-up"
+				data-mos-delay="0.8"
+				data-mos-anchor="#hero3"
 			>
 				Get Galaxy
 			</Button>
@@ -88,9 +88,9 @@ import heroImage from "@images/dashboard-main-min.png";
 				variant="outline"
 				href={getLocalizedRoute(currLocale, "/overview")}
 				arrow="right"
-				data-aos="fade-up"
-				data-aos-delay="1"
-				data-aos-trigger="#hero3"
+				data-mos="fade-up"
+				data-mos-delay="1"
+				data-mos-anchor="#hero3"
 			>
 				Overview
 			</Button>
@@ -107,9 +107,9 @@ import heroImage from "@images/dashboard-main-min.png";
 		<div
 			class=`relative h-fit rounded-2xl bg-gradient-to-b from-primary-400 dark:from-primary-500 to-base-300/70 dark:to-base-300/50 to-40%
       after:absolute after:inset-0 after:rounded-[calc(1rem-1px)] after:bg-base-100/30 dark:after:bg-base-800/50 after:inset-[1px]`
-			data-aos="fade-in"
-			data-aos-delay="0.2"
-			data-aos-trigger="#hero3"
+			data-mos="fade-in"
+			data-mos-delay="0.2"
+			data-mos-anchor="#hero3"
 		>
 			<Image
 				src={heroImage}
