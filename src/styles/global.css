@@ -108,16 +108,11 @@
 		--border: var(--color-base-800);
 		--input: var(--color-base-800);
 		--outline: var(--color-base-50);
-
-		@apply scheme-dark;
 	}
 
 	/* starwind preflight merged with Cosmic Themes */
 	* {
 		@apply border-border;
-	}
-	*:focus-visible {
-		@apply outline-outline !transition-none;
 	}
 	html {
 		@apply bg-background text-foreground leading-[1.6rem] scheme-light dark:scheme-dark;
@@ -125,6 +120,8 @@
 		-moz-text-size-adjust: none;
 		-webkit-text-size-adjust: none;
 		text-size-adjust: none;
+		/* prevent layout shift */
+		scrollbar-gutter: stable;
 	}
 	button {
 		@apply cursor-pointer;
@@ -160,7 +157,8 @@
 	/* used for newsletter, and contact form inputs */
 	.form__input {
 		@apply border-base-300 bg-base-100 hover:border-primary-500 dark:border-base-600/60 dark:bg-base-800 w-full rounded-md border px-3 transition;
-		@apply focus:border-primary-500 focus-visible:ring-primary-500 focus-visible:ring-2;
+		@apply focus:border-primary-500 focus-visible:ring-primary-500/50 focus-visible:ring-2;
+		@apply outline-none;
 
 		&::placeholder {
 			@apply text-base-400;
