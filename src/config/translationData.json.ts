@@ -17,18 +17,18 @@ import siteDataFr from "./fr/siteData.json";
 import testimonialDataFr from "./fr/testimonialData.json";
 
 export const dataTranslations = {
-	en: {
-		siteData: siteDataEn,
-		navData: navDataEn,
-		faqData: faqDataEn,
-		testimonialData: testimonialDataEn,
-	},
-	fr: {
-		siteData: siteDataFr,
-		navData: navDataFr,
-		faqData: faqDataFr,
-		testimonialData: testimonialDataFr,
-	},
+  en: {
+    siteData: siteDataEn,
+    navData: navDataEn,
+    faqData: faqDataEn,
+    testimonialData: testimonialDataEn,
+  },
+  fr: {
+    siteData: siteDataFr,
+    navData: navDataFr,
+    faqData: faqDataFr,
+    testimonialData: testimonialDataFr,
+  },
 } as const;
 
 /**
@@ -51,17 +51,17 @@ export const dataTranslations = {
  * ```
  */
 export const textTranslations = {
-	en: {
-		hero_description: `A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations, CMS - all ready to go.`,
-		back_to_all_posts: "Back to all posts",
-		updated: "Updated",
-	},
-	fr: {
-		hero_description:
-			"Je ne parle pas vraiment français donc j'utilise Google Translate pour quelques parties de cette démo.",
-		back_to_all_posts: "Retour à tous les articles",
-		updated: "Mis à jour",
-	},
+  en: {
+    hero_description: `A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations, CMS - all ready to go.`,
+    back_to_all_posts: "Back to all posts",
+    updated: "Updated",
+  },
+  fr: {
+    hero_description:
+      "Je ne parle pas vraiment français donc j'utilise Google Translate pour quelques parties de cette démo.",
+    back_to_all_posts: "Retour à tous les articles",
+    updated: "Mis à jour",
+  },
 } as const;
 
 /**
@@ -76,20 +76,20 @@ export const textTranslations = {
  * Note: This works in conjunction with the localizedCollections object below
  */
 export const routeTranslations = {
-	en: {
-		overviewKey: "overview",
-		categoryKey: "categories",
-		categoryKey2: "categories/*",
-		categoryKey3: "categories",
-		blogKey: "blog",
-	},
-	fr: {
-		overviewKey: "apercu",
-		categoryKey: "categories",
-		categoryKey2: "categories",
-		categoryKey3: "categories/*",
-		blogKey: "blog",
-	},
+  en: {
+    overviewKey: "overview",
+    categoryKey: "categories",
+    categoryKey2: "categories/*",
+    categoryKey3: "categories",
+    blogKey: "blog",
+  },
+  fr: {
+    overviewKey: "apercu",
+    categoryKey: "categories",
+    categoryKey2: "categories",
+    categoryKey3: "categories/*",
+    blogKey: "blog",
+  },
 } as const;
 
 /**
@@ -103,9 +103,9 @@ export const routeTranslations = {
  * You can use the locale value to map the collection to a different route if desired
  */
 export const localizedCollections = {
-	blog: {
-		en: "blog",
-		fr: "blog",
-	},
-	// Add more collections/locales as needed
+  blog: {
+    en: "blog",
+    fr: "blog",
+  },
+  // Add more collections/locales as needed
 } as const;

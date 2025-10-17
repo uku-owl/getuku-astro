@@ -7,12 +7,12 @@ import { type InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 
 export async function getStaticPaths() {
-	const posts = await getAllPosts(defaultLocale);
+  const posts = await getAllPosts(defaultLocale);
 
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: post,
+  }));
 }
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
@@ -21,5 +21,5 @@ const { Content, headings } = await render(post);
 ---
 
 <BlogLayout post={post} headings={headings}>
-	<Content components={{ a: ExternalLink }} />
+  <Content components={{ a: ExternalLink }} />
 </BlogLayout>

@@ -7,29 +7,29 @@ import type { HTMLAttributes } from "astro/types";
 import { tv } from "tailwind-variants";
 
 type Props = HTMLAttributes<"div"> & {
-	details: string;
+  details: string;
 };
 
 export const accordionContent = tv({
-	base: [
-		"starwind-accordion-content",
-		"transform-gpu overflow-hidden",
-		"data-[state=closed]:animate-accordion-up data-[state=closed]:h-0",
-		"data-[state=open]:animate-accordion-down",
-	],
+  base: [
+    "starwind-accordion-content",
+    "transform-gpu overflow-hidden",
+    "data-[state=closed]:animate-accordion-up data-[state=closed]:h-0",
+    "data-[state=open]:animate-accordion-down",
+  ],
 });
 
 const { class: className, details, ...rest } = Astro.props;
 ---
 
 <div
-	class={accordionContent({ class: className })}
-	data-state="closed"
-	style="animation: none;"
-	data-slot="accordion-content"
-	{...rest}
+  class={accordionContent({ class: className })}
+  data-state="closed"
+  style="animation: none;"
+  data-slot="accordion-content"
+  {...rest}
 >
-	<div class="markdown-content px-5 pt-0 pb-4">
-		<Fragment set:html={details} />
-	</div>
+  <div class="markdown-content px-5 pt-0 pb-4">
+    <Fragment set:html={details} />
+  </div>
 </div>
