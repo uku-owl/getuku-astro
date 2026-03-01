@@ -1,0 +1,62 @@
+---
+const caseStudies = [
+  {
+    title: "Baltic Assist analyses and manages accounting tasks effortlessly",
+    url: "/case-studies/baltic-assist-analyses-and-manages-accounting-tasks-effortlessly",
+    image: "/images/case-studies/baltic-assist.png",
+  },
+  {
+    title: "Alpaca Office knows how to do flawless remote work",
+    url: "/case-studies/alpaca-office-knows-how-to-do-flawless-remote-work",
+    image: "/images/case-studies/alpaca.png",
+  },
+  {
+    title: "Entro saves working time using Uku",
+    url: "/case-studies/entro-saves-working-time-using-uku",
+    image: "/images/case-studies/entro.png",
+  },
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="site-container">
+    <!-- Section header -->
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+      <h2
+        class="from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 mb-4 bg-gradient-to-br bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
+        data-mos="fade-up"
+      >
+        How Uku, the practice management software helped accounting firms
+      </h2>
+    </div>
+
+    <!-- Case studies grid -->
+    <div class="grid gap-8 md:grid-cols-3">
+      {
+        caseStudies.map((study, index) => (
+          <a
+            href={study.url}
+            class="border-base-200 bg-base-50 hover:border-secondary-300 hover:shadow-secondary-500/10 dark:border-base-800 dark:bg-base-900/50 dark:hover:border-secondary-500/50 group block rounded-xl border p-6 transition-all duration-300 hover:shadow-xl"
+            data-mos="fade-up"
+            data-mos-delay={0.1 * index}
+          >
+            <div class="mb-4 aspect-video overflow-hidden rounded-lg">
+              <img
+                src={study.image}
+                alt={study.title}
+                class="h-full w-full object-cover transition-transform group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <p class="text-secondary-600 dark:text-secondary-400 mb-2 text-xs font-semibold uppercase tracking-wider">
+              Case studies
+            </p>
+            <h3 class="text-base-900 dark:text-base-50 text-lg font-semibold leading-snug">
+              {study.title}
+            </h3>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

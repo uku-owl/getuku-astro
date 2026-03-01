@@ -1,0 +1,94 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section class="bg-base-50 dark:bg-base-900/30 py-16 md:py-24">
+  <div class="site-container">
+    <!-- Title -->
+    <h2
+      class="from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 mb-4 bg-gradient-to-br bg-clip-text text-center text-3xl font-bold text-transparent md:text-4xl"
+      data-mos="fade-up"
+    >
+      Highly Valued Accounting Practice Management Software, Trusted by Thousands of Accountants.
+    </h2>
+
+    <!-- G2 stars -->
+    <div
+      class="mb-12 flex justify-center gap-2"
+      data-mos="fade-up"
+      data-mos-delay="0.1"
+    >
+      {[...Array(5)].map(() => (
+        <Icon name="tabler/star-filled" class="text-accent h-8 w-8" aria-hidden="true" />
+      ))}
+    </div>
+
+    <!-- Review platform logos -->
+    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+      <div
+        class="flex flex-col items-center gap-3"
+        data-mos="fade-up"
+        data-mos-delay="0.2"
+      >
+        <img src="/images/g2/g2-logo.svg" alt="G2" class="h-8 w-auto opacity-70" loading="lazy" />
+        <div class="flex gap-1">
+          {[...Array(5)].map(() => (
+            <Icon name="tabler/star-filled" class="text-accent h-4 w-4" aria-hidden="true" />
+          ))}
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col items-center gap-3"
+        data-mos="fade-up"
+        data-mos-delay="0.3"
+      >
+        <img src="/images/g2/capterra.svg" alt="Capterra" class="h-8 w-auto opacity-70" loading="lazy" />
+        <div class="flex gap-1">
+          {[...Array(5)].map(() => (
+            <Icon name="tabler/star-filled" class="text-accent h-4 w-4" aria-hidden="true" />
+          ))}
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col items-center gap-3"
+        data-mos="fade-up"
+        data-mos-delay="0.4"
+      >
+        <img src="/images/g2/getapp.svg" alt="GetApp" class="h-8 w-auto opacity-70" loading="lazy" />
+        <div class="flex gap-1">
+          {[...Array(5)].map(() => (
+            <Icon name="tabler/star-filled" class="text-accent h-4 w-4" aria-hidden="true" />
+          ))}
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col items-center gap-3"
+        data-mos="fade-up"
+        data-mos-delay="0.5"
+      >
+        <img src="/images/g2/crowd-logo.svg" alt="Software Advice" class="h-8 w-auto opacity-70" loading="lazy" />
+        <div class="flex gap-1">
+          {[...Array(5)].map(() => (
+            <Icon name="tabler/star-filled" class="text-accent h-4 w-4" aria-hidden="true" />
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Link to G2 -->
+    <div class="mt-8 text-center" data-mos="fade-up" data-mos-delay="0.6">
+      <a
+        href="https://www.g2.com/products/uku/reviews"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-secondary-600 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-300 inline-flex items-center gap-2 font-semibold transition"
+      >
+        <span>View all reviews on G2</span>
+        <Icon name="tabler/arrow-up-right" class="h-5 w-5" aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+// Client logos - COLORED (8 logos)
+const clients = [
+  { name: "Leinonen", logo: "/images/clients/leinonen.png" },
+  { name: "Baker Tilly", logo: "/images/clients/bakertilly.png" },
+  { name: "Sandgrav Solutions", logo: "/images/clients/sandgrav.png" },
+  { name: "Grow", logo: "/images/clients/grow.svg" },
+  { name: "Numeri", logo: "/images/clients/numeri.svg" },
+  { name: "CHK", logo: "/images/clients/chk.svg" },
+  { name: "Robby & Bobby", logo: "/images/clients/robby-bobby.png" },
+  { name: "1office", logo: "/images/clients/1office.svg" },
+];
+---
+
+<section class="bg-base-100 dark:bg-base-900/50 py-12 md:py-16">
+  <div class="site-container">
+    <!-- Label -->
+    <p
+      class="text-base-600 dark:text-base-400 mb-10 text-center text-sm font-medium"
+      data-mos="fade-up"
+    >
+      Trusted by thousands of bookkeepers and accountants
+    </p>
+
+    <!-- Client logos grid - COLORED -->
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-8 md:gap-12">
+      {
+        clients.map((client, index) => (
+          <div
+            class="flex items-center justify-center transition-all hover:scale-110"
+            data-mos="fade-up"
+            data-mos-delay={0.05 * index}
+          >
+            <img
+              src={client.logo}
+              alt={`${client.name} logo`}
+              class="h-8 w-auto opacity-70 transition-opacity hover:opacity-100 md:h-10"
+              loading="lazy"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

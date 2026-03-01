@@ -29,14 +29,14 @@
     --card-foreground: var(--color-base-950);
     --popover: var(--color-base-50);
     --popover-foreground: var(--color-base-950);
-    --primary: var(--color-primary-700);
+    --primary: var(--color-primary-700); /* #251D35 dark purple */
     --primary-foreground: var(--color-base-50);
-    --secondary: oklch(0.18 0.04 280); /* #251D35 - Uku dark purple */
+    --secondary: var(--color-secondary-500); /* #5B5DE4 blue-purple */
     --secondary-foreground: var(--color-base-50);
     --muted: var(--color-base-100);
     --muted-foreground: var(--color-base-600);
     --accent: oklch(0.85 0.16 95); /* #FFCC00 - Uku yellow */
-    --accent-foreground: var(--color-base-900);
+    --accent-foreground: var(--color-primary-900); /* Dark text on yellow */
     --info: var(--color-sky-300);
     --info-foreground: var(--color-sky-950);
     --success: var(--color-green-300);
@@ -89,10 +89,10 @@
     --card-foreground: var(--color-base-100);
     --popover: oklch(1% 0 0);
     --popover-foreground: var(--color-base-100);
-    --primary: var(--color-primary-400);
-    --primary-foreground: oklch(1% 0 0);
-    --secondary: oklch(0.22 0.04 280); /* Uku dark purple - slightly lighter for dark mode */
-    --secondary-foreground: var(--color-base-100);
+    --primary: var(--color-primary-600);
+    --primary-foreground: var(--color-base-50);
+    --secondary: var(--color-secondary-400); /* #5B5DE4 lighter for dark mode */
+    --secondary-foreground: var(--color-base-900);
     --muted: var(--color-base-900);
     --muted-foreground: var(--color-base-400);
     --accent: var(--color-base-900);
@@ -147,7 +147,8 @@
 
   /* styles navbar links */
   .nav__link--base {
-    @apply text-base-900 hover:text-base-600 dark:text-base-200/90 dark:hover:text-base-50 leading-tight transition;
+    @apply text-base-900 dark:text-base-200/90 leading-tight transition-colors duration-200;
+    @apply hover:text-secondary-600 dark:hover:text-secondary-400;
   }
 
   .site-container {

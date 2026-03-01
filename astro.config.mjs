@@ -49,7 +49,12 @@ export default defineConfig({
   vite: {
     server: {
       host: true,
-      allowedHosts: ['uku-review.loca.lt', '.loca.lt'],
+      allowedHosts: [
+        'uku-review.loca.lt',
+        '.loca.lt',
+        'lion-circles-chosen-words.trycloudflare.com',
+        '.trycloudflare.com',
+      ],
     },
     plugins: [tailwindcss()],
     // stop inlining short scripts to fix issues with ClientRouter

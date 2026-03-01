@@ -1,0 +1,112 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer class="bg-primary-900 text-base-100 py-16">
+  <div class="site-container">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+      {/* Column 1: Product */}
+      <div>
+        <h3 class="mb-4 text-lg font-semibold">Product</h3>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/client-management" class="hover:text-accent transition">CRM</a></li>
+          <li><a href="/time-tracking" class="hover:text-accent transition">Time-tracking</a></li>
+          <li><a href="/team-collaboration" class="hover:text-accent transition">Communication</a></li>
+          <li><a href="/business-analytics" class="hover:text-accent transition">Analysis</a></li>
+          <li><a href="/workflow-automation" class="hover:text-accent transition">Automation</a></li>
+          <li><a href="/accounting-project-management" class="hover:text-accent transition">Projects</a></li>
+          <li><a href="/automated-billing" class="hover:text-accent transition">Billing</a></li>
+          <li><a href="/client-portal" class="hover:text-accent transition">Client Portal</a></li>
+          <li><a href="/integrations" class="hover:text-accent transition">Integrations</a></li>
+        </ul>
+      </div>
+
+      {/* Column 2: Services */}
+      <div>
+        <h3 class="mb-4 text-lg font-semibold">Services</h3>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/services" class="hover:text-accent transition">Overview</a></li>
+          <li><a href="/book-demo" class="hover:text-accent transition">Book a Demo</a></li>
+          <li><a href="https://help.getuku.com" target="_blank" rel="noopener" class="hover:text-accent transition">Help Center</a></li>
+        </ul>
+      </div>
+
+      {/* Column 3: Resources */}
+      <div>
+        <h3 class="mb-4 text-lg font-semibold">Resources</h3>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/blog" class="hover:text-accent transition">Blog</a></li>
+          <li><a href="/webinars" class="hover:text-accent transition">Webinars</a></li>
+          <li><a href="/case-studies" class="hover:text-accent transition">Case Studies</a></li>
+          <li><a href="/accounting-templates" class="hover:text-accent transition">Templates</a></li>
+        </ul>
+      </div>
+
+      {/* Column 4: About */}
+      <div>
+        <h3 class="mb-4 text-lg font-semibold">About</h3>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/about-us" class="hover:text-accent transition">About Us</a></li>
+          <li><a href="/pricing" class="hover:text-accent transition">Pricing</a></li>
+          <li><a href="/security-policy" class="hover:text-accent transition">Security Policy</a></li>
+          <li><a href="/soc-2" class="hover:text-accent transition">SOC 2</a></li>
+        </ul>
+      </div>
+
+      {/* Column 5: Get in touch */}
+      <div>
+        <h3 class="mb-4 text-lg font-semibold">Get in touch</h3>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="tel:+37256717215" class="hover:text-accent transition flex items-center gap-2">
+              <Icon name="tabler/phone" class="h-4 w-4" aria-hidden="true" />
+              +372 56 717 215
+            </a>
+          </li>
+          <li>
+            <a href="mailto:hello@getuku.com" class="hover:text-accent transition flex items-center gap-2">
+              <Icon name="tabler/mail" class="h-4 w-4" aria-hidden="true" />
+              hello@getuku.com
+            </a>
+          </li>
+        </ul>
+        
+        {/* Newsletter signup */}
+        <div class="mt-6">
+          <p class="mb-3 text-sm font-medium">Get our monthly insights in your inbox</p>
+          <form class="flex gap-2">
+            <input
+              type="email"
+              placeholder="Your email"
+              class="bg-primary-800 text-base-100 placeholder:text-base-400 flex-1 rounded-md px-3 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-accent"
+            />
+            <button
+              type="submit"
+              class="bg-accent text-primary-900 rounded-md px-4 py-2 text-sm font-semibold hover:brightness-110 transition"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom section */}
+    <div class="border-primary-800 mt-12 border-t pt-8">
+      <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div class="text-base-400 text-sm">
+          Copyright © 2026 Artify OÜ. All Rights Reserved.
+        </div>
+        
+        {/* Trust badges */}
+        <div class="flex items-center gap-6">
+          <img src="/images/misc/soc2-logo.svg" alt="SOC 2 Certified" class="h-12 w-auto opacity-70" loading="lazy" />
+          <div class="flex items-center gap-2 text-sm">
+            <Icon name="tabler/lock-square" class="h-5 w-5" aria-hidden="true" />
+            <span>256-bit<br/>encryption</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,80 @@
+---
+import { Icon } from "astro-icon/components";
+
+const benefits = [
+  {
+    icon: "tabler/clock",
+    title: "Set up your accounting practice within a week",
+    description: "Automatically import all clients, products, services, tax rates, and other parameters to speed up your accounting firm setup. We provide 2 hours of free onboarding help.",
+  },
+  {
+    icon: "tabler/circle-arrow-up",
+    title: "Import & export everything",
+    description: "Move client lists, task plans, and much more. Invoices send to your accounting software, like Xero, QuickBooks and e-conomic.",
+  },
+  {
+    icon: "tabler/paint",
+    title: "Customize according to your needs",
+    description: "Personalized contracts for clients with extra dynamic pricing options customizable client profiles, unique invoices, and much more.",
+  },
+  {
+    icon: "tabler/user",
+    title: "Provide the best client onboarding",
+    description: "Your clients will be surprised of how well organized the onboarding and service can be. And you can offer the same onboarding to your team members.",
+  },
+  {
+    icon: "tabler/layout-grid",
+    title: "Get a real-time overview of employees' workload",
+    description: "If your employees track time for their tasks, you have a detailed visual overview of the time they spend on tasks or clients.",
+  },
+  {
+    icon: "tabler/script",
+    title: "Do less manual tasks while earning more profits",
+    description: "Maintain a clear overview of client payment statuses with the accounting practice management software.",
+  },
+];
+---
+
+<section class="bg-base-50 dark:bg-base-900/30 py-24 md:py-32">
+  <div class="site-container">
+    <!-- Section header -->
+    <div class="mx-auto mb-16 max-w-3xl text-center">
+      <p
+        class="text-secondary-600 dark:text-secondary-400 mb-3 text-sm font-semibold uppercase tracking-wider"
+        data-mos="fade-up"
+      >
+        Accountancy Practice Manager Software
+      </p>
+      <h2
+        class="from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 bg-gradient-to-br bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
+        data-mos="fade-up"
+        data-mos-delay="0.1"
+      >
+        Allows You To:
+      </h2>
+    </div>
+
+    <!-- Benefits grid - more spacious -->
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+      {
+        benefits.map((benefit, index) => (
+          <div
+            class="text-center"
+            data-mos="fade-up"
+            data-mos-delay={0.05 * index}
+          >
+            <div class="bg-secondary-100 text-secondary-600 dark:bg-secondary-900/30 dark:text-secondary-400 mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full">
+              <Icon name={benefit.icon} class="h-7 w-7" aria-hidden="true" />
+            </div>
+            <h3 class="text-base-900 dark:text-base-50 mb-3 text-lg font-semibold">
+              {benefit.title}
+            </h3>
+            <p class="text-base-600 dark:text-base-400 leading-relaxed text-sm">
+              {benefit.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

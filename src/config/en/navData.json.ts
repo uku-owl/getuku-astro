@@ -1,86 +1,76 @@
 /**
- * Uku navigation configuration
+ * Uku navigation - exact from live site
  */
 
 import { type navItem } from "../types/configDataTypes";
 
 const navConfig: navItem[] = [
-  // Product mega menu
+  // Product megamenu (3 columns: Features + Features + Integrations)
   {
     text: "Product",
     megaMenuColumns: [
       {
-        title: "Core Features",
+        title: "Features",
         items: [
           {
-            text: "Task Management",
-            link: "/task-management",
-            icon: "tabler/list-check",
+            text: "Client management (CRM)",
+            link: "/client-management",
+            icon: "tabler/user",
           },
           {
-            text: "Time Tracking",
+            text: "Time-tracking",
             link: "/time-tracking",
             icon: "tabler/clock",
           },
           {
-            text: "Automated Billing",
-            link: "/automated-billing",
-            icon: "tabler/script",
-          },
-          {
-            text: "Client Management",
-            link: "/client-management",
-            icon: "tabler/user",
-          },
-        ],
-      },
-      {
-        title: "Collaboration",
-        items: [
-          {
-            text: "Team Collaboration",
+            text: "Team collaboration",
             link: "/team-collaboration",
             icon: "tabler/mail",
           },
           {
-            text: "Email Management",
-            link: "/email-management",
-            icon: "tabler/mail",
-          },
-          {
-            text: "Client Portal",
-            link: "/client-portal",
-            icon: "tabler/lock-square",
-          },
-          {
-            text: "Document Management",
-            link: "/document-management",
-            icon: "tabler/script",
-          },
-        ],
-      },
-      {
-        title: "Analytics & Automation",
-        items: [
-          {
-            text: "Business Analytics",
-            link: "/business-analytics",
-            icon: "tabler/layout-grid",
-          },
-          {
-            text: "Workflow Automation",
+            text: "Workflow automation",
             link: "/workflow-automation",
             icon: "tabler/circle-arrow-up",
           },
           {
-            text: "Client Budgeting",
-            link: "/client-budgeting",
+            text: "Task management",
+            link: "/task-management",
+            icon: "tabler/list-check",
+          },
+        ],
+      },
+      {
+        title: " ",
+        items: [
+          {
+            text: "Business analytics",
+            link: "/business-analytics",
+            icon: "tabler/layout-grid",
+          },
+          {
+            text: "Automated billing",
+            link: "/automated-billing",
             icon: "tabler/script",
           },
           {
-            text: "Project Management",
+            text: "Project management",
             link: "/accounting-project-management",
             icon: "tabler/category",
+          },
+          {
+            text: "Client portal",
+            link: "/client-portal",
+            icon: "tabler/lock-square",
+          },
+          {
+            text: "Email management",
+            link: "/email-management",
+            icon: "tabler/mail",
+          },
+          {
+            text: "Document management",
+            link: "/document-management",
+            icon: "tabler/script",
           },
         ],
       },
@@ -105,43 +95,25 @@ const navConfig: navItem[] = [
           {
             text: "All Integrations",
             link: "/integrations",
-            icon: "tabler/layout-grid",
+            icon: "tabler/api-app",
           },
         ],
       },
     ],
   },
-
-  // Pricing
+  
+  {
+    text: "Services",
+    link: "/services",
+  },
   {
     text: "Pricing",
     link: "/pricing",
   },
-
-  // Case Studies dropdown
   {
     text: "Case Studies",
-    dropdown: [
-      {
-        text: "All Case Studies",
-        link: "/case-studies",
-      },
-      {
-        text: "Baltic Assist",
-        link: "/case-studies/baltic-assist-analyses-and-manages-accounting-tasks-effortlessly",
-      },
-      {
-        text: "Leinonen Estonia",
-        link: "/case-studies/leinonen-estonia-escaped-excel-and-simplified-accounting-tasks",
-      },
-      {
-        text: "Sandgrav Solutions",
-        link: "/case-studies/sandgrav-solutions",
-      },
-    ],
+    link: "/case-studies",
   },
-
-  // Resources dropdown
   {
     text: "Resources",
     dropdown: [
@@ -163,18 +135,6 @@ const navConfig: navItem[] = [
         newTab: true,
       },
     ],
-  },
-
-  // About
-  {
-    text: "About",
-    link: "/about-us",
-  },
-
-  // Blog
-  {
-    text: "Blog",
-    link: "/blog",
   },
 ];
 

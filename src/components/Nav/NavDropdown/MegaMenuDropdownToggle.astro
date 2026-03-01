@@ -31,9 +31,9 @@ if (cols >= 5) {
 ---
 
 <!-- non-mobile mega menu -->
-<div class="mega-menu__dropdown group">
+<div class="mega-menu__dropdown group relative">
   <button
-    class="nav__link--base primary-focus mega-menu__dropdown-button hidden w-full items-center gap-1 px-4 py-1.5 whitespace-nowrap md:flex"
+    class="nav__link--base primary-focus mega-menu__dropdown-button hidden w-full items-center gap-1 px-4 py-1.5 whitespace-nowrap md:flex group-hover:text-secondary-600 dark:group-hover:text-secondary-400"
     type="button"
     id={`${slugify(navItem.text)}-mega-menu`}
     aria-expanded="false"
@@ -44,7 +44,7 @@ if (cols >= 5) {
     <Icon
       name="tabler/chevron-down"
       aria-hidden="true"
-      class="mega-menu__dropdown-chevron size-5 shrink-0 transition-transform"
+      class="mega-menu__dropdown-chevron size-5 shrink-0 transition-transform group-hover:rotate-180"
     />
   </button>
   <div
@@ -52,15 +52,14 @@ if (cols >= 5) {
     aria-labelledby={`${slugify(navItem.text)}-mega-menu`}
     data-state="closed"
     class:list={[
-      "mega-menu__dropdown-content absolute top-full z-10 transition-all",
+      "mega-menu__dropdown-content absolute left-0 top-full z-50 mt-0 transition-all",
       "slide-in-from-top-2 fade-in-0 animate-in hidden will-change-transform",
       "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
-      insetClass,
     ]}
   >
     <ul
       class:list={[
-        "border-base-400/60 bg-base-100 dark:border-base-600/60 dark:bg-base-800 mt-2 grid w-full max-w-full min-w-[150px] gap-3 rounded-md border border-solid py-2 drop-shadow-md",
+        "border-base-300 bg-base-50 dark:border-base-700 dark:bg-base-900 grid w-auto min-w-[600px] gap-6 rounded-lg border p-6 shadow-xl",
         gridClass,
       ]}
     >

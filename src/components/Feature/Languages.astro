@@ -1,0 +1,44 @@
+---
+const languages = [
+  { name: "English", flag: "🇬🇧" },
+  { name: "German", flag: "🇩🇪" },
+  { name: "Spanish", flag: "🇪🇸" },
+  { name: "Danish", flag: "🇩🇰" },
+  { name: "Swedish", flag: "🇸🇪" },
+  { name: "Finnish", flag: "🇫🇮" },
+  { name: "Polish", flag: "🇵🇱" },
+  { name: "Bulgarian", flag: "🇧🇬" },
+  { name: "Ukrainian", flag: "🇺🇦" },
+  { name: "Lithuanian", flag: "🇱🇹" },
+  { name: "Latvian", flag: "🇱🇻" },
+  { name: "Estonian", flag: "🇪🇪" },
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="site-container">
+    <!-- Section header -->
+    <h2
+      class="from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 mb-12 bg-gradient-to-br bg-clip-text text-center text-3xl font-bold text-transparent md:text-4xl"
+      data-mos="fade-up"
+    >
+      Uku is available in 12 languages
+    </h2>
+
+    <!-- Languages grid with flags -->
+    <div class="mx-auto grid max-w-5xl grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      {
+        languages.map((language, index) => (
+          <div
+            class="flex flex-col items-center gap-3 text-center"
+            data-mos="fade-up"
+            data-mos-delay={0.05 * index}
+          >
+            <div class="text-5xl">{language.flag}</div>
+            <span class="text-base-700 dark:text-base-300 text-sm font-medium">{language.name}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

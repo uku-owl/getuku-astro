@@ -1,9 +1,15 @@
 ---
+import CaseStudiesGrid from "@components/CaseStudies/CaseStudiesGrid.astro";
 import CtaUku from "@components/Cta/CtaUku.astro";
+import Benefits from "@components/Feature/Benefits.astro";
 import FeatureGridUku from "@components/Feature/FeatureGridUku.astro";
+import Languages from "@components/Feature/Languages.astro";
+import OnboardingSteps from "@components/Feature/OnboardingSteps.astro";
 import WhyUku from "@components/Feature/WhyUku.astro";
-import HeroUku from "@components/Hero/HeroUku.astro";
-import LogoCloudUku from "@components/LogoCloud/LogoCloudUku.astro";
+import HeroUkuMain from "@components/Hero/HeroUkuMain.astro";
+import LogoCloudClients from "@components/LogoCloud/LogoCloudClients.astro";
+import G2Showcase from "@components/Testimonials/G2Showcase.astro";
+import SupportTestimonial from "@components/Testimonials/SupportTestimonial.astro";
 import TestimonialsUku from "@components/Testimonials/TestimonialsUku.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
 import { getTranslatedData } from "@js/translationUtils";
@@ -14,10 +20,16 @@ const siteData = getTranslatedData("siteData", currLocale);
 ---
 
 <BaseLayout title={siteData.title} description={siteData.description}>
-  <HeroUku />
-  <LogoCloudUku />
+  <HeroUkuMain />
+  <LogoCloudClients />
+  <TestimonialsUku />
   <WhyUku />
   <FeatureGridUku />
-  <TestimonialsUku />
+  <Benefits />
+  <Languages />
+  <OnboardingSteps />
+  <SupportTestimonial />
+  <G2Showcase />
+  <CaseStudiesGrid />
   <CtaUku />
 </BaseLayout>

@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon/components";
+
+const steps = [
+  {
+    icon: "tabler/calendar-check",
+    title: "Book a demo",
+    description: "In 30 minutes, we'll show you how Uku works, and how to simplify work in your accounting practice.",
+  },
+  {
+    icon: "tabler/script",
+    title: "Set up templates",
+    description: "Create workflows and billing templates for your firm's processes and services. Both can be easily set up and changed for clients.",
+  },
+  {
+    icon: "tabler/user",
+    title: "Add the team",
+    description: "Invite your team to efficiently assign clients to the right members.",
+  },
+  {
+    icon: "tabler/circle-arrow-up",
+    title: "Import clients",
+    description: "Import clients from your accounting software or Excel and activate the client's workflows.",
+  },
+  {
+    icon: "tabler/circle-check",
+    title: "Start to work",
+    description: "We help train your team, teach the principles, and tricks of efficiency.",
+  },
+];
+---
+
+<section class="bg-base-50 dark:bg-base-900/30 py-24 md:py-32">
+  <div class="site-container">
+    <!-- Section header -->
+    <div class="mx-auto mb-16 max-w-3xl text-center">
+      <h2
+        class="h2 from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 mb-4 bg-gradient-to-br bg-clip-text text-transparent"
+        data-mos="fade-up"
+      >
+        Uku provides the best onboarding experience as an accountant practice management software:
+      </h2>
+    </div>
+
+    <!-- Steps - compact with numbers -->
+    <div class="mx-auto max-w-4xl space-y-6">
+      {
+        steps.map((step, index) => (
+          <div
+            class="flex gap-6"
+            data-mos="fade-up"
+            data-mos-delay={0.1 * index}
+          >
+            {/* Number circle */}
+            <div class="flex-shrink-0">
+              <div class="bg-secondary-100 text-secondary-600 dark:bg-secondary-900/30 dark:text-secondary-400 flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold">
+                {index + 1}
+              </div>
+            </div>
+            {/* Content */}
+            <div class="flex-1">
+              <h3 class="text-base-900 dark:text-base-50 mb-2 text-lg font-semibold">
+                {step.title}
+              </h3>
+              <p class="text-base-600 dark:text-base-400 text-sm leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

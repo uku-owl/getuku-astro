@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section class="py-16 md:py-24">
+  <div class="site-container">
+    <div class="mx-auto max-w-4xl">
+      <!-- Section title -->
+      <h2
+        class="from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 mb-12 bg-gradient-to-br bg-clip-text text-center text-3xl font-bold text-transparent md:text-4xl"
+        data-mos="fade-up"
+      >
+        Premium accounting firm software training and support
+      </h2>
+
+      <!-- Testimonial card with image -->
+      <div
+        class="border-base-200 bg-base-50 dark:border-base-800 dark:bg-base-900/50 rounded-2xl border p-8 md:p-12"
+        data-mos="fade-up"
+        data-mos-delay="0.2"
+      >
+        <div class="text-secondary-500 dark:text-secondary-400 mb-6">
+          <Icon name="tabler/star" class="h-12 w-12" aria-hidden="true" />
+        </div>
+
+        <blockquote class="text-base-800 dark:text-base-200 mb-8 text-xl font-medium leading-relaxed md:text-2xl">
+          "Launching great systems requires good cooperation. Uku's team truly listens, understands and supports you as much as you need."
+        </blockquote>
+
+        <div class="flex items-center gap-4">
+          <img
+            src="/images/misc/mart-nomper.jpg"
+            alt="Mart Nõmper"
+            class="h-16 w-16 rounded-full object-cover"
+            loading="lazy"
+          />
+          <div>
+            <div class="text-base-900 dark:text-base-50 text-lg font-semibold">Mart Nõmper</div>
+            <div class="text-base-600 dark:text-base-400">Rödl & Partner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

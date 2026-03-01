@@ -2,7 +2,7 @@
 import "@/styles/global.css";
 
 import CookieConsent from "@components/CookieConsent/CookieConsent.astro";
-import Footer from "@components/Footer/Footer.astro";
+import FooterUku from "@components/Footer/FooterUku.astro";
 import Nav from "@components/Nav/Nav.astro";
 import siteSettings from "@config/siteSettings.json";
 import { getLocaleFromUrl } from "@js/localeUtils";
@@ -60,7 +60,7 @@ const currLocale = getLocaleFromUrl(Astro.url);
         <slot />
       </main>
     </div>
-    <Footer />
+    <FooterUku />
 
     <!-- Scroll animations -->
     <script>

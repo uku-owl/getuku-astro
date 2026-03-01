@@ -22,65 +22,69 @@ import { locales } from "@config/siteSettings.json";
 
 <section
   id="nav"
-  class="navbar--initial fixed top-0 left-0 z-30 flex w-full flex-col border-b transition-all duration-300"
+  class="navbar--initial fixed top-0 left-0 z-30 flex w-full flex-col transition-all duration-300"
 >
-  <div class="mx-auto flex w-full">
-    <div class="site-container flex w-full items-center">
-      <header class="relative flex w-full items-center gap-2">
-        <!-- home button / image -->
-        <div class="flex h-full flex-auto justify-start">
+  <div class="mx-auto flex w-full max-w-7xl px-4">
+    <div class="flex w-full items-center py-4">
+      <header class="relative flex w-full items-center">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
           <SiteLogo />
         </div>
 
-        <!-- <div class="flex flex-auto justify-center">
+        <!-- Left-aligned navigation - compact spacing -->
+        <nav class="ml-8 hidden flex-1 lg:block">
+          <ul class="flex items-center gap-0">
+            {
+              navData.map((navItem) =>
+                "dropdown" in navItem ? (
+                  <NavDropdownToggle navItem={navItem} />
+                ) : "megaMenuColumns" in navItem ? (
+                  <MegaMenuDropdownToggle {navItem} />
+                ) : (
+                  <NavLink {navItem} />
+                ),
+              )
+            }
+          </ul>
+        </nav>
+
+        <!-- Right side: icons + CTAs with more separation -->
+        <div class="ml-auto flex items-center gap-3">
+          {/* Icon buttons */}
+          {locales.length > 1 && <LanguageSelect class="hidden lg:flex" />}
+          <ThemeToggle class="hidden lg:flex" />
+          <Search class="hidden lg:flex" />
           
-        </div> -->
+          {/* Separator */}
+          <div class="border-base-300 dark:border-base-700 mx-2 hidden h-6 w-px lg:block" aria-hidden="true"></div>
+          
+          {/* CTA buttons */}
+          <Button
+            variant="ghost"
+            href="https://app.getuku.com/"
+            class="nav__link--base hidden whitespace-nowrap lg:flex"
+          >
+            Log in
+          </Button>
+          <Button
+            variant="outline"
+            href="https://getuku.com/book-demo"
+            class="hidden whitespace-nowrap lg:flex"
+          >
+            Demo
+          </Button>
+          <Button
+            variant="secondary"
+            href="https://app.getuku.com/signup"
+            class="hidden whitespace-nowrap lg:flex"
+          >
+            Try for Free
+          </Button>
 
-        <!-- desktop nav menu -->
-        <div>
-          <div class="flex h-full flex-auto justify-end">
-            <nav class="hidden md:block">
-              <ul class="flex h-full items-center">
-                {
-                  // if dropdown exists, setup the dropdown, otherwise it is just a link
-                  navData.map((navItem) =>
-                    "dropdown" in navItem ? (
-                      // non-mobile dropdown menu
-                      <NavDropdownToggle navItem={navItem} />
-                    ) : "megaMenuColumns" in navItem ? (
-                      <MegaMenuDropdownToggle {navItem} />
-                    ) : (
-                      // normal nav link
-                      <NavLink {navItem} />
-                    ),
-                  )
-                }
-              </ul>
-            </nav>
-            <div class="flex items-center">
-              <ThemeToggle class="hidden md:flex" />
-              <Button
-                variant="ghost"
-                href={getLocalizedRoute(currLocale, "/login")}
-                class="hidden whitespace-nowrap md:flex"
-              >
-                Sign In
-              </Button>
-              <Button
-                variant="primary"
-                href={getLocalizedRoute(currLocale, "/signup")}
-                class="hidden whitespace-nowrap md:flex">Sign up</Button
-              >
-
-              <Search class="md:ml-2" />
-
-              {locales.length > 1 && <LanguageSelect class="ml-2 hidden md:flex" />}
-            </div>
-
-            <!-- mobile nav menu, only load on small screens where it is visible -->
-            <div class="flex items-center md:hidden">
-              <MobileNav />
-            </div>
+          <!-- Mobile menu toggle -->
+          <div class="flex items-center lg:hidden">
+            <MobileNav />
           </div>
         </div>
       </header>

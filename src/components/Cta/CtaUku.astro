@@ -6,14 +6,14 @@ import { Icon } from "astro-icon/components";
 <section id="cta-uku" class="relative py-24 md:py-32">
   <!-- Background glow -->
   <div
-    class="bg-primary-500/30 absolute inset-0 -z-10 mx-auto aspect-square w-[60%] max-w-4xl -translate-y-1/2 rounded-full blur-[100px]"
+    class="bg-secondary-500/30 absolute inset-0 -z-10 mx-auto aspect-square w-[60%] max-w-4xl -translate-y-1/2 rounded-full blur-[100px]"
     aria-hidden="true"
   >
   </div>
 
   <div class="site-container">
     <div
-      class="bg-gradient-to-br from-primary-600 to-primary-800 mx-auto max-w-5xl rounded-3xl p-12 text-center shadow-2xl shadow-primary-500/30 md:p-16"
+      class="bg-gradient-to-br from-secondary-600 to-secondary-800 mx-auto max-w-5xl rounded-3xl p-12 text-center shadow-2xl shadow-secondary-500/30 md:p-16"
       data-mos="fade-up"
     >
       {/* Heading */}
@@ -22,17 +22,17 @@ import { Icon } from "astro-icon/components";
       </h2>
 
       {/* Subheading */}
-      <p class="text-primary-100 mx-auto mb-10 max-w-2xl text-lg md:text-xl">
+      <p class="text-secondary-100 mx-auto mb-10 max-w-2xl text-lg md:text-xl">
         Elevate your efficiency with Uku, the powerful yet easy-to-use accounting practice management software.
       </p>
 
       {/* Buttons */}
       <div class="flex flex-col justify-center gap-4 sm:flex-row">
         <Button
-          variant="secondary"
+          variant="accent"
           href="https://calendly.com/getuku/product-demo-30min"
           size="lg"
-          class="bg-white text-primary-700 hover:bg-base-50 shadow-lg"
+          class="shadow-accent/30 shadow-lg"
         >
           <Icon name="tabler/calendar-check" class="h-5 w-5" aria-hidden="true" slot="icon-left" />
           Book a Demo
@@ -41,21 +41,31 @@ import { Icon } from "astro-icon/components";
           variant="outline"
           href="https://app.getuku.com/signup"
           size="lg"
-          class="border-primary-200 text-white hover:bg-primary-700/50"
+          class="border-base-200 text-white hover:bg-white/10"
         >
           <Icon name="tabler/circle-arrow-up" class="h-5 w-5" aria-hidden="true" slot="icon-left" />
           Start Free Trial
         </Button>
       </div>
 
-      {/* Quote */}
-      <div class="border-primary-400/30 mx-auto mt-12 max-w-3xl border-t pt-8">
-        <blockquote class="text-primary-50 mb-4 text-lg font-medium italic md:text-xl">
-          "Let's create a dream, where the team is happy, clients are well served and profits are fair."
-        </blockquote>
-        <cite class="text-primary-200 not-italic">
-          — Rain Allikvee, Uku's co-founder
-        </cite>
+      {/* Quote with founder image */}
+      <div class="border-secondary-400/30 mx-auto mt-12 max-w-3xl border-t pt-8">
+        <div class="flex flex-col items-center gap-6 md:flex-row md:gap-8">
+          <img
+            src="/images/misc/rain-founder.jpg"
+            alt="Rain Allikvee"
+            class="h-20 w-20 flex-shrink-0 rounded-full object-cover"
+            loading="lazy"
+          />
+          <div class="text-center md:text-left">
+            <blockquote class="text-secondary-50 mb-2 text-lg font-medium italic md:text-xl">
+              "Let's create a dream, where the team is happy, clients are well served and profits are fair."
+            </blockquote>
+            <cite class="text-secondary-200 not-italic">
+              Rain Allikvee / Uku's co-founder
+            </cite>
+          </div>
+        </div>
       </div>
     </div>
   </div>
