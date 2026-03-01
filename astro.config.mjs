@@ -47,6 +47,10 @@ export default defineConfig({
     }),
   ],
   vite: {
+    server: {
+      host: true,
+      allowedHosts: ['uku-review.loca.lt', '.loca.lt'],
+    },
     plugins: [tailwindcss()],
     // stop inlining short scripts to fix issues with ClientRouter
     build: {
