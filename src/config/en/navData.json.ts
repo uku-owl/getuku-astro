@@ -1,147 +1,181 @@
 /**
- * * This file is used to define the navigation links for the site.
- * Notes:
- * 1 level of dropdown is supported
- * Mega menus look best with 3-5 columns, but supports anything > 2 columns
- * If using icons, the icon should be saved in the src/icons folder. If filename is "tabler/icon.svg" then input "tabler/icon"
- * Recommend getting icons from https://tabler.io/icons
+ * Uku navigation configuration
  */
 
-// types
 import { type navItem } from "../types/configDataTypes";
 
 const navConfig: navItem[] = [
+  // Product mega menu
   {
-    text: "Overview",
-    link: "/overview/",
-  },
-
-  // mega menu
-  {
-    text: "Pages",
+    text: "Product",
     megaMenuColumns: [
       {
-        title: "Landing Pages",
+        title: "Core Features",
         items: [
           {
-            text: "Landing 1",
-            link: "/",
-            icon: "tabler/star",
+            text: "Task Management",
+            link: "/task-management",
+            icon: "tabler/list-check",
           },
           {
-            text: "Landing 2",
-            link: "/examples/landing2",
-            icon: "tabler/diamonds",
+            text: "Time Tracking",
+            link: "/time-tracking",
+            icon: "tabler/clock",
           },
           {
-            text: "Landing 3",
-            link: "/examples/landing3",
-            icon: "tabler/circle",
+            text: "Automated Billing",
+            link: "/automated-billing",
+            icon: "tabler/script",
+          },
+          {
+            text: "Client Management",
+            link: "/client-management",
+            icon: "tabler/user",
           },
         ],
       },
       {
-        title: "Blog",
+        title: "Collaboration",
         items: [
           {
-            text: "Blog Index 1",
-            link: "/blog",
-            icon: "tabler/pencil",
+            text: "Team Collaboration",
+            link: "/team-collaboration",
+            icon: "tabler/mail",
           },
           {
-            text: "Blog Index 2",
-            link: "/examples/blog-index-2",
-            icon: "tabler/pencil",
+            text: "Email Management",
+            link: "/email-management",
+            icon: "tabler/mail",
           },
           {
-            text: "Blog Post 1",
-            link: "/blog/tsconfig-paths-setup",
-            icon: "tabler/edit-circle",
+            text: "Client Portal",
+            link: "/client-portal",
+            icon: "tabler/lock-square",
           },
           {
-            text: "Blog Post 2",
-            link: "/examples/blog2",
-            icon: "tabler/edit-circle",
+            text: "Document Management",
+            link: "/document-management",
+            icon: "tabler/script",
+          },
+        ],
+      },
+      {
+        title: "Analytics & Automation",
+        items: [
+          {
+            text: "Business Analytics",
+            link: "/business-analytics",
+            icon: "tabler/layout-grid",
           },
           {
-            text: "Categories",
-            link: "/categories/blogging",
+            text: "Workflow Automation",
+            link: "/workflow-automation",
+            icon: "tabler/circle-arrow-up",
+          },
+          {
+            text: "Client Budgeting",
+            link: "/client-budgeting",
+            icon: "tabler/script",
+          },
+          {
+            text: "Project Management",
+            link: "/accounting-project-management",
             icon: "tabler/category",
           },
         ],
       },
       {
-        title: "Elements and Forms",
+        title: "Integrations",
         items: [
           {
-            text: "MDX Pages",
-            link: "/elements",
-            icon: "tabler/wand",
+            text: "QuickBooks Online",
+            link: "/quickbooks",
+            icon: "tabler/api-app",
           },
           {
-            text: "Contact",
-            link: "/contact",
-            icon: "tabler/address-book",
+            text: "Xero",
+            link: "/xero",
+            icon: "tabler/api-app",
           },
           {
-            text: "Login",
-            link: "/login",
-            icon: "tabler/login",
+            text: "e-conomic",
+            link: "/e-conomic",
+            icon: "tabler/api-app",
           },
           {
-            text: "Signup",
-            link: "/signup",
-            icon: "tabler/user",
-          },
-          {
-            text: "Password Reset",
-            link: "/password-reset",
-            icon: "tabler/password",
-          },
-        ],
-      },
-      {
-        title: "Other Pages",
-        items: [
-          {
-            text: "Privacy Policy",
-            link: "/privacy-policy",
-            icon: "tabler/lock-square",
-          },
-          {
-            text: "Page not found",
-            link: "/not-a-link",
-            icon: "tabler/error-404",
-          },
-          {
-            text: "RSS Feed",
-            link: "/rss.xml",
-            newTab: true,
-            icon: "tabler/rss",
+            text: "All Integrations",
+            link: "/integrations",
+            icon: "tabler/layout-grid",
           },
         ],
       },
     ],
   },
 
+  // Pricing
+  {
+    text: "Pricing",
+    link: "/pricing",
+  },
+
+  // Case Studies dropdown
+  {
+    text: "Case Studies",
+    dropdown: [
+      {
+        text: "All Case Studies",
+        link: "/case-studies",
+      },
+      {
+        text: "Baltic Assist",
+        link: "/case-studies/baltic-assist-analyses-and-manages-accounting-tasks-effortlessly",
+      },
+      {
+        text: "Leinonen Estonia",
+        link: "/case-studies/leinonen-estonia-escaped-excel-and-simplified-accounting-tasks",
+      },
+      {
+        text: "Sandgrav Solutions",
+        link: "/case-studies/sandgrav-solutions",
+      },
+    ],
+  },
+
+  // Resources dropdown
+  {
+    text: "Resources",
+    dropdown: [
+      {
+        text: "Blog",
+        link: "/blog",
+      },
+      {
+        text: "Webinars",
+        link: "/webinars",
+      },
+      {
+        text: "Templates",
+        link: "/accounting-templates",
+      },
+      {
+        text: "Help Center",
+        link: "https://help.getuku.com",
+        newTab: true,
+      },
+    ],
+  },
+
+  // About
+  {
+    text: "About",
+    link: "/about-us",
+  },
+
+  // Blog
   {
     text: "Blog",
-    link: "/blog/",
+    link: "/blog",
   },
-  // uncomment below to add a dropdown example
-  // {
-  // 	text: "Dropdown",
-  // 	dropdown: [
-  // 		{
-  // 			text: "Elements",
-  // 			link: "/elements/",
-  // 		},
-  // 		{
-  // 			text: "Password Reset",
-  // 			link: "/password-reset/",
-  // 		},
-  // 	],
-  // },
 ];
 
 export default navConfig;

@@ -2,23 +2,23 @@ import { type SiteDataProps } from "../types/configDataTypes";
 
 // Update this file with your site specific information
 const siteData: SiteDataProps = {
-  name: "Galaxy",
+  name: "Uku",
   // Your website's title and description (meta fields)
-  title: "Galaxy - a slick startup / SaaS theme built using Astro and Tailwind CSS",
+  title: "Uku - Accounting Practice Management Software",
   description:
-    "Get your new startup website up and running quickly with our beautiful website theme designed using Astro and Tailwind CSS. Perfect for freelancers, developers, startups, and personal use.",
+    "With Uku, accounting firms save over 12 hours per team member weekly and raise profit 23.5% with powerful billing. Get work done on time, billed & paid.",
 
   // Your information for blog post purposes
   author: {
-    name: "Cosmic Themes",
-    email: "creator@cosmicthemes.com",
-    twitter: "Cosmic_Themes",
+    name: "Uku Team",
+    email: "hello@getuku.com",
+    twitter: "GetUku",
   },
 
   // default image for meta tags if the page doesn't have an image already
   defaultImage: {
-    src: "/images/cosmic-themes-logo.jpg",
-    alt: "Cosmic Themes logo",
+    src: "/images/hero-image.png",
+    alt: "Uku - Accounting Practice Management Software",
   },
 };
 

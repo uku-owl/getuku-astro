@@ -1,0 +1,84 @@
+---
+import { Icon } from "astro-icon/components";
+
+const reasons = [
+  {
+    number: "1",
+    icon: "tabler/list-check",
+    title: "Your team is focused, productive & organized",
+    subtitle: "Powerful and easy-to-use task management",
+    description: "A simple way to track your clients' work status and who's doing which task. Never miss a task deadline again, even when substituting a colleague.",
+  },
+  {
+    number: "2",
+    icon: "tabler/script",
+    title: "Your billing is simple & fast",
+    subtitle: "Automated data collection and invoicing",
+    description: "Uku does the mundane work of creating invoices for you. You just have to proofread and send the invoices out.",
+  },
+  {
+    number: "3",
+    icon: "tabler/clock",
+    title: "Your team saves ~30% of the time",
+    subtitle: "Automate workflows & communication",
+    description: "Set up recurring tasks, emails for notifications and reminders, and much more. Add, edit, and reuse the templates forever.",
+  },
+  {
+    number: "4",
+    icon: "tabler/layout-grid",
+    title: "You have the full visibility to grow",
+    subtitle: "Turn data into actionable insights",
+    description: "Time-tracking based insights help you price your services fairly and determine where to remove inefficiencies. Uku helps you make wise decisions to grow your business.",
+  },
+];
+---
+
+<section id="why-uku" class="relative bg-base-50 dark:bg-base-900/30 py-24 md:py-32">
+  <div class="site-container">
+    <!-- Section header -->
+    <div class="mx-auto mb-20 max-w-3xl text-center">
+      <h2
+        class="h2 from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 mb-4 bg-gradient-to-br bg-clip-text text-transparent"
+        data-mos="fade-up"
+      >
+        Why accounting firms love Uku?
+      </h2>
+    </div>
+
+    <!-- Reasons grid -->
+    <div class="grid gap-12 lg:gap-16">
+      {
+        reasons.map((reason, index) => (
+          <div
+            class="grid gap-8 lg:grid-cols-2 lg:gap-16"
+            data-mos="fade-up"
+            data-mos-delay={0.1 * index}
+          >
+            {/* Text content */}
+            <div class={`flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+              <div class="text-primary-600 dark:text-primary-400 mb-4 flex items-center gap-4">
+                <span class="text-6xl font-bold opacity-20">{reason.number}</span>
+              </div>
+              <h3 class="text-base-900 dark:text-base-50 mb-2 text-2xl font-bold md:text-3xl">
+                {reason.title}
+              </h3>
+              <h4 class="text-primary-600 dark:text-primary-400 mb-4 text-xl font-semibold">
+                {reason.subtitle}
+              </h4>
+              <p class="text-base-700 dark:text-base-300 leading-relaxed text-lg">
+                {reason.description}
+              </p>
+            </div>
+
+            {/* Icon visual */}
+            <div class={`flex items-center justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+              <div class="bg-gradient-to-br from-primary-500 to-primary-700 flex h-64 w-64 items-center justify-center rounded-3xl shadow-2xl shadow-primary-500/30">
+                <Icon name={reason.icon} class="h-32 w-32 text-white" aria-hidden="true" />
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

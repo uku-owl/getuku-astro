@@ -1,0 +1,48 @@
+---
+// Client logos - using text placeholders (Rain can replace with actual logo images)
+const clients = [
+  "Leinonen",
+  "Baker Tilly",
+  "Sandgrav Solutions",
+  "Grow",
+  "Numeri",
+  "CHK",
+  "Robby & Bobby",
+  "1office",
+];
+---
+
+<section id="logo-cloud" class="relative bg-base-100 dark:bg-base-900/50 py-16">
+  <div class="site-container">
+    <!-- Section label -->
+    <div class="text-base-600 dark:text-base-400 mb-10 text-center text-sm font-medium uppercase tracking-wider">
+      Trusted by thousands of bookkeepers and accountants
+    </div>
+
+    <!-- Logos grid -->
+    <div class="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-8">
+      {
+        clients.map((client, index) => (
+          <div
+            class="flex items-center justify-center"
+            data-mos="fade-up"
+            data-mos-delay={0.05 * index}
+          >
+            <div class="text-base-500 dark:text-base-400 text-center text-sm font-semibold opacity-70 transition hover:opacity-100">
+              {client}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Placeholder styling - will be replaced with actual logo images */
+  #logo-cloud .text-base-500 {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+</style>

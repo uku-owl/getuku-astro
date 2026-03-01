@@ -1,0 +1,109 @@
+---
+import { Icon } from "astro-icon/components";
+
+const testimonials = [
+  {
+    quote: "Now that reminders appear automatically on our dashboards, we save around 20% of time spent on task management.",
+    author: "Thomas M.",
+    company: "Sandgrav Solutions",
+    role: "Managing Partner",
+  },
+  {
+    quote: "1 year with Uku and we can serve 38% more clients. 💰 Couldn't imagine life without Uku.",
+    author: "Annika R.",
+    company: "Aaron's Accounting Services",
+    role: "CEO",
+  },
+  {
+    quote: "Uku has given our company data which we use monthly to make our pricing decisions.",
+    author: "Jaanus K.",
+    company: "Leinonen Estonia",
+    role: "IT Manager",
+  },
+];
+---
+
+<section id="testimonials" class="relative py-24 md:py-32">
+  <div class="site-container">
+    <!-- Section header -->
+    <div class="mx-auto mb-16 max-w-3xl text-center">
+      <p
+        class="text-primary-600 dark:text-primary-400 mb-3 text-sm font-semibold uppercase tracking-wider"
+        data-mos="fade-up"
+      >
+        Trusted by thousands
+      </p>
+      <h2
+        class="h2 from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 mb-4 bg-gradient-to-br bg-clip-text text-transparent"
+        data-mos="fade-up"
+        data-mos-delay="0.1"
+      >
+        Trusted by bookkeepers and accountants
+      </h2>
+    </div>
+
+    <!-- Testimonials grid -->
+    <div class="grid gap-8 md:grid-cols-3">
+      {
+        testimonials.map((testimonial, index) => (
+          <div
+            class="border-base-200 bg-base-50 dark:border-base-800 dark:bg-base-900/50 flex flex-col rounded-2xl border p-8"
+            data-mos="fade-up"
+            data-mos-delay={0.1 * index}
+          >
+            {/* Quote icon */}
+            <div class="text-primary-500 dark:text-primary-400 mb-4">
+              <Icon name="tabler/star" class="h-10 w-10" aria-hidden="true" />
+            </div>
+
+            {/* Quote text */}
+            <blockquote class="text-base-800 dark:text-base-200 mb-6 flex-grow text-lg leading-relaxed">
+              "{testimonial.quote}"
+            </blockquote>
+
+            {/* Author */}
+            <div class="border-base-200 dark:border-base-800 border-t pt-6">
+              <div class="text-base-900 dark:text-base-50 font-semibold">
+                {testimonial.author}
+              </div>
+              <div class="text-base-600 dark:text-base-400 text-sm">
+                {testimonial.role}
+              </div>
+              <div class="text-primary-600 dark:text-primary-400 mt-1 text-sm font-medium">
+                {testimonial.company}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- G2 ratings -->
+    <div
+      class="mx-auto mt-16 max-w-4xl text-center"
+      data-mos="fade-up"
+      data-mos-delay="0.5"
+    >
+      <p class="text-base-700 dark:text-base-300 mb-8 text-sm font-medium uppercase tracking-wider">
+        Based on our G2 ratings
+      </p>
+      <div class="grid gap-8 sm:grid-cols-3">
+        <div class="border-base-200 bg-base-50 dark:border-base-800 dark:bg-base-900/50 rounded-xl border p-6">
+          <div class="text-primary-600 dark:text-primary-400 mb-2 text-4xl font-bold">9.5</div>
+          <div class="text-base-600 dark:text-base-400 text-sm">Ease of Use</div>
+          <div class="text-base-500 dark:text-base-500 mt-1 text-xs">Average: 8.6</div>
+        </div>
+        <div class="border-base-200 bg-base-50 dark:border-base-800 dark:bg-base-900/50 rounded-xl border p-6">
+          <div class="text-primary-600 dark:text-primary-400 mb-2 text-4xl font-bold">9.7</div>
+          <div class="text-base-600 dark:text-base-400 text-sm">Quality of Support</div>
+          <div class="text-base-500 dark:text-base-500 mt-1 text-xs">Average: 8.6</div>
+        </div>
+        <div class="border-base-200 bg-base-50 dark:border-base-800 dark:bg-base-900/50 rounded-xl border p-6">
+          <div class="text-primary-600 dark:text-primary-400 mb-2 text-4xl font-bold">8.9</div>
+          <div class="text-base-600 dark:text-base-400 text-sm">Ease of Setup</div>
+          <div class="text-base-500 dark:text-base-500 mt-1 text-xs">Average: 8.5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

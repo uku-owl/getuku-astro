@@ -1,0 +1,127 @@
+---
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    icon: "tabler/user",
+    title: "CRM",
+    description: "Customizable client profiles with tasks, notes, and contacts in one place.",
+    link: "/client-management",
+  },
+  {
+    icon: "tabler/clock",
+    title: "Time-tracking",
+    description: "Stopwatch, manual entry, bulk time entry, and browser plugin for easy tracking.",
+    link: "/time-tracking",
+  },
+  {
+    icon: "tabler/mail",
+    title: "Communication",
+    description: "Messages, comments, and emails - all client communication in one timeline.",
+    link: "/team-collaboration",
+  },
+  {
+    icon: "tabler/layout-grid",
+    title: "Analysis",
+    description: "Time reports, summaries, and client agreement monitoring for better decisions.",
+    link: "/business-analytics",
+  },
+  {
+    icon: "tabler/circle-arrow-up",
+    title: "Automation",
+    description: "Automate workflows, invoices, and email templates - set it once, use forever.",
+    link: "/workflow-automation",
+  },
+  {
+    icon: "tabler/category",
+    title: "Projects",
+    description: "Tasks with dependencies, progress overview, and reusable templates.",
+    link: "/accounting-project-management",
+  },
+  {
+    icon: "tabler/script",
+    title: "Billing",
+    description: "Time, volume, fixed or recurring billing with automated invoicing and templates.",
+    link: "/automated-billing",
+  },
+  {
+    icon: "tabler/lock-square",
+    title: "Client Portal",
+    description: "Let clients submit tasks, view documents, and get reminders automatically.",
+    link: "/client-portal",
+  },
+  {
+    icon: "tabler/api-app",
+    title: "Integrations",
+    description: "Connect with QuickBooks, Xero, e-conomic, and Microsoft 365 seamlessly.",
+    link: "/integrations",
+  },
+];
+---
+
+<section id="features-grid" class="relative py-24 md:py-32">
+  <div class="site-container">
+    <!-- Section header -->
+    <div class="mx-auto mb-16 max-w-3xl text-center">
+      <p
+        class="text-primary-600 dark:text-primary-400 mb-3 text-sm font-semibold uppercase tracking-wider"
+        data-mos="fade-up"
+      >
+        Accountancy Practice Management Software
+      </p>
+      <h2
+        class="h2 from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 mb-4 bg-gradient-to-br bg-clip-text text-transparent"
+        data-mos="fade-up"
+        data-mos-delay="0.1"
+      >
+        Get Full Control of Your Accounting Firm
+      </h2>
+      <p
+        class="description"
+        data-mos="fade-up"
+        data-mos-delay="0.2"
+      >
+        Uku, the accounting practice management software, is powerful and easy to use at the same time.
+      </p>
+    </div>
+
+    <!-- Features grid -->
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        features.map((feature, index) => (
+          <a
+            href={feature.link}
+            class="border-base-200 bg-base-50 hover:border-primary-300 hover:shadow-primary-500/10 dark:border-base-800 dark:bg-base-900/50 dark:hover:border-primary-500/50 group rounded-2xl border p-8 transition-all duration-300 hover:shadow-xl"
+            data-mos="fade-up"
+            data-mos-delay={0.05 * index}
+          >
+            <div class="bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400 mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl transition-transform group-hover:scale-110">
+              <Icon name={feature.icon} class="h-7 w-7" aria-hidden="true" />
+            </div>
+            <h3 class="text-base-900 dark:text-base-50 mb-3 text-xl font-semibold">
+              {feature.title}
+            </h3>
+            <p class="text-base-600 dark:text-base-400 leading-relaxed">
+              {feature.description}
+            </p>
+            <div class="text-primary-600 dark:text-primary-400 mt-4 flex items-center gap-2 text-sm font-medium">
+              <span>Learn more</span>
+              <Icon name="tabler/arrow-narrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Mission statement -->
+    <div
+      class="bg-gradient-to-br from-primary-500 to-primary-700 mx-auto mt-16 max-w-3xl rounded-2xl p-8 text-center shadow-xl"
+      data-mos="fade-up"
+      data-mos-delay="0.8"
+    >
+      <p class="text-xl font-medium text-white md:text-2xl">
+        Uku's mission: <span class="text-accent">Freedom to do less</span>
+      </p>
+    </div>
+  </div>
+</section>

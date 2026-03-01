@@ -1,0 +1,171 @@
+---
+import Button from "@components/Button/Button.astro";
+import { getLocaleFromUrl } from "@js/localeUtils";
+import { getLocalizedRoute } from "@js/translationUtils";
+import { Image } from "astro:assets";
+import heroImage from "@images/hero-image.png";
+import { Icon } from "astro-icon/components";
+
+const currLocale = getLocaleFromUrl(Astro.url);
+---
+
+<section id="hero-uku" class="relative flex w-full overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+  <!-- background glow -->
+  <div
+    class="bg-primary-500/30 absolute inset-0 bottom-1/2 -z-10 mx-auto aspect-square w-[70%] max-w-6xl -translate-y-2/3 rounded-full blur-[120px]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- background grid svg -->
+  <div class="absolute inset-0 -z-20 flex overflow-hidden">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="text-base-400/10 dark:text-base-500/5 relative h-full w-full xl:scale-125"
+      aria-hidden="true"
+    >
+      <defs>
+        <pattern id="grid-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="2"></path>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid-pattern)"></rect>
+    </svg>
+  </div>
+
+  <!-- hero content -->
+  <div class="site-container mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:gap-16">
+    <!-- Left column: Text content -->
+    <div class="flex flex-col justify-center">
+      <!-- Notification badge -->
+      <div
+        class="mb-6 flex w-fit items-center"
+        data-mos="fade-up"
+        data-mos-anchor="#hero-uku"
+      >
+        <div
+          class="border-primary-300 bg-primary-50 text-primary-800 dark:border-primary-400/30 dark:bg-primary-900/20 dark:text-primary-300 flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium"
+        >
+          <Icon
+            name="tabler/star"
+            class="h-4 w-4"
+            aria-hidden="true"
+          />
+          <span>No credit card required</span>
+        </div>
+      </div>
+
+      <!-- Main headline -->
+      <h1
+        class="from-base-900 to-base-700 dark:from-base-50 dark:to-base-300 bg-gradient-to-br bg-clip-text text-4xl font-bold leading-tight text-transparent sm:text-5xl lg:text-6xl"
+        data-mos="fade-up"
+        data-mos-delay="0.1"
+        data-mos-anchor="#hero-uku"
+      >
+        Get work done on time, billed & paid
+      </h1>
+
+      <!-- Subheadline -->
+      <p
+        class="text-base-700 dark:text-base-300 mt-6 text-lg leading-relaxed sm:text-xl"
+        data-mos="fade-up"
+        data-mos-delay="0.2"
+        data-mos-anchor="#hero-uku"
+      >
+        With Uku, accounting firms save over <strong>12 hours per team member weekly</strong> and raise profit <strong>23.5%</strong> with powerful billing.
+      </p>
+
+      <!-- Social proof badges -->
+      <div
+        class="mt-8 flex flex-wrap items-center gap-4"
+        data-mos="fade-up"
+        data-mos-delay="0.3"
+        data-mos-anchor="#hero-uku"
+      >
+        <div class="flex items-center gap-2">
+          <div class="flex">
+            {[...Array(5)].map(() => (
+              <Icon name="tabler/star-filled" class="text-accent h-5 w-5" aria-hidden="true" />
+            ))}
+          </div>
+          <span class="text-base-600 dark:text-base-400 text-sm font-medium">4.7 on G2</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex">
+            {[...Array(5)].map(() => (
+              <Icon name="tabler/star-filled" class="text-accent h-5 w-5" aria-hidden="true" />
+            ))}
+          </div>
+          <span class="text-base-600 dark:text-base-400 text-sm font-medium">4.8 on Capterra</span>
+        </div>
+      </div>
+
+      <!-- CTA buttons -->
+      <div
+        class="mt-10 flex flex-col gap-4 sm:flex-row"
+        data-mos="fade-up"
+        data-mos-delay="0.4"
+        data-mos-anchor="#hero-uku"
+      >
+        <Button
+          variant="primary"
+          href="https://calendly.com/getuku/product-demo-30min"
+          size="lg"
+          class="shadow-primary-500/20 shadow-lg"
+        >
+          <Icon name="tabler/calendar-check" class="h-5 w-5" aria-hidden="true" slot="icon-left" />
+          Book a Demo
+        </Button>
+        <Button
+          variant="outline"
+          href="#why-uku"
+          size="lg"
+          arrow="down"
+        >
+          See How Uku Works
+        </Button>
+      </div>
+
+      <!-- Trust badges -->
+      <div
+        class="text-base-600 dark:text-base-400 mt-8 text-sm"
+        data-mos="fade-up"
+        data-mos-delay="0.5"
+        data-mos-anchor="#hero-uku"
+      >
+        Trusted by thousands of bookkeepers and accountants
+      </div>
+    </div>
+
+    <!-- Right column: Hero image/video -->
+    <div
+      class="relative flex items-center justify-center"
+      data-mos="fade-left"
+      data-mos-delay="0.2"
+      data-mos-anchor="#hero-uku"
+    >
+      <div class="relative w-full max-w-2xl">
+        <Image
+          src={heroImage}
+          alt="Uku Accounting Practice Management Software Dashboard"
+          class="rounded-2xl shadow-2xl shadow-primary-500/10"
+          loading="eager"
+          width={1200}
+          height={800}
+        />
+        <!-- Play button overlay (for video) -->
+        <a
+          href="https://www.youtube.com/watch?v=wd9wCOR6tRs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group absolute inset-0 flex items-center justify-center rounded-2xl bg-base-900/10 backdrop-blur-[2px] transition hover:bg-base-900/20"
+          aria-label="Watch Uku demo video"
+        >
+          <div class="bg-primary-600 group-hover:bg-primary-700 flex h-20 w-20 items-center justify-center rounded-full shadow-xl transition">
+            <Icon name="tabler/player-play" class="ml-1 h-10 w-10 text-white" aria-hidden="true" />
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

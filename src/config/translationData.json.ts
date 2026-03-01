@@ -7,28 +7,39 @@
  * * Data file configuration for the i18n system
  * Every {Data} key must exist in the below object
  */
+import testimonialDataDa from "./da/testimonialData.json";
+import siteDataDa from "./da/siteData.json";
+import navDataDa from "./da/navData.json";
+import faqDataDa from "./da/faqData.json";
+import testimonialDataEt from "./et/testimonialData.json";
+import siteDataEt from "./et/siteData.json";
+import navDataEt from "./et/navData.json";
+import faqDataEt from "./et/faqData.json";
 import faqDataEn from "./en/faqData.json";
 import navDataEn from "./en/navData.json";
 import siteDataEn from "./en/siteData.json";
 import testimonialDataEn from "./en/testimonialData.json";
-import faqDataFr from "./fr/faqData.json";
-import navDataFr from "./fr/navData.json";
-import siteDataFr from "./fr/siteData.json";
-import testimonialDataFr from "./fr/testimonialData.json";
 
 export const dataTranslations = {
+  da: {
+    faqData: faqDataDa,
+    navData: navDataDa,
+    siteData: siteDataDa,
+    testimonialData: testimonialDataDa,
+  },
+  et: {
+    faqData: faqDataEt,
+    navData: navDataEt,
+    siteData: siteDataEt,
+    testimonialData: testimonialDataEt,
+  },
   en: {
     siteData: siteDataEn,
     navData: navDataEn,
     faqData: faqDataEn,
     testimonialData: testimonialDataEn,
   },
-  fr: {
-    siteData: siteDataFr,
-    navData: navDataFr,
-    faqData: faqDataFr,
-    testimonialData: testimonialDataFr,
-  },
+  
 } as const;
 
 /**
@@ -51,17 +62,22 @@ export const dataTranslations = {
  * ```
  */
 export const textTranslations = {
+  da: {
+    hero_description: `A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations, CMS - all ready to go.`,
+    back_to_all_posts: "Back to all posts",
+    updated: "Updated",
+  },
+  et: {
+    hero_description: `A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations, CMS - all ready to go.`,
+    back_to_all_posts: "Back to all posts",
+    updated: "Updated",
+  },
   en: {
     hero_description: `A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations, CMS - all ready to go.`,
     back_to_all_posts: "Back to all posts",
     updated: "Updated",
   },
-  fr: {
-    hero_description:
-      "Je ne parle pas vraiment français donc j'utilise Google Translate pour quelques parties de cette démo.",
-    back_to_all_posts: "Retour à tous les articles",
-    updated: "Mis à jour",
-  },
+  
 } as const;
 
 /**
@@ -76,6 +92,20 @@ export const textTranslations = {
  * Note: This works in conjunction with the localizedCollections object below
  */
 export const routeTranslations = {
+  da: {
+    overviewKey: "overview",
+    categoryKey: "categories",
+    categoryKey2: "categories/*",
+    categoryKey3: "categories",
+    blogKey: "blog",
+  },
+  et: {
+    overviewKey: "overview",
+    categoryKey: "categories",
+    categoryKey2: "categories/*",
+    categoryKey3: "categories",
+    blogKey: "blog",
+  },
   en: {
     overviewKey: "overview",
     categoryKey: "categories",
@@ -83,13 +113,7 @@ export const routeTranslations = {
     categoryKey3: "categories",
     blogKey: "blog",
   },
-  fr: {
-    overviewKey: "apercu",
-    categoryKey: "categories",
-    categoryKey2: "categories",
-    categoryKey3: "categories/*",
-    blogKey: "blog",
-  },
+  
 } as const;
 
 /**
@@ -104,8 +128,9 @@ export const routeTranslations = {
  */
 export const localizedCollections = {
   blog: {
-    en: "blog",
-    fr: "blog",
-  },
+		en: "blog",
+		et: "blog",
+		da: "blog"
+	},
   // Add more collections/locales as needed
 } as const;
