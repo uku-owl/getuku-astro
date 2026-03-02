@@ -1,54 +1,53 @@
 ---
 /**
- * * This is a toggleable image section. Selection text is on left and image is on right
- * Recommend using 3 toggle sections
- *
- * ! If you can an error for an icon like "Error: Not Found: "calendar-check" in pack "tabler",
- * ! You can copy to actual SVG into src/icons and name it however and use similar to below
+ * * "Why Uku" toggleable image section - Selection text on left, screenshots on right
  */
-import image3 from "@images/dashboard-3-min.png";
-// images. Recommend having a different image for toggle section
-import image1 from "@images/dashboard-main-min.png";
-import image2 from "@images/dashboard-side-min.png";
+import image1 from "@images/uku-task-management.png";
+import image2 from "@images/uku-billing.png";
+import image3 from "@images/uku-analytics.png";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 interface ToggleSection {
   icon: string;
   title: string;
+  description: string;
   image: ImageMetadata;
 }
 
 interface FeatureData {
-  label: string; // colored text first
-  title: string; // larger title second
-  toggleSections: ToggleSection[]; // toggle buttons third, with toggled images on right
+  label: string;
+  title: string;
+  toggleSections: ToggleSection[];
 }
 
 const featureData: FeatureData = {
-  label: "Keys to Success",
-  title: "Awesome features to level up your business",
+  label: "Why Uku",
+  title: "Everything your accounting firm needs in one place",
   toggleSections: [
     {
-      icon: "tabler/wand",
-      title: "Real-time insights at your fingertips",
+      icon: "tabler/list-check",
+      title: "Your team is focused, productive & organized",
+      description: "Smart task management with deadlines, assignments, and real-time progress tracking.",
       image: image1,
     },
     {
-      icon: "tabler/calendar-check",
-      title: "Connect all our contacts",
+      icon: "tabler/receipt",
+      title: "Your billing is simple & fast",
+      description: "Automated invoice generation from tracked time and fixed-fee contracts.",
       image: image2,
     },
     {
-      icon: "tabler/user",
-      title: "Dashboards for all businesses",
+      icon: "tabler/chart-bar",
+      title: "You have full visibility to grow",
+      description: "Time-tracking analytics for better pricing decisions and profitability insights.",
       image: image3,
     },
   ],
 };
 ---
 
-<section id="feature4" class="my-24 md:my-36">
+<section id="feature8" class="my-24 md:my-36">
   <div class="site-container">
     <div class="mx-auto grid gap-8 rounded-2xl md:grid-cols-5 lg:gap-12">
       <div class="md:col-span-2" data-mos="fade-up">
@@ -63,10 +62,13 @@ const featureData: FeatureData = {
                 id={`feature8__toggle-${idx}`}
                 class={`${
                   idx === 0 ? "feature8__toggle--active" : ""
-                } hover:primary-300 border-base-300 hover:border-primary-300 dark:border-base-600/60 dark:hover:border-base-500 flex items-start justify-start gap-2 rounded-md border p-2 opacity-90 transition duration-300 hover:opacity-100 dark:opacity-80`}
+                } hover:primary-300 border-base-300 hover:border-primary-300 dark:border-base-600/60 dark:hover:border-base-500 flex flex-col items-start justify-start gap-1 rounded-md border p-3 opacity-90 transition duration-300 hover:opacity-100 dark:opacity-80`}
               >
-                <Icon name={section.icon} class="mt-1 h-5 w-5" aria-hidden="true" />
-                <p class="text-start text-lg">{section.title}</p>
+                <div class="flex items-center gap-2">
+                  <Icon name={section.icon} class="h-5 w-5" aria-hidden="true" />
+                  <p class="text-start text-lg font-medium">{section.title}</p>
+                </div>
+                <p class="text-base-500 text-start text-sm">{section.description}</p>
               </button>
             ))
           }
@@ -117,31 +119,20 @@ const featureData: FeatureData = {
       "[id^=feature8__image-]",
     ) as NodeListOf<HTMLImageElement>;
 
-    // add event listeners to toggle buttons
     toggleButtons?.forEach((button, idx) => {
       button.addEventListener("click", () => {
-        // remove active class from all buttons
         toggleButtons?.forEach((button) => {
           button.classList.remove("feature8__toggle--active");
         });
-
-        // add active class to clicked button
         button.classList.add("feature8__toggle--active");
-
-        // hide all images
         toggleImages.forEach((image) => {
           image.classList.add("hidden");
         });
-
-        // show clicked image
         toggleImages[idx]?.classList.remove("hidden");
       });
     });
   }
 
-  // runs on initial page load
   toggleFeatureSetup();
-
-  // runs on view transitions navigation
   document.addEventListener("astro:after-swap", toggleFeatureSetup);
 </script>

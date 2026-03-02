@@ -1,16 +1,14 @@
 ---
-import CaseStudiesGrid from "@components/CaseStudies/CaseStudiesGrid.astro";
-import CtaUku from "@components/Cta/CtaUku.astro";
-import Benefits from "@components/Feature/Benefits.astro";
-import FeatureGridUku from "@components/Feature/FeatureGridUku.astro";
-import Languages from "@components/Feature/Languages.astro";
-import OnboardingSteps from "@components/Feature/OnboardingSteps.astro";
-import WhyUku from "@components/Feature/WhyUku.astro";
-import HeroUkuMain from "@components/Hero/HeroUkuMain.astro";
-import LogoCloudClients from "@components/LogoCloud/LogoCloudClients.astro";
-import G2Showcase from "@components/Testimonials/G2Showcase.astro";
-import SupportTestimonial from "@components/Testimonials/SupportTestimonial.astro";
-import TestimonialsUku from "@components/Testimonials/TestimonialsUku.astro";
+import Cta4 from "@components/Cta/Cta4.astro";
+import Feature1 from "@components/Feature/Feature1.astro";
+import Feature2 from "@components/Feature/Feature2.astro";
+import Feature3 from "@components/Feature/Feature3.astro";
+import Feature4 from "@components/Feature/Feature4.astro";
+import Feature5 from "@components/Feature/Feature5.astro";
+import Feature8 from "@components/Feature/Feature8.astro";
+import Hero3 from "@components/Hero/Hero3.astro";
+import LogoCloud1 from "@components/LogoCloud/LogoCloud1.astro";
+import Testimonials2 from "@components/Testimonials/Testimonials2.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
 import { getTranslatedData } from "@js/translationUtils";
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -20,16 +18,14 @@ const siteData = getTranslatedData("siteData", currLocale);
 ---
 
 <BaseLayout title={siteData.title} description={siteData.description}>
-  <HeroUkuMain />
-  <LogoCloudClients />
-  <TestimonialsUku />
-  <WhyUku />
-  <FeatureGridUku />
-  <Benefits />
-  <Languages />
-  <OnboardingSteps />
-  <SupportTestimonial />
-  <G2Showcase />
-  <CaseStudiesGrid />
-  <CtaUku />
+  <Hero3 />
+  <LogoCloud1 />
+  <Feature8 />
+  <Feature4 />
+  <Feature1 />
+  <Feature3 />
+  <Feature5 />
+  <Testimonials2 />
+  <Feature2 />
+  <Cta4 />
 </BaseLayout>

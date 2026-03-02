@@ -1,14 +1,13 @@
 ---
 /**
- * * Large image with feature text above it.
+ * * Large image with feature text above it - "Freedom to do less" mission
  */
 
-import dashboard from "@images/dashboard-main-min.png";
+import dashboard from "@images/hero-dashboard.png";
 import { Image } from "astro:assets";
 ---
 
 <section id="feature3" class="my-16 overflow-hidden py-16 md:my-24">
-  <!-- Text and image -->
   <div class="site-container relative">
     <!-- background glows -->
     <div
@@ -27,12 +26,11 @@ import { Image } from "astro:assets";
     <div class="mx-auto max-w-5xl">
       <div class="mx-auto max-w-lg text-center">
         <div class="flex justify-center">
-          <p class="colored-title inline">Data driven insights</p>
+          <p class="colored-title inline">Our Mission</p>
         </div>
-        <h2 class="h2 mt-8">Understand your data</h2>
+        <h2 class="h2 mt-8">Freedom to do less</h2>
         <p class="description mt-6">
-          Data is the key to success in the modern business world. Our app provides an easy to use
-          interface to all of it.
+          We believe accountants deserve tools that remove friction, not add it. Uku gives your firm the power to automate the routine, so your team can focus on what actually matters &mdash; advisory, relationships, and growth.
         </p>
       </div>
       <div class="mx-auto mt-6 max-w-4xl">
@@ -43,7 +41,7 @@ import { Image } from "astro:assets";
         >
           <Image
             src={dashboard}
-            alt="logo"
+            alt="Uku dashboard overview"
             loading="lazy"
             width={1500}
             class="relative z-10 rounded-2xl p-1 md:rounded-xl md:p-2"

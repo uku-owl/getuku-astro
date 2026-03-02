@@ -1,11 +1,6 @@
 ---
 /**
- * * These are small cards with icons, titles, and text
- * This looks best with an even number of cards. They are smaller to
- * use with more cards in the same section. 4 or 6 cards is probably ideal
- *
- * ! If you can an error for an icon like "Error: Not Found: "calendar-check" in pack "tabler",
- * ! You can copy to actual SVG into src/icons and name it however and use similar to below
+ * * Uku feature grid - 9 core modules
  */
 
 import FeatureCard from "@components/FeatureCard/FeatureCardSmall.astro";
@@ -18,43 +13,61 @@ interface FeatureData {
 
 const featureData: FeatureData[] = [
   {
-    icon: "tabler/calendar-check",
-    title: "Connect all our contacts",
-    text: `Sync with your calendar apps and contacts. Google, Outlook, ProtonMail, and more.`,
+    icon: "tabler/users",
+    title: "CRM",
+    text: "Customizable client profiles with tasks, notes, contacts, and full communication history.",
   },
   {
-    icon: "tabler/heart",
-    title: "Dashboards for all businesses",
-    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit totam delectus
-            rerum, reiciendis quisquam cum sunt.`,
+    icon: "tabler/clock",
+    title: "Time Tracking",
+    text: "Stopwatch, manual entry, and browser plugin. Track every billable minute effortlessly.",
   },
   {
-    icon: "tabler/cloud",
-    title: "Synced to the cloud",
-    text: `Your data is accessible from everywhere, syncing across all your devices.`,
+    icon: "tabler/mail",
+    title: "Communication",
+    text: "Messages, comments, and email integration. Keep all client communication in one place.",
   },
   {
-    icon: "tabler/layout-grid",
-    title: "Your business intelligence, simplified",
-    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit totam delectus
-            rerum.`,
+    icon: "tabler/chart-pie",
+    title: "Analysis",
+    text: "Time reports and client agreement monitoring. Make data-driven pricing decisions.",
   },
   {
-    icon: "tabler/wand",
-    title: "Real-time insights at your fingertips",
-    text: `Data syncs across your team instantly. Real-time access, with 99.9% uptime.`,
+    icon: "tabler/robot",
+    title: "Automation",
+    text: "Recurring workflows, automated invoices, and email notifications. Save 30% of your time.",
   },
   {
-    icon: "tabler/api-app",
-    title: "Connects to popular apps",
-    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit totam delectus
-            rerum, reiciendis quisquam cum sunt.`,
+    icon: "tabler/subtask",
+    title: "Projects",
+    text: "Task dependencies, progress overview, and reusable templates for every engagement.",
+  },
+  {
+    icon: "tabler/receipt",
+    title: "Billing",
+    text: "Multiple billing models, automated invoicing, and payment tracking in one system.",
+  },
+  {
+    icon: "tabler/device-laptop",
+    title: "Client Portal",
+    text: "Tasks, documents, and reminders. Give clients a professional self-service experience.",
+  },
+  {
+    icon: "tabler/plug",
+    title: "Integrations",
+    text: "QuickBooks, Xero, Microsoft 365, and more. Connect the tools you already use.",
   },
 ];
 ---
 
 <section id="feature1" class="my-12 md:my-24">
   <div class="site-container">
+    <div class="mx-auto mb-8 max-w-xl text-center">
+      <div class="flex justify-center">
+        <p class="colored-title inline">Full Control</p>
+      </div>
+      <h2 class="h2 mt-4">Get full control of your accounting firm</h2>
+    </div>
     <div class="grid gap-6 sm:grid-cols-2 md:py-8 lg:grid-cols-3">
       {
         featureData.map((feature, idx) => (
@@ -63,7 +76,7 @@ const featureData: FeatureData[] = [
             text={feature.text}
             icon={feature.icon}
             data-mos="fade-up"
-            data-mos-delay={0.15 * idx}
+            data-mos-delay={0.1 * idx}
             data-mos-anchor="#feature1"
           />
         ))

@@ -1,10 +1,6 @@
 ---
 /**
- * * These are medium cards with an icon, large colored text (title), and smaller description (text)
- * 3 or 4 cards in a row is ideal
- *
- * ! If you can an error for an icon like "Error: Not Found: "calendar-check" in pack "tabler",
- * ! You can copy to actual SVG into src/icons and name it however and use similar to below
+ * * Stats section - Uku social proof numbers
  */
 
 import FeatureCard from "@components/FeatureCard/FeatureCardColorText.astro";
@@ -15,28 +11,26 @@ interface FeatureCardData {
   text: string;
 }
 
-// NOTE: You still need to manually update the label, title, and details that come before the cards
-// those are later down in this component
 const featureData: FeatureCardData[] = [
   {
-    icon: "tabler/calendar-check",
-    title: "1000",
-    text: `Businesses`,
+    icon: "tabler/star",
+    title: "9.5",
+    text: "Ease of Use (G2)",
   },
   {
-    icon: "tabler/cloud",
-    title: "200 TB",
-    text: `Data saved`,
+    icon: "tabler/headset",
+    title: "9.7",
+    text: "Quality of Support (G2)",
   },
   {
-    icon: "tabler/user",
-    title: "20K",
-    text: `Users`,
+    icon: "tabler/rocket",
+    title: "8.9",
+    text: "Ease of Setup (G2)",
   },
   {
-    icon: "tabler/brand-twitter",
-    title: "100K",
-    text: `Twitter followers`,
+    icon: "tabler/world",
+    title: "12",
+    text: "Languages supported",
   },
 ];
 ---
@@ -46,11 +40,11 @@ const featureData: FeatureCardData[] = [
     <div class="mr-auto max-w-xl">
       <div class="flex">
         <p class="colored-title" data-mos="fade-up" data-mos-anchor="#feature5">
-          Trusted by thousands
+          Highly rated
         </p>
       </div>
       <h2 class="h2 mt-6" data-mos="fade-up" data-mos-delay=".1" data-mos-anchor="#feature5">
-        Used by developers all over the world
+        Trusted by accounting firms worldwide
       </h2>
       <p
         class="text-base-700 dark:text-base-300 mt-4"
@@ -58,8 +52,7 @@ const featureData: FeatureCardData[] = [
         data-mos-delay=".2"
         data-mos-anchor="#feature5"
       >
-        Our platform is trusted by thousands of developers worldwide. Join them and experience the
-        power of our tools and services today.
+        Accounting firms across 30+ countries rely on Uku every day. Our users consistently rate us among the highest in the industry for usability, support, and value.
       </p>
     </div>
 

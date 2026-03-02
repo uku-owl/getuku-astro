@@ -1,14 +1,14 @@
 ---
 import Button from "@components/Button/Button.astro";
 import { getLocaleFromUrl } from "@js/localeUtils";
-import { getLocalizedRoute, useTranslations } from "@js/translationUtils";
+import { useTranslations } from "@js/translationUtils";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 const currLocale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(currLocale);
 
-import heroImage from "@images/dashboard-main-min.png";
+import heroImage from "@images/hero-dashboard.png";
 ---
 
 <section id="hero3" class="relative flex w-full overflow-hidden pt-32 pb-28 md:pb-36">
@@ -37,64 +37,68 @@ import heroImage from "@images/dashboard-main-min.png";
 
   <!-- hero items -->
   <div class="site-container mx-auto max-w-4xl gap-8 pb-32 text-center sm:pb-44 md:pb-72">
-    <!-- notification -->
-    <div class="mb-4 flex w-full items-center justify-center" data-mos="fade-up">
-      <a
-        href={getLocalizedRoute(currLocale, "/blog/tsconfig-paths-setup")}
-        class="border-primary-300 bg-base-100 text-base-800 ring-primary-500 ring-opacity-20 hover:border-primary-400 dark:border-primary-300/20 dark:bg-base-800 dark:text-base-200 dark:hover:border-primary-400/40 flex items-center rounded-full border px-4 py-1 text-sm ring-2 transition"
-      >
-        <span class="flex items-center gap-2">
-          <Icon
-            name="tabler/wand"
-            class="text-primary-600 dark:text-primary-300 inline h-4 w-4"
-            aria-hidden="true"
-          />New updates!</span
-        ></a
-      >
+    <!-- social proof badges -->
+    <div class="mb-6 flex w-full items-center justify-center gap-6" data-mos="fade-up">
+      <div class="flex items-center gap-1.5">
+        <span class="text-yellow-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="text-sm font-medium">4.7</span>
+        <span class="text-base-500 text-xs">G2</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="text-yellow-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="text-sm font-medium">4.8</span>
+        <span class="text-base-500 text-xs">Capterra</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="text-yellow-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="text-sm font-medium">4.8</span>
+        <span class="text-base-500 text-xs">GetApp</span>
+      </div>
     </div>
 
     <!-- Hero text -->
     <h1
-      class="from-base-900 to-base-600/90 dark:from-base-100 dark:to-base-400/90 bg-gradient-to-r bg-clip-text pb-4 text-5xl font-medium text-transparent md:text-6xl"
+      class="from-base-900 to-base-600/90 dark:from-base-100 dark:to-base-400/90 bg-gradient-to-r bg-clip-text pb-4 text-4xl font-medium text-transparent md:text-5xl lg:text-6xl"
       data-mos="fade-up"
       data-mos-anchor="#hero3"
     >
-      Welcome to Galaxy
+      Accounting Practice<br />Management Software
     </h1>
     <p
-      class="description mx-auto mt-2 max-w-sm sm:max-w-md md:max-w-lg"
+      class="description mx-auto mt-2 max-w-sm sm:max-w-md md:max-w-lg text-lg"
       data-mos="fade-up"
       data-mos-delay="0"
       data-mos-anchor="#hero3"
     >
-      {t("hero_description")}
-      <!-- Get your SaaS landing page and blog running in a snap. Save time with
-      multiple pre-designed pages, sections, and components. Built with Astro
-      and Tailwind CSS. -->
+      Get work done on time, billed & paid. Accounting firms save over 12 hours per team member weekly and increase profit margins by 23.5%.
     </p>
 
     <!-- CTA -->
-    <div class="mx-auto mt-8 flex max-w-sm flex-col justify-center gap-4 px-4 sm:flex-row">
+    <div class="mx-auto mt-8 flex max-w-md flex-col justify-center gap-4 px-4 sm:flex-row">
       <Button
-        variant="primary"
-        href="https://cosmicthemes.com/themes/galaxy/"
+        variant="accent"
+        href="https://app.getuku.com/register"
         data-mos="fade-up"
         data-mos-delay="0.8"
         data-mos-anchor="#hero3"
       >
-        Get Galaxy
+        Try free for 14 days
       </Button>
       <Button
         variant="outline"
-        href={getLocalizedRoute(currLocale, "/overview")}
+        href="/book-demo"
         arrow="right"
         data-mos="fade-up"
         data-mos-delay="1"
         data-mos-anchor="#hero3"
       >
-        Overview
+        Book a Demo
       </Button>
     </div>
+
+    <p class="text-base-500 mt-3 text-xs" data-mos="fade-up" data-mos-delay="1" data-mos-anchor="#hero3">
+      No credit card required
+    </p>
   </div>
 
   <!-- hero image -->
@@ -102,8 +106,6 @@ import heroImage from "@images/dashboard-main-min.png";
     class="site-container absolute inset-0 top-3/4 z-10 mx-auto max-w-4xl sm:top-2/3 md:top-[55%]"
     aria-hidden="true"
   >
-    <!-- normal is border gradient around image -->
-    <!-- after is transparent padding around image -->
     <div
       class=`relative h-fit rounded-2xl bg-gradient-to-b from-primary-400 dark:from-primary-500 to-base-300/70 dark:to-base-300/50 to-40%
       after:absolute after:inset-0 after:rounded-[calc(1rem-1px)] after:bg-base-100/30 dark:after:bg-base-800/50 after:inset-[1px]`
@@ -113,9 +115,10 @@ import heroImage from "@images/dashboard-main-min.png";
     >
       <Image
         src={heroImage}
-        alt="logo"
+        alt="Uku accounting practice management dashboard"
         loading="eager"
         width={1500}
+        quality={90}
         class="relative z-20 rounded-2xl p-1 md:rounded-xl md:p-2"
       />
     </div>

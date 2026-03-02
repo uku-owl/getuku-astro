@@ -7,18 +7,18 @@
  * * Data file configuration for the i18n system
  * Every {Data} key must exist in the below object
  */
-import testimonialDataDa from "./da/testimonialData.json";
-import siteDataDa from "./da/siteData.json";
-import navDataDa from "./da/navData.json";
-import faqDataDa from "./da/faqData.json";
-import testimonialDataEt from "./et/testimonialData.json";
-import siteDataEt from "./et/siteData.json";
-import navDataEt from "./et/navData.json";
-import faqDataEt from "./et/faqData.json";
-import faqDataEn from "./en/faqData.json";
-import navDataEn from "./en/navData.json";
-import siteDataEn from "./en/siteData.json";
-import testimonialDataEn from "./en/testimonialData.json";
+import testimonialDataDa from "./da/testimonialData.json.ts";
+import siteDataDa from "./da/siteData.json.ts";
+import navDataDa from "./da/navData.json.ts";
+import faqDataDa from "./da/faqData.json.ts";
+import testimonialDataEt from "./et/testimonialData.json.ts";
+import siteDataEt from "./et/siteData.json.ts";
+import navDataEt from "./et/navData.json.ts";
+import faqDataEt from "./et/faqData.json.ts";
+import faqDataEn from "./en/faqData.json.ts";
+import navDataEn from "./en/navData.json.ts";
+import siteDataEn from "./en/siteData.json.ts";
+import testimonialDataEn from "./en/testimonialData.json.ts";
 
 export const dataTranslations = {
   da: {
@@ -63,17 +63,17 @@ export const dataTranslations = {
  */
 export const textTranslations = {
   da: {
-    hero_description: `A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations, CMS - all ready to go.`,
-    back_to_all_posts: "Back to all posts",
-    updated: "Updated",
+    hero_description: `Regnskabsfirmaer sparer over 12 timer per teammedlem ugentligt og øger profitmarginen med 23,5% gennem automatiserede workflows og integreret CRM.`,
+    back_to_all_posts: "Tilbage til alle indlæg",
+    updated: "Opdateret",
   },
   et: {
-    hero_description: `A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations, CMS - all ready to go.`,
-    back_to_all_posts: "Back to all posts",
-    updated: "Updated",
+    hero_description: `Raamatupidamisbürood säästavad üle 12 tunni meeskonnaliikme kohta nädalas ja suurendavad kasumimarginaali 23,5% automatiseeritud töövoogude ja integreeritud CRM-i abil.`,
+    back_to_all_posts: "Tagasi kõigi postituste juurde",
+    updated: "Uuendatud",
   },
   en: {
-    hero_description: `A template for the next killer SaaS. Multiple pages and sections, blog, i18n, animations, CMS - all ready to go.`,
+    hero_description: `Accounting firms save over 12 hours per team member weekly and increase profit margins by 23.5% through automated workflows and integrated CRM.`,
     back_to_all_posts: "Back to all posts",
     updated: "Updated",
   },

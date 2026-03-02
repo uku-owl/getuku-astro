@@ -1,61 +1,41 @@
-import Aniket from "@images/aniket_p.jpg";
-import BowTiedFocus from "@images/BowTiedFocus.jpg";
-import Damiano from "@images/damiano.jpg";
-import David from "@images/david-g-davedev.png";
-import Isaac from "@images/isaac_saas.jpg";
-import TravisB from "@images/travis-b.png";
+import Thomas from "@images/thomas-sandgrav.png";
+import Annika from "@images/annika-review.jpg";
+import Jaanus from "@images/jaanus-leinonen.png";
+import Rain from "@images/rain-allikvee.png";
+import Mart from "@images/mart-nomper.jpg";
 
 import { type TestimonialItem } from "../types/configDataTypes";
 
 export const testimonialData: TestimonialItem[] = [
   {
-    avatar: Aniket,
-    name: "Aniket P",
-    title: "Data Scientist",
-    testimonial: `I'm not a front-end dev, but I wanted to rebuild my personal site with Astro. If you're in the same shoes,
-      I can't recommend enough Cosmic Themes.
-      `,
+    avatar: Thomas,
+    name: "Thomas M.",
+    title: "Sandgrav Solutions",
+    testimonial: `Reminders appearing automatically on dashboards save around 20% of time on task management. Uku has become the backbone of how we run our firm.`,
   },
   {
-    avatar: BowTiedFocus,
-    name: "BowTiedFocus",
-    title: "Frontend Engineer",
-    testimonial: `The Blogsmith Pro theme is ridiculously well put together and documented.
-      I learned a ton about Astro engineering by studying it, and I've already used some of the components
-      for my web design clients. 
-      `,
+    avatar: Annika,
+    name: "Annika R.",
+    title: "Aaron's Accounting Services",
+    testimonial: `After one year using Uku, we can serve 38% more clients with the same team. The automation handles what used to take hours of manual work.`,
   },
   {
-    avatar: Damiano,
-    name: "Damiano L",
-    title: "C++ Developer",
-    testimonial: `Cosmic Themes provides some of the best Astro themes out there. They are well designed, easy to customize and, 
-      most importantly, the team is very responsive concerning support and feature requests.
-      `,
+    avatar: Jaanus,
+    name: "Jaanus K.",
+    title: "IT Manager, Leinonen Estonia",
+    testimonial: `Uku provides monthly data that helps us make informed pricing decisions. The analytics give us visibility we never had before.`,
   },
   {
-    avatar: David,
-    name: "David G",
-    title: "Web Developer",
-    testimonial: `It's the cleanest template standup experience ever! I've never used Astro, but looking at the demo, code, it
-      should be fairly simple pickup on top of my existing React and NextJS experience.
-      `,
+    avatar: Mart,
+    name: "Mart Nõmper",
+    title: "Rödl & Partner",
+    testimonial: `Uku's team is incredibly attentive and actually listens. Their support quality is something we've rarely experienced with software vendors.`,
   },
   {
-    avatar: TravisB,
-    name: "Travis B",
-    title: "Developer",
-    testimonial: `Cosmic themes are for webdevs and marketers who don't want to waste time reinventing the wheel. 
-    Their themes have great examples of some of the creative things you can accomplish with Astro. 
-      `,
-  },
-  {
-    avatar: Isaac,
-    name: "Isaac",
-    title: "SaaS Developer",
-    testimonial: `My step-dad is starting a construction business and we're looking through Astro themes right now for his website
-      and stumbled upon Cosmic Themes "Galaxy" theme. Absolutely filthy. Excellent work, man.
-      `,
+    avatar: Rain,
+    name: "Rain Allikvee",
+    title: "Co-founder, Uku",
+    testimonial: `We built Uku to create an environment where teams are happy, clients are well-served, and profits are fair. That vision drives every feature we ship.`,
   },
 ];
 

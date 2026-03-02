@@ -1,12 +1,7 @@
 ---
 /**
- * * Logo sloud section static
- *
- * These are taken from the src/icons folder. You may desire to modify any SVGs you use to have the fill set to "currentColor"
- * to use the current text color. That is how I have set up these icons for demo purposes
+ * * Logo cloud section - Uku client logos
  */
-
-import { Icon } from "astro-icon/components";
 ---
 
 <section
@@ -16,33 +11,34 @@ import { Icon } from "astro-icon/components";
   <div class="site-container">
     <div class="mx-auto max-w-xl">
       <div class="flex justify-center">
-        <h2 class="colored-title inline">Trusted by developers at</h2>
+        <h2 class="colored-title inline">Trusted by leading accounting firms</h2>
       </div>
     </div>
     <div class="mt-6">
-      <div class="grid w-full grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
-        <div class="flex px-8">
-          <Icon name="logos/astro" class="logo py-2" aria-label="logo" />
+      <div class="grid w-full grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8 items-center">
+        <div class="flex justify-center px-4">
+          <img src="/images/clients/leinonen.png" alt="Leinonen" class="logo" loading="lazy" />
         </div>
-
-        <div class="flex px-8">
-          <Icon name="logos/dribbble" class="logo" aria-label="logo" />
+        <div class="flex justify-center px-4">
+          <img src="/images/clients/bakertilly.png" alt="Baker Tilly" class="logo" loading="lazy" />
         </div>
-
-        <div class="flex px-8">
-          <Icon name="logos/sanity" class="logo py-2" aria-label="logo" />
+        <div class="flex justify-center px-4">
+          <img src="/images/clients/sandgrav.png" alt="Sandgrav Solutions" class="logo" loading="lazy" />
         </div>
-
-        <div class="flex px-8">
-          <Icon name="logos/contentfull" class="logo" aria-label="logo" />
+        <div class="flex justify-center px-4">
+          <img src="/images/clients/grow.svg" alt="Grow" class="logo" loading="lazy" />
         </div>
-
-        <div class="flex px-8">
-          <Icon name="logos/github" class="logo" aria-label="logo" />
+        <div class="flex justify-center px-4">
+          <img src="/images/clients/numeri.svg" alt="Numeri" class="logo" loading="lazy" />
         </div>
-
-        <div class="flex px-8">
-          <Icon name="logos/notion" class="logo" aria-label="logo" />
+        <div class="flex justify-center px-4">
+          <img src="/images/clients/chk.svg" alt="CHK" class="logo" loading="lazy" />
+        </div>
+        <div class="flex justify-center px-4">
+          <img src="/images/clients/robby-bobby.png" alt="Robby & Bobby" class="logo" loading="lazy" />
+        </div>
+        <div class="flex justify-center px-4">
+          <img src="/images/clients/1office.svg" alt="1office" class="logo" loading="lazy" />
         </div>
       </div>
     </div>
@@ -53,10 +49,7 @@ import { Icon } from "astro-icon/components";
   @import "tailwindcss/theme" theme(reference);
   @import "@/styles/tailwind-theme.css" theme(reference);
 
-  @import "tailwindcss/theme" theme(reference);
-  @import "@/styles/tailwind-theme.css" theme(reference);
-
   .logo {
-    @apply mx-auto h-12 w-auto;
+    @apply mx-auto h-10 w-auto max-w-[100px] object-contain opacity-70 transition hover:opacity-100;
   }
 </style>

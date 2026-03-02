@@ -17,7 +17,7 @@ const siteData: SiteDataProps = {
 
   // default image for meta tags if the page doesn't have an image already
   defaultImage: {
-    src: "/images/hero-image.png",
+    src: "/images/uku-logo.svg",
     alt: "Uku - Accounting Practice Management Software",
   },
 };
