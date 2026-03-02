@@ -1,0 +1,173 @@
+---
+/**
+ * DotGrid - interactive dot grid background
+ * - Canvas-based, single element
+ * - Dots glow royal-blue near mouse cursor
+ * - Zero dependencies, ~2KB
+ */
+---
+
+<canvas class="dot-grid-canvas" aria-hidden="true"></canvas>
+
+<style>
+  .dot-grid-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  function initDotGrid() {
+    const canvas = document.querySelector('.dot-grid-canvas') as HTMLCanvasElement | null;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const section = canvas.closest('section');
+    if (!section) return;
+
+    const GAP = 32;
+    const BASE_RADIUS = 1.2;
+    const GLOW_RADIUS = 150;
+    const MAX_RADIUS = 3;
+
+    let mouseX = -1000;
+    let mouseY = -1000;
+    let targetX = -1000;
+    let targetY = -1000;
+    let rafId: number | null = null;
+    let isDark = document.documentElement.classList.contains('dark');
+
+    // Per-dot glow state for smooth fade
+    let dotGlow: Float32Array;
+    let prevCols = 0;
+    let prevRows = 0;
+    const LERP_IN = 0.08;  // fade in speed
+    const LERP_OUT = 0.03; // fade out speed (slower = softer trail)
+
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = section!.getBoundingClientRect();
+      canvas!.width = rect.width * dpr;
+      canvas!.height = rect.height * dpr;
+      ctx!.scale(dpr, dpr);
+
+      // Rebuild glow array on resize
+      const cols = Math.ceil(rect.width / GAP) + 1;
+      const rows = Math.ceil(rect.height / GAP) + 1;
+      if (cols !== prevCols || rows !== prevRows) {
+        dotGlow = new Float32Array(cols * rows);
+        prevCols = cols;
+        prevRows = rows;
+      }
+    }
+
+    function draw() {
+      const rect = section!.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+
+      ctx!.clearRect(0, 0, w, h);
+
+      isDark = document.documentElement.classList.contains('dark');
+
+      // Smooth mouse follow
+      mouseX += (targetX - mouseX) * 0.12;
+      mouseY += (targetY - mouseY) * 0.12;
+
+      const cols = Math.ceil(w / GAP) + 1;
+      const rows = Math.ceil(h / GAP) + 1;
+      const offsetX = (w - (cols - 1) * GAP) / 2;
+      const offsetY = (h - (rows - 1) * GAP) / 2;
+
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const idx = row * cols + col;
+          const x = offsetX + col * GAP;
+          const y = offsetY + row * GAP;
+
+          const dx = x - mouseX;
+          const dy = y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          // Target glow (0-1) based on distance
+          let targetGlow = 0;
+          if (dist < GLOW_RADIUS) {
+            const t = 1 - dist / GLOW_RADIUS;
+            targetGlow = t * t;
+          }
+
+          // Smooth lerp toward target (faster in, slower out)
+          const current = dotGlow[idx] || 0;
+          const lerp = targetGlow > current ? LERP_IN : LERP_OUT;
+          dotGlow[idx] = current + (targetGlow - current) * lerp;
+
+          const glow = dotGlow[idx];
+          const radius = BASE_RADIUS + (MAX_RADIUS - BASE_RADIUS) * glow;
+          const baseAlpha = isDark ? 0.06 : 0.08;
+          const glowAlpha = isDark ? 0.35 : 0.30;
+          const alpha = baseAlpha + glowAlpha * glow;
+
+          ctx!.beginPath();
+          ctx!.arc(x, y, radius, 0, Math.PI * 2);
+
+          if (glow > 0.01) {
+            ctx!.fillStyle = isDark
+              ? `rgba(255, 255, 255, ${alpha})`
+              : `rgba(91, 93, 228, ${alpha})`;
+          } else {
+            ctx!.fillStyle = isDark
+              ? `rgba(255, 255, 255, ${baseAlpha})`
+              : `rgba(0, 0, 0, ${baseAlpha})`;
+          }
+
+          ctx!.fill();
+        }
+      }
+
+      rafId = requestAnimationFrame(draw);
+    }
+
+    // Only track mouse when in viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          if (!rafId) {
+            resize();
+            rafId = requestAnimationFrame(draw);
+          }
+        } else {
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(section);
+
+    section.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = section!.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+      canvas!.style.pointerEvents = 'none'; // ensure clicks pass through
+    });
+
+    section.addEventListener('mouseleave', () => {
+      targetX = -1000;
+      targetY = -1000;
+    });
+
+    window.addEventListener('resize', resize);
+    resize();
+  }
+
+  initDotGrid();
+  document.addEventListener('astro:after-swap', initDotGrid);
+</script>

@@ -10,6 +10,7 @@ const siteData = getTranslatedData("siteData", currLocale);
 
 // images
 import logo from "@images/site-logo.svg";
+import logoWhite from "@images/site-logo-white.svg";
 ---
 
 <a
@@ -22,7 +23,16 @@ import logo from "@images/site-logo.svg";
     loading="eager"
     width={120}
     height={40}
-    class="h-10 w-auto"
+    class="h-10 w-auto dark:hidden"
+    aria-hidden="true"
+  />
+  <Image
+    src={logoWhite}
+    alt="Uku logo"
+    loading="eager"
+    width={120}
+    height={40}
+    class="hidden h-10 w-auto dark:block"
     aria-hidden="true"
   />
 </a>
