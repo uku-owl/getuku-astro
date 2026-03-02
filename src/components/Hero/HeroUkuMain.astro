@@ -5,53 +5,37 @@ import { Icon } from "astro-icon/components";
 import heroDashboard from "@images/hero-dashboard.png";
 ---
 
-<section id="hero-main" class="relative flex w-full overflow-hidden pt-32 pb-28 md:pb-36">
-  <!-- background glow -->
+<section id="hero-main" class="relative flex w-full overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28">
+  <!-- Glow effect (no grid) -->
   <div
-    class="bg-secondary-500/40 absolute inset-0 top-[60%] -z-10 mx-auto h-[30%] w-[50%] max-w-3xl rounded-full blur-[100px] sm:top-[50%]"
+    class="bg-secondary-500/20 absolute inset-0 top-[60%] -z-10 mx-auto h-[40%] w-[60%] max-w-4xl rounded-full blur-[120px]"
     aria-hidden="true"
   >
   </div>
 
-  <!-- background grid svg -->
-  <div class="absolute inset-0 -z-20 flex overflow-hidden">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="text-base-400/70 dark:text-base-500 relative h-full w-full opacity-10 xl:scale-125"
-      aria-hidden="true"
-    >
-      <defs>
-        <pattern id="grid-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
-          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="2"></path>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid-pattern)"></rect>
-    </svg>
-  </div>
-
   <!-- hero content -->
-  <div class="site-container mx-auto max-w-5xl gap-8 pb-32 text-center sm:pb-44 md:pb-72">
-    <!-- H1 - SEO title (main heading) -->
-    <h1
-      class="text-secondary-600 dark:text-secondary-400 mb-6 text-base font-bold uppercase tracking-wider md:text-lg"
+  <div class="site-container mx-auto max-w-6xl gap-8 pb-32 text-center sm:pb-44 md:pb-72">
+    <!-- Small label at top -->
+    <p
+      class="text-secondary-600 dark:text-secondary-400 mb-4 text-xs font-semibold uppercase tracking-wider md:text-sm"
       data-mos="fade-up"
     >
       Accounting Practice Management Software
-    </h1>
+    </p>
 
-    <!-- Main headline (h2 for hierarchy) -->
-    <h2
-      class="from-base-900 to-base-700 dark:from-base-100 dark:to-base-400 bg-gradient-to-r bg-clip-text pb-4 text-5xl font-bold text-transparent md:text-6xl lg:text-7xl"
+    <!-- Main headline - smaller size -->
+    <h1
+      class="from-base-900 to-base-700 dark:from-base-100 dark:to-base-400 bg-gradient-to-r bg-clip-text pb-2 text-4xl font-bold text-transparent md:text-5xl lg:text-6xl"
       data-mos="fade-up"
       data-mos-delay="0.1"
       data-mos-anchor="#hero-main"
     >
       Get work done on time,<br />billed & paid
-    </h2>
+    </h1>
     
     <!-- Subheadline -->
     <p
-      class="text-base-700 dark:text-base-300 mx-auto mt-6 max-w-2xl text-lg md:text-xl"
+      class="text-base-700 dark:text-base-300 mx-auto mt-4 max-w-2xl text-base md:text-lg"
       data-mos="fade-up"
       data-mos-delay="0.2"
       data-mos-anchor="#hero-main"
@@ -59,99 +43,112 @@ import heroDashboard from "@images/hero-dashboard.png";
       With Uku, accounting firms save over <strong>12 hours per team member weekly</strong> and raise profit <strong>23.5%</strong> with powerful billing.
     </p>
 
-    <!-- Social proof badges -->
-    <div
-      class="mt-6 flex flex-wrap items-center justify-center gap-4"
+    <!-- No credit card text -->
+    <p
+      class="text-base-600 dark:text-base-400 mt-3 text-sm"
       data-mos="fade-up"
       data-mos-delay="0.3"
       data-mos-anchor="#hero-main"
     >
-      <div class="flex items-center gap-2">
-        <div class="flex">
-          {[...Array(5)].map(() => (
-            <Icon name="tabler/star-filled" class="text-accent h-5 w-5" aria-hidden="true" />
-          ))}
-        </div>
-        <span class="text-base-600 dark:text-base-400 text-sm font-medium">4.7 G2</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <div class="flex">
-          {[...Array(5)].map(() => (
-            <Icon name="tabler/star-filled" class="text-accent h-5 w-5" aria-hidden="true" />
-          ))}
-        </div>
-        <span class="text-base-600 dark:text-base-400 text-sm font-medium">4.8 Capterra</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <div class="flex">
-          {[...Array(5)].map(() => (
-            <Icon name="tabler/star-filled" class="text-accent h-5 w-5" aria-hidden="true" />
-          ))}
-        </div>
-        <span class="text-base-600 dark:text-base-400 text-sm font-medium">4.8 GetApp</span>
-      </div>
-    </div>
+      No credit card required.
+    </p>
 
-    <!-- CTA buttons - prominent primary CTA -->
+    <!-- Social proof badges inline -->
     <div
-      class="mx-auto mt-12 flex max-w-2xl flex-col items-center justify-center gap-6 px-4"
+      class="mt-4 flex flex-wrap items-center justify-center gap-4"
       data-mos="fade-up"
       data-mos-delay="0.4"
+      data-mos-anchor="#hero-main"
+    >
+      <a href="https://www.g2.com/products/uku/reviews" target="_blank" rel="noopener" class="flex items-center gap-2 transition hover:opacity-80">
+        <div class="flex">
+          {[...Array(5)].map(() => (
+            <Icon name="tabler/star-filled" class="text-accent h-4 w-4" aria-hidden="true" />
+          ))}
+        </div>
+        <span class="text-base-600 dark:text-base-400 text-sm font-medium">4.7</span>
+      </a>
+      <a href="https://www.capterra.com/p/197626/Uku/" target="_blank" rel="noopener" class="flex items-center gap-2 transition hover:opacity-80">
+        <div class="flex">
+          {[...Array(5)].map(() => (
+            <Icon name="tabler/star-filled" class="text-accent h-4 w-4" aria-hidden="true" />
+          ))}
+        </div>
+        <span class="text-base-600 dark:text-base-400 text-sm font-medium">4.8</span>
+      </a>
+      <a href="https://www.getapp.com/industries-software/a/uku/" target="_blank" rel="noopener" class="flex items-center gap-2 transition hover:opacity-80">
+        <div class="flex">
+          {[...Array(5)].map(() => (
+            <Icon name="tabler/star-filled" class="text-accent h-4 w-4" aria-hidden="true" />
+          ))}
+        </div>
+        <span class="text-base-600 dark:text-base-400 text-sm font-medium">4.8</span>
+      </a>
+    </div>
+
+    <!-- CTA buttons - horizontal layout -->
+    <div
+      class="mx-auto mt-8 flex max-w-md flex-wrap items-center justify-center gap-4"
+      data-mos="fade-up"
+      data-mos-delay="0.5"
       data-mos-anchor="#hero-main"
     >
       <Button
         variant="accent"
         href="https://app.getuku.com/signup"
-        class="min-w-[320px] px-12 py-6 text-xl font-bold shadow-accent/50 shadow-2xl hover:shadow-accent/60 transition-all"
+        size="lg"
+        class="bg-accent text-primary-900 hover:bg-accent/90 dark:text-primary-900 min-w-[200px] font-bold shadow-lg"
       >
-        <Icon name="tabler/circle-arrow-up" class="h-6 w-6" aria-hidden="true" slot="icon-left" />
-        Try free for 14 days
+        Try for FREE
       </Button>
-      
-      <!-- No credit card text (closer to CTA) -->
-      <p class="text-base-600 dark:text-base-400 -mt-2 text-sm">
-        No credit card required
-      </p>
-      
       <Button
-        variant="outline"
+        variant="secondary"
         href="https://getuku.com/book-demo"
-        class="min-w-[240px] text-base"
+        size="lg"
+        class="min-w-[160px]"
       >
         Book a Demo
       </Button>
     </div>
+
+    <!-- Video link (no play button on image) -->
+    <div
+      class="mt-6"
+      data-mos="fade-up"
+      data-mos-delay="0.6"
+      data-mos-anchor="#hero-main"
+    >
+      <a
+        href="https://www.youtube.com/watch?v=wd9wCOR6tRs"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-secondary-600 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-300 inline-flex items-center gap-2 text-sm font-medium transition"
+      >
+        <Icon name="tabler/player-play" class="h-4 w-4" aria-hidden="true" />
+        <span>See how Uku works</span>
+      </a>
+    </div>
   </div>
 
-  <!-- hero dashboard image - clickable for video -->
+  <!-- Hero dashboard image - NO PLAY BUTTON, sharp quality -->
   <div
     class="site-container absolute inset-0 top-3/4 z-10 mx-auto max-w-7xl sm:top-2/3 md:top-[55%]"
     aria-hidden="true"
   >
-    <a
-      href="https://www.youtube.com/watch?v=wd9wCOR6tRs"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="group relative block h-fit cursor-pointer rounded-2xl bg-gradient-to-b from-secondary-400 to-base-300/70 dark:from-secondary-500 dark:to-base-300/50 to-40% after:absolute after:inset-0 after:inset-[1px] after:rounded-[calc(1rem-1px)] after:bg-base-100/30 dark:after:bg-base-800/50 transition-transform hover:scale-[1.02]"
+    <div
+      class="relative h-fit overflow-hidden rounded-2xl shadow-2xl shadow-secondary-500/20"
       data-mos="fade-in"
-      data-mos-delay="0.2"
+      data-mos-delay="0.3"
       data-mos-anchor="#hero-main"
-      aria-label="Watch Uku demo video"
     >
       <Image
         src={heroDashboard}
         alt="Uku Dashboard - Accounting Practice Management Software"
         loading="eager"
         width={1800}
-        class="relative z-20 rounded-2xl p-1 md:rounded-xl md:p-2"
+        quality={100}
+        class="w-full"
       />
-      
-      <!-- Play button overlay -->
-      <div class="absolute inset-0 z-30 flex items-center justify-center">
-        <div class="bg-accent text-primary-900 group-hover:bg-accent/90 flex h-20 w-20 items-center justify-center rounded-full shadow-2xl shadow-accent/50 transition md:h-24 md:w-24">
-          <Icon name="tabler/player-play" class="ml-1 h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />
-        </div>
-      </div>
-    </a>
+    </div>
   </div>
 </section>

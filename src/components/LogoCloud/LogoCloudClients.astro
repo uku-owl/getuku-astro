@@ -22,19 +22,19 @@ const clients = [
       Trusted by thousands of bookkeepers and accountants
     </p>
 
-    <!-- Client logos grid - COLORED -->
+    <!-- Client logos grid - COLORED, uniform size -->
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-8 md:gap-12">
       {
         clients.map((client, index) => (
           <div
-            class="flex items-center justify-center transition-all hover:scale-110"
+            class="flex h-10 w-24 items-center justify-center transition-all hover:scale-110 md:h-12 md:w-32"
             data-mos="fade-up"
             data-mos-delay={0.05 * index}
           >
             <img
               src={client.logo}
               alt={`${client.name} logo`}
-              class="h-8 w-auto opacity-70 transition-opacity hover:opacity-100 md:h-10"
+              class="max-h-full max-w-full object-contain opacity-70 transition-opacity hover:opacity-100 dark:brightness-0 dark:invert"
               loading="lazy"
             />
           </div>

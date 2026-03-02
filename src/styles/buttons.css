@@ -14,8 +14,9 @@
 
 /* secondary button - #5B5DE4 blue-purple background */
 .button--secondary {
-  @apply bg-secondary-500 text-white font-semibold transition-all;
-  @apply hover:bg-secondary-600 hover:shadow-lg;
+  @apply bg-secondary-500 dark:bg-secondary-600 font-semibold transition-all;
+  @apply text-white dark:text-white;
+  @apply hover:bg-secondary-600 dark:hover:bg-secondary-700 hover:shadow-lg;
   @apply focus-visible:ring-secondary-500 focus-visible:ring-2 focus-visible:ring-offset-2;
 }
 
@@ -32,7 +33,8 @@
 }
 
 .button--accent {
-  @apply bg-accent text-accent-foreground font-bold transition-all;
-  @apply hover:brightness-110 hover:shadow-lg;
+  @apply bg-accent font-bold transition-all;
+  @apply text-primary-900 dark:text-primary-900;
+  @apply hover:bg-accent/90 hover:shadow-lg;
   @apply focus-visible:ring-accent focus-visible:ring-2 focus-visible:ring-offset-2;
 }
