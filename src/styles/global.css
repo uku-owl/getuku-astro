@@ -83,16 +83,16 @@
 
   .dark {
     /* starwind dark theme config */
-    --background: var(--color-base-900);
+    --background: oklch(0.15 0.01 280); /* Darker purple-tinted background */
     --foreground: var(--color-base-100);
-    --card: oklch(1% 0 0);
+    --card: oklch(0.12 0.01 280);
     --card-foreground: var(--color-base-100);
-    --popover: oklch(1% 0 0);
+    --popover: oklch(0.12 0.01 280);
     --popover-foreground: var(--color-base-100);
     --primary: var(--color-primary-600);
     --primary-foreground: var(--color-base-50);
-    --secondary: var(--color-secondary-400); /* #5B5DE4 lighter for dark mode */
-    --secondary-foreground: var(--color-base-900);
+    --secondary: var(--color-secondary-500); /* Keep secondary vibrant */
+    --secondary-foreground: var(--color-base-50);
     --muted: var(--color-base-900);
     --muted-foreground: var(--color-base-400);
     --accent: var(--color-base-900);
