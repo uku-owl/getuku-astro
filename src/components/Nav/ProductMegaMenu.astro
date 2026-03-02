@@ -1,0 +1,224 @@
+---
+/**
+ * Custom Product mega menu matching getuku.com design:
+ * - 2 text columns (features, no icons, NEW badges)
+ * - 1 integration logo grid
+ * - "Start product tour" link at bottom
+ */
+import { Icon } from "astro-icon/components";
+import { getLocaleFromUrl } from "@js/localeUtils";
+import { getLocalizedRoute } from "@js/translationUtils";
+
+const currLocale = getLocaleFromUrl(Astro.url);
+
+interface FeatureLink {
+  text: string;
+  link: string;
+  isNew?: boolean;
+}
+
+interface IntegrationItem {
+  text: string;
+  link: string;
+  image: string;
+}
+
+const featuresCol1: FeatureLink[] = [
+  { text: "Client Management", link: "/client-management" },
+  { text: "Time Tracking", link: "/time-tracking" },
+  { text: "Team Collaboration", link: "/team-collaboration" },
+  { text: "Workflow Automation", link: "/workflow-automation" },
+  { text: "Task Management", link: "/task-management" },
+  { text: "Reporting & Analysis", link: "/business-analytics" },
+  { text: "Billing", link: "/automated-billing" },
+];
+
+const featuresCol2: FeatureLink[] = [
+  { text: "Client Budgeting", link: "/client-budgeting", isNew: true },
+  { text: "Agreements Monitoring", link: "/agreements-monitoring" },
+  { text: "Workforce Management", link: "/workforce-management", isNew: true },
+  { text: "Document Management", link: "/document-management", isNew: true },
+  { text: "Email Management", link: "/email-management" },
+  { text: "Project Management", link: "/accounting-project-management" },
+  { text: "Client Portal", link: "/client-portal" },
+];
+
+const integrations: IntegrationItem[] = [
+  { text: "Quickbooks", link: "/quickbooks", image: "/images/integrations/quickbooks.jpg" },
+  { text: "Xero", link: "/xero", image: "/images/integrations/xero.jpg" },
+  { text: "E-conomic", link: "/e-conomic", image: "/images/integrations/e-conomic.jpg" },
+  { text: "MS Exchange", link: "/integrations", image: "/images/integrations/ms-exchange.jpg" },
+  { text: "Gmail", link: "/integrations", image: "/images/integrations/gmail.jpg" },
+  { text: "Tripletex", link: "/integrations", image: "/images/integrations/tripletex.jpg" },
+  { text: "Public API", link: "/integrations", image: "/images/integrations/public-api.jpg" },
+];
+---
+
+<div class="mega-menu__dropdown group relative">
+  <button
+    class="nav__link--base primary-focus mega-menu__dropdown-button hidden w-full items-center gap-1 px-4 py-1.5 whitespace-nowrap lg:flex group-hover:text-secondary-600 dark:group-hover:text-secondary-400"
+    type="button"
+    id="product-mega-menu"
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-controls="product-mega-menu-content"
+  >
+    Product
+    <Icon
+      name="tabler/chevron-down"
+      aria-hidden="true"
+      class="mega-menu__dropdown-chevron size-5 shrink-0 transition-transform group-hover:rotate-180"
+    />
+  </button>
+
+  <div
+    id="product-mega-menu-content"
+    aria-labelledby="product-mega-menu"
+    data-state="closed"
+    class:list={[
+      "mega-menu__dropdown-content absolute left-0 top-full z-50 mt-0 transition-all",
+      "slide-in-from-top-2 fade-in-0 animate-in hidden will-change-transform",
+      "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
+    ]}
+  >
+    <div class="border-base-300 bg-base-50 dark:border-base-700 dark:bg-base-900 w-auto min-w-[780px] rounded-lg border p-6 shadow-xl">
+      <div class="flex gap-8">
+        <!-- Features Column 1 -->
+        <div class="flex flex-col gap-0.5">
+          {featuresCol1.map((item) => (
+            <a
+              href={getLocalizedRoute(currLocale, item.link)}
+              class="nav__link--base primary-focus flex items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-base-200 dark:hover:bg-base-800 transition"
+            >
+              {item.text}
+              {item.isNew && <span class="text-[10px] font-semibold uppercase text-orange-500">NEW</span>}
+            </a>
+          ))}
+        </div>
+
+        <!-- Features Column 2 -->
+        <div class="flex flex-col gap-0.5">
+          {featuresCol2.map((item) => (
+            <a
+              href={getLocalizedRoute(currLocale, item.link)}
+              class="nav__link--base primary-focus flex items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-base-200 dark:hover:bg-base-800 transition"
+            >
+              {item.text}
+              {item.isNew && <span class="text-[10px] font-semibold uppercase text-orange-500">NEW</span>}
+            </a>
+          ))}
+        </div>
+
+        <!-- Integrations Column -->
+        <div class="border-base-300 dark:border-base-700 border-l pl-6">
+          <p class="text-primary-600 dark:text-primary-400 mb-3 text-sm font-semibold">Integrations</p>
+          <div class="grid grid-cols-3 gap-2">
+            {integrations.map((item) => (
+              <a
+                href={getLocalizedRoute(currLocale, item.link)}
+                class="border-base-200 dark:border-base-700 hover:border-primary-300 dark:hover:border-primary-500 flex flex-col items-center gap-1 rounded-lg border p-2 transition"
+              >
+                <img
+                  src={item.image}
+                  alt={item.text}
+                  class="h-8 w-auto object-contain"
+                  loading="lazy"
+                />
+                <span class="text-[11px] text-center leading-tight">{item.text}</span>
+              </a>
+            ))}
+            <a
+              href={getLocalizedRoute(currLocale, "/integrations")}
+              class="text-primary-600 dark:text-primary-400 flex items-center justify-center rounded-lg p-2 text-[11px] font-medium hover:underline"
+            >
+              View all &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Product tour link -->
+      <div class="mt-4 border-t border-base-200 dark:border-base-700 pt-3">
+        <a
+          href={getLocalizedRoute(currLocale, "/product-tour")}
+          class="text-primary-600 dark:text-primary-400 text-sm font-medium hover:underline"
+        >
+          Start product tour &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  class ProductMegaMenuController {
+    private megaMenu: HTMLDivElement;
+    private dropdownButton: HTMLButtonElement | null;
+    private dropdownChevron: HTMLElement | null;
+    private dropdownContent: HTMLDivElement | null;
+    private animationDuration: number = 150;
+
+    constructor(megaMenu: HTMLDivElement) {
+      this.megaMenu = megaMenu;
+      this.dropdownButton = megaMenu.querySelector(".mega-menu__dropdown-button");
+      this.dropdownChevron = megaMenu.querySelector(".mega-menu__dropdown-chevron");
+      this.dropdownContent = megaMenu.querySelector(".mega-menu__dropdown-content");
+
+      if (!this.dropdownButton || !this.dropdownContent || !this.dropdownChevron) {
+        return;
+      }
+
+      this.init();
+    }
+
+    private init() {
+      this.dropdownButton?.addEventListener("click", this.handleDropdownClick.bind(this));
+      document.addEventListener("click", this.handleOutsideClick.bind(this));
+    }
+
+    private handleDropdownClick(event: MouseEvent) {
+      if (!this.megaMenu.classList.contains("active")) {
+        this.openDropdown();
+      } else {
+        this.closeDropdown();
+      }
+      event.preventDefault();
+      return false;
+    }
+
+    private handleOutsideClick(event: MouseEvent) {
+      if (
+        !this.megaMenu?.contains(event.target as Node) &&
+        this.megaMenu?.classList.contains("active")
+      ) {
+        this.closeDropdown();
+      }
+    }
+
+    private openDropdown() {
+      this.megaMenu.classList.add("active");
+      this.dropdownButton?.setAttribute("aria-expanded", "true");
+      this.dropdownContent?.setAttribute("data-state", "open");
+      this.dropdownContent?.classList.remove("hidden");
+      this.dropdownChevron?.classList.add("rotate-180");
+    }
+
+    private closeDropdown() {
+      this.megaMenu.classList.remove("active");
+      this.dropdownButton?.setAttribute("aria-expanded", "false");
+      this.dropdownContent?.setAttribute("data-state", "closed");
+      this.dropdownChevron?.classList.remove("rotate-180");
+      setTimeout(() => {
+        this.dropdownContent?.classList.add("hidden");
+      }, this.animationDuration - 10);
+    }
+  }
+
+  function productMegaMenuSetup() {
+    const megaMenus = document.querySelectorAll<HTMLDivElement>(".mega-menu__dropdown");
+    megaMenus.forEach((megaMenu) => new ProductMegaMenuController(megaMenu));
+  }
+
+  productMegaMenuSetup();
+  document.addEventListener("astro:after-swap", productMegaMenuSetup);
+</script>
