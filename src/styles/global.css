@@ -21,9 +21,17 @@
 @layer theme, base, components, utilities;
 
 @layer base {
+  /* Disable all transitions during theme switch for instant color change */
+  .disable-transitions,
+  .disable-transitions *,
+  .disable-transitions *::before,
+  .disable-transitions *::after {
+    transition-duration: 0s !important;
+  }
+
   :root {
     /* starwind component variables */
-    --background: var(--color-base-100);
+    --background: #ffffff;
     --foreground: var(--color-base-900);
     --card: var(--color-base-50);
     --card-foreground: var(--color-base-950);
@@ -83,7 +91,7 @@
 
   .dark {
     /* starwind dark theme config */
-    --background: oklch(0.15 0.01 280); /* Darker purple-tinted background */
+    --background: var(--color-uku-black); /* #251D35 Uku black */
     --foreground: var(--color-base-100);
     --card: oklch(0.12 0.01 280);
     --card-foreground: var(--color-base-100);

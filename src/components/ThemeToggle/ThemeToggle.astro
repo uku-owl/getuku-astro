@@ -164,12 +164,20 @@ const { class: className, animationDuration = 200, size = "md", ...rest } = Astr
           themeToggleLightIcon.setAttribute("data-current-theme", (!isCurrentTheme).toString());
         });
 
+        // Disable all transitions during theme switch for instant color change
+        document.documentElement.classList.add("disable-transitions");
+
         // update local storage
         if (localStorage.getItem("colorTheme") === "light") {
           changeTheme("dark");
         } else {
           changeTheme("light");
         }
+
+        // Re-enable transitions on next frame
+        requestAnimationFrame(() => {
+          document.documentElement.classList.remove("disable-transitions");
+        });
       });
     });
   }

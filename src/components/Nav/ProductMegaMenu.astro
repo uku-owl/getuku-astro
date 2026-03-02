@@ -49,7 +49,6 @@ const integrations: IntegrationItem[] = [
   { text: "E-conomic", link: "/e-conomic", image: "/images/integrations/e-conomic.jpg" },
   { text: "MS Exchange", link: "/integrations", image: "/images/integrations/ms-exchange.jpg" },
   { text: "Gmail", link: "/integrations", image: "/images/integrations/gmail.jpg" },
-  { text: "Tripletex", link: "/integrations", image: "/images/integrations/tripletex.jpg" },
   { text: "Public API", link: "/integrations", image: "/images/integrations/public-api.jpg" },
 ];
 ---
@@ -76,7 +75,7 @@ const integrations: IntegrationItem[] = [
     aria-labelledby="product-mega-menu"
     data-state="closed"
     class:list={[
-      "mega-menu__dropdown-content absolute left-0 top-full z-50 mt-0 transition-all",
+      "mega-menu__dropdown-content absolute left-0 top-full z-50 mt-0 transition-[opacity,transform]",
       "slide-in-from-top-2 fade-in-0 animate-in hidden will-change-transform",
       "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
     ]}
@@ -88,12 +87,19 @@ const integrations: IntegrationItem[] = [
           {featuresCol1.map((item) => (
             <a
               href={getLocalizedRoute(currLocale, item.link)}
-              class="nav__link--base primary-focus flex items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-base-200 dark:hover:bg-base-800 transition"
+              class="nav__link--base primary-focus inline-flex w-fit items-center gap-2 whitespace-nowrap rounded px-2 py-1.5 text-sm hover:bg-base-200 dark:hover:bg-base-800"
             >
               {item.text}
-              {item.isNew && <span class="text-[10px] font-semibold uppercase text-orange-500">NEW</span>}
+              {item.isNew && <span class="bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase">NEW</span>}
             </a>
           ))}
+          <!-- Product tour link at bottom of col 1 -->
+          <a
+            href={getLocalizedRoute(currLocale, "/product-tour")}
+            class="text-primary-600 dark:text-primary-400 mt-2 whitespace-nowrap px-2 py-1.5 text-sm font-medium hover:underline"
+          >
+            Start product tour &rarr;
+          </a>
         </div>
 
         <!-- Features Column 2 -->
@@ -101,10 +107,10 @@ const integrations: IntegrationItem[] = [
           {featuresCol2.map((item) => (
             <a
               href={getLocalizedRoute(currLocale, item.link)}
-              class="nav__link--base primary-focus flex items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-base-200 dark:hover:bg-base-800 transition"
+              class="nav__link--base primary-focus inline-flex w-fit items-center gap-2 whitespace-nowrap rounded px-2 py-1.5 text-sm hover:bg-base-200 dark:hover:bg-base-800"
             >
               {item.text}
-              {item.isNew && <span class="text-[10px] font-semibold uppercase text-orange-500">NEW</span>}
+              {item.isNew && <span class="bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase">NEW</span>}
             </a>
           ))}
         </div>
@@ -116,35 +122,26 @@ const integrations: IntegrationItem[] = [
             {integrations.map((item) => (
               <a
                 href={getLocalizedRoute(currLocale, item.link)}
-                class="border-base-200 dark:border-base-700 hover:border-primary-300 dark:hover:border-primary-500 flex flex-col items-center gap-1 rounded-lg border p-2 transition"
+                class="flex h-24 w-24 items-center justify-center rounded-lg p-2 hover:opacity-80"
+                style="background-color: #F8F6F2;"
+                title={item.text}
               >
                 <img
                   src={item.image}
                   alt={item.text}
-                  class="h-8 w-auto object-contain"
+                  class="h-full w-full object-contain"
                   loading="lazy"
                 />
-                <span class="text-[11px] text-center leading-tight">{item.text}</span>
               </a>
             ))}
-            <a
-              href={getLocalizedRoute(currLocale, "/integrations")}
-              class="text-primary-600 dark:text-primary-400 flex items-center justify-center rounded-lg p-2 text-[11px] font-medium hover:underline"
-            >
-              View all &rarr;
-            </a>
           </div>
+          <a
+            href={getLocalizedRoute(currLocale, "/integrations")}
+            class="text-primary-600 dark:text-primary-400 mt-3 whitespace-nowrap text-sm font-medium hover:underline"
+          >
+            Explore all integrations &rarr;
+          </a>
         </div>
-      </div>
-
-      <!-- Bottom: Product tour link -->
-      <div class="mt-4 border-t border-base-200 dark:border-base-700 pt-3">
-        <a
-          href={getLocalizedRoute(currLocale, "/product-tour")}
-          class="text-primary-600 dark:text-primary-400 text-sm font-medium hover:underline"
-        >
-          Start product tour &rarr;
-        </a>
       </div>
     </div>
   </div>

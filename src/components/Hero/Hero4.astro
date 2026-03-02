@@ -1,0 +1,145 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import heroDashboard from "@images/hero-dashboard.png";
+---
+
+<section id="hero4" class="relative flex w-full overflow-hidden pt-24 pb-28 md:pb-36">
+  <!-- hero content -->
+  <div class="site-container mx-auto max-w-4xl gap-8 pb-32 text-center sm:pb-44 md:pb-72">
+    <!-- H1 label + divider -->
+    <div class="mt-2" data-mos="fade-up">
+      <h1 class="text-[#251D35] dark:text-base-200 text-sm font-medium tracking-wide md:text-base">
+        Accounting Practice Management Software
+      </h1>
+      <div class="bg-royal-blue-500 mx-auto mt-3 h-[2px] w-16"></div>
+    </div>
+
+    <!-- Hero text -->
+    <p
+      class="text-[#5B5DE4] dark:text-white mt-6 text-5xl font-bold md:text-6xl lg:text-7xl"
+      style="letter-spacing: -0.01em; line-height: 72px;"
+      data-mos="fade-up"
+      data-mos-delay="0.1"
+      data-mos-anchor="#hero4"
+    >
+      Get Work Done on Time,<br />Billed & Paid
+    </p>
+
+    <!-- Description -->
+    <p
+      class="text-base-600 dark:text-base-400 mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg"
+      data-mos="fade-up"
+      data-mos-delay="0.2"
+      data-mos-anchor="#hero4"
+    >
+      Uku will give you automated workflows & CRM to boost your accounting firm,
+      increase visibility and improve your billing process.
+    </p>
+
+    <!-- CTA button -->
+    <div
+      class="mt-8 flex justify-center"
+      data-mos="fade-up"
+      data-mos-delay="0.3"
+      data-mos-anchor="#hero4"
+    >
+      <a
+        href="https://app.getuku.com/register"
+        class="inline-flex h-12 items-center rounded-3xl px-8 text-lg font-bold text-base-900 transition hover:brightness-105"
+        style="background-color: #FFCC00; border: 10px solid rgba(255, 204, 0, 0.1);"
+      >
+        Try free for 14 days
+      </a>
+    </div>
+
+    <!-- No credit card -->
+    <p
+      class="text-base-500 mt-4 text-sm"
+      data-mos="fade-up"
+      data-mos-delay="0.4"
+      data-mos-anchor="#hero4"
+    >
+      No credit card required.
+    </p>
+
+    <!-- Review badges -->
+    <div
+      class="mt-8 flex flex-wrap items-start justify-center gap-8 md:gap-12"
+      data-mos="fade-up"
+      data-mos-delay="0.5"
+      data-mos-anchor="#hero4"
+    >
+      <!-- G2 -->
+      <a href="https://www.g2.com/products/uku/reviews" target="_blank" rel="noopener" class="flex flex-col items-center gap-1.5 transition hover:opacity-80">
+        <div class="flex items-center gap-1.5">
+          <div class="flex">
+            {[...Array(5)].map(() => (
+              <Icon name="tabler/star-filled" class="h-4 w-4 text-yellow-400" aria-hidden="true" />
+            ))}
+          </div>
+          <span class="text-base-700 dark:text-base-300 text-sm font-semibold">4.7</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <img src="/images/g2/g2-logo.svg" alt="G2" class="h-4 w-auto opacity-40 [filter:brightness(0)] dark:opacity-60 dark:[filter:brightness(0)_invert(1)]" />
+          <span class="text-base-500 text-xs">G2.com</span>
+        </div>
+      </a>
+
+      <!-- Capterra -->
+      <a href="https://www.capterra.com/p/197626/Uku/" target="_blank" rel="noopener" class="flex flex-col items-center gap-1.5 transition hover:opacity-80">
+        <div class="flex items-center gap-1.5">
+          <div class="flex">
+            {[...Array(5)].map(() => (
+              <Icon name="tabler/star-filled" class="h-4 w-4 text-yellow-400" aria-hidden="true" />
+            ))}
+          </div>
+          <span class="text-base-700 dark:text-base-300 text-sm font-semibold">4.8</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <img src="/images/g2/capterra.svg" alt="Capterra" class="h-4 w-auto" />
+          <span class="text-base-500 text-xs">Capterra.com</span>
+        </div>
+      </a>
+
+      <!-- GetApp -->
+      <a href="https://www.getapp.com/industries-software/a/uku/" target="_blank" rel="noopener" class="flex flex-col items-center gap-1.5 transition hover:opacity-80">
+        <div class="flex items-center gap-1.5">
+          <div class="flex">
+            {[...Array(5)].map(() => (
+              <Icon name="tabler/star-filled" class="h-4 w-4 text-yellow-400" aria-hidden="true" />
+            ))}
+          </div>
+          <span class="text-base-700 dark:text-base-300 text-sm font-semibold">4.8</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <img src="/images/g2/getapp.svg" alt="GetApp" class="h-4 w-auto" />
+          <span class="text-base-500 text-xs">Getapp.com</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero dashboard image -->
+  <div
+    class="site-container absolute inset-0 top-[calc(80%-60px)] z-10 mx-auto max-w-5xl sm:top-[calc(75%-60px)] md:top-[calc(65%-60px)]"
+    aria-hidden="true"
+  >
+    <div
+      class="relative h-fit overflow-hidden border-[10px] border-[#251D35] dark:border-uku-black shadow-2xl shadow-base-900/10"
+      style="border-radius: 24px;"
+      data-mos="fade-in"
+      data-mos-delay="0.3"
+      data-mos-anchor="#hero4"
+    >
+      <Image
+        src={heroDashboard}
+        alt="Uku Dashboard - Accounting Practice Management Software"
+        loading="eager"
+        width={1800}
+        quality={100}
+        class="w-full"
+      />
+    </div>
+  </div>
+</section>
